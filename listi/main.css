@@ -1,0 +1,66 @@
+body{
+  margin: 0;
+  font-size: 10px;
+}
+
+.list-container{
+  border: 1px solid;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1;
+}
+
+.day{
+  flex: 5;
+}
+
+.list-item{
+  padding: 40px;
+  font-family: 'Roboto';
+  font-size: 2rem;
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  flex-direction: row;
+}
+
+.day-1{
+
+}
+
+.day-2{
+}
+
+.day-3{
+
+}
+
+.day-4{
+
+}
+
+.day-5{
+
+}
+
+.day-6{
+
+}
+
+.day-7{
+
+}
+
+.degrees{
+  flex: 1;
+
+}
+
+
+.icon{
+  flex:2;
+  justify-content: center;
+}
