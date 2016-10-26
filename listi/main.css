@@ -13,11 +13,12 @@ body{
 }
 
 .day{
+  display: flex;
   flex: 5;
 }
 
 .list-item{
-  padding: 40px;
+  padding: 20px;
   font-family: 'Roboto';
   font-size: 1.2rem;
   border: 1px solid;
@@ -25,6 +26,12 @@ body{
   justify-content: space-between;
   list-style: none;
   flex-direction: row;
+}
+.subtitle{
+  flex-direction: column;
+  font-style: italic;
+  margin: 0;
+  font-size: 0.5rem;
 }
 
 .day-1{

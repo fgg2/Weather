@@ -107,9 +107,9 @@ function createTime(data){
       firstDiv.setAttribute('class', 'cloud');
       secondDiv.setAttribute('class', 'sun');
       thirdDiv.setAttribute('class', 'rays');
+      secondDiv.appendChild(thirdDiv);
       iconListElement.appendChild(firstDiv);
       iconListElement.appendChild(secondDiv);
-      iconListElement.appendChild(thirdDiv);
     }
     if (daily.data[i].icon === 'partly-cloudy-night') {
       var firstDiv = document.createElement('div');
