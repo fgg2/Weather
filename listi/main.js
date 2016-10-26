@@ -64,12 +64,105 @@ function createTime(data){
     summary.innerHTML = daily.data[i].summary;
     summary.setAttribute('class','degrees list-item');
 
+    var iconListElement = document.createElement('li');
+    iconListElement.setAttribute('class','list-item icon');
+
+    if (daily.data[i].icon === 'clear-day') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      firstDiv.setAttribute('class', 'sun');
+      secondDiv.setAttribute('class', 'rays');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
+    if (daily.data[i].icon === 'clear-night') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      firstDiv.setAttribute('class', 'moon');
+      secondDiv.setAttribute('class', 'rays');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
+    if (daily.data[i].icon === 'cloudy') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      firstDiv.setAttribute('class', 'cloud');
+      secondDiv.setAttribute('class', 'cloud');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
+
+    if (daily.data[i].icon === 'fog') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      firstDiv.setAttribute('class', 'fog');
+      secondDiv.setAttribute('class', 'fog');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
+    if (daily.data[i].icon === 'partly-cloudy-day') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      var thirdDiv = document.createElement('div')
+      firstDiv.setAttribute('class', 'partly-cloud');
+      secondDiv.setAttribute('class', 'sun');
+      thirdDiv.setAttribute('class', 'rays');
+      secondDiv.appendChild(thirdDiv);
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
+    if (daily.data[i].icon === 'partly-cloudy-night') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      var thirdDiv = document.createElement('div')
+      firstDiv.setAttribute('class', 'cloud');
+      secondDiv.setAttribute('class', 'cloud');
+      thirdDiv.setAttribute('class', 'moon');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+      iconListElement.appendChild(thirdDiv);
+    }
+    if (daily.data[i].icon === 'rain') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      var thirdDiv = document.createElement('div')
+      firstDiv.setAttribute('class', 'cloud');
+      secondDiv.setAttribute('class', 'rain');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
+    if (daily.data[i].icon === 'sleet') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      var thirdDiv = document.createElement('div')
+      firstDiv.setAttribute('class', 'cloud');
+      secondDiv.setAttribute('class', 'snow');
+      thirdDiv.setAttribute('class', 'sleet-rain');
+      fourthDiv.setAttribute('class', 'flake');
+      fifthDiv.setAttribute('class', 'flake');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+      iconListElement.appendChild(thirdDiv);
+      iconListElement.appendChild(fourthDiv);
+      iconListElement.appendChild(fifthDiv);
+    }
+    if (daily.data[i].icon === 'wind') {
+      var firstDiv = document.createElement('div');
+      var secondDiv = document.createElement('div');
+      var thirdDiv = document.createElement('div')
+      firstDiv.setAttribute('class', 'wind');
+      secondDiv.setAttribute('class', 'wind');
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
+
     container.appendChild(day);
     container.appendChild(tempMax);
     container.appendChild(tempMin);
     container.appendChild(windspeed);
     container.appendChild(windbearing);
     container.appendChild(summary);
+    container.appendChild(iconListElement);
 
     document.body.appendChild(container);
 
