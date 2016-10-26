@@ -10,14 +10,14 @@ body{
   width: 3.6875em;
   height: 3.6875em;
   margin: -1.84375em;
-  background: #f3f2e7;
+  background: #7789a5;
   border-radius: 50%;
   box-shadow:
-    -2.1875em 0.6875em 0 -0.6875em #f3f2e7,
-    2.0625em 0.9375em 0 -0.9375em #f3f2e7,
-    0 0 0 0.375em #f3f2e7,
-    -2.1875em 0.6875em 0 -0.3125em #f3f2e7,
-    2.0625em 0.9375em 0 -0.5625em #f3f2e7;
+    -2.1875em 0.6875em 0 -0.6875em #7789a5,
+    2.0625em 0.9375em 0 -0.9375em #7789a5,
+    0 0 0 0.375em #7789a5,
+    -2.1875em 0.6875em 0 -0.3125em #7789a5,
+    2.0625em 0.9375em 0 -0.5625em #7789a5;
 }
 .rain{
   position: absolute;
@@ -47,8 +47,8 @@ body{
 
 .rain:nth-child(2){
   position: absolute;
-  top: 53%;
-  left: 52%;
+  top: 60.5%;
+  left: 49.5%
 
 }
 
