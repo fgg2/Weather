@@ -27,8 +27,12 @@ function init(){
 function createTime(data){
   var daily = data.daily;
   var timedays = [];
+
   var months = ['Januar','Februar','Mars','April','May','Juni','July','August','September','October','November','December'];
   var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday' ];
+
+  var directions = ['N','NE','E','SE','S','SW','W','NW'];
+
   for (var i = 0; i < 8; i++) {
     var container = document.createElement('ul');
     container.setAttribute('class','list-container');
@@ -48,13 +52,38 @@ function createTime(data){
     tempMin.innerHTML = 'mintemp = ' + daily.data[i].temperatureMin + '°C';
     tempMin.setAttribute('class','degrees list-item');
 
+    var windspeed = document.createElement('li');
+    windspeed.innerHTML = 'windspeed = ' + daily.data[i].windSpeed + 'm/s';
+    windspeed.setAttribute('class','degrees list-item');
+
+    var windbearing = document.createElement('li');
+    windbear =  daily.data[i].windBearing ;
+    winddir = checkWindDirection(windbear);
+    windbearing.innerHTML = 'winddirection = ' + winddir;
+    windbearing.setAttribute('class','degrees list-item');
+
     container.appendChild(day);
     container.appendChild(tempMax);
     container.appendChild(tempMin);
+    container.appendChild(windspeed);
+    container.appendChild(windbearing);
 
     document.body.appendChild(container);
 
   }
+
+
+}
+
+
+function checkWindDirection(degrees){
+  console.log(degrees);
+  var val = Math.floor((degrees / 22.5) + 0.5);
+  var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+  console.log(arr[(val % 16)]);
+  return arr[(val % 16)];
+
+
 
 
 }
