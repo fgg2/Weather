@@ -43,12 +43,12 @@ body{
 .rays:before {
   transform: rotate(120deg);
 }
-.cloud + .sun {
-  margin: -2em 4em;
+.partly-cloud + .sun {
+  margin: -2em 1em;
 }
 
 
-.cloud {
+.partly-cloud {
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -65,7 +65,7 @@ body{
     -2.1875em 0.6875em 0 -0.3125em #f3f2e7,
     2.0625em 0.9375em 0 -0.5625em #f3f2e7;
 }
-.cloud:after {
+.partly-cloud:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -76,7 +76,7 @@ body{
   background: #f3f2e7;
   box-shadow: 0 0.4375em 0 -0.0625em #f3f2e7;
 }
-.cloud:nth-child(2) {
+.partly-cloud:nth-child(2) {
   z-index: 0;
   background: #f3f2e7;
   box-shadow:
@@ -87,14 +87,11 @@ body{
     2.0625em 0.9375em 0 -0.5625em #f3f2e7;
   opacity: 0.3;
   transform: scale(0.5) translate(6em, -3em);
-  animation: cloud 4s linear infinite;
+  animation: partly-cloud 4s linear infinite;
 }
 
-.cloud{
-  margin: -2em 1em;
-}
 
-@keyframes cloud {
+@keyframes partly-cloud {
   0% { opacity: 1; }
   50% { opacity: 1; }
   100% {

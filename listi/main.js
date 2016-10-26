@@ -104,7 +104,7 @@ function createTime(data){
       var firstDiv = document.createElement('div');
       var secondDiv = document.createElement('div');
       var thirdDiv = document.createElement('div')
-      firstDiv.setAttribute('class', 'cloud');
+      firstDiv.setAttribute('class', 'partly-cloud');
       secondDiv.setAttribute('class', 'sun');
       thirdDiv.setAttribute('class', 'rays');
       secondDiv.appendChild(thirdDiv);
