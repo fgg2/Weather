@@ -60,11 +60,16 @@ function createTime(data){
     windbearing.innerHTML = 'winddirection = ' + winddir;
     windbearing.setAttribute('class','degrees list-item');
 
+    var summary = document.createElement('li');
+    summary.innerHTML = daily.data[i].summary;
+    summary.setAttribute('class','degrees list-item');
+
     container.appendChild(day);
     container.appendChild(tempMax);
     container.appendChild(tempMin);
     container.appendChild(windspeed);
     container.appendChild(windbearing);
+    container.appendChild(summary);
 
     document.body.appendChild(container);
 
@@ -75,13 +80,7 @@ function createTime(data){
 
 
 function checkWindDirection(degrees){
-  console.log(degrees);
   var val = Math.floor((degrees / 22.5) + 0.5);
   var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-  console.log(arr[(val % 16)]);
   return arr[(val % 16)];
-
-
-
-
 }
