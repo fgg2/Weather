@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Places Searchbox</title>
+
+</head>
+
+<body>
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+  <script>
+    // This example adds a search box to a map, using the Google Place Autocomplete
+    // feature. People can enter geographical searches. The search box will return a
+    // pick list containing a mix of places and predicted search terms.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    function initAutocomplete() {
+      var pos;
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          console.log(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      }
+      else {
+        // Browser doesn't support Geolocation
+        alert('sorry,your broswer doesnt support Geolocation');
+      }
+
+      // Create the search box and link it to the UI element.
+      var input = document.getElementById('pac-input');
+      var searchBox = new google.maps.places.SearchBox(input);
+      var markers = [];
+      // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+      searchBox.addListener('places_changed', function() {
+              var input = document.getElementById('pac-input');
+              getgps(input.value);
+            })
+        function getgps(input){
+          console.log(input);
+          var geocoder = new google.maps.Geocoder();
+          geocoder.geocode({
+            'address': input
+          }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              alert("location : " + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+            } else {
+              alert("Something got wrong " + status);
+            }
+        })
+      }
+    }
+
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete" async defer></script>
+</body>
+
+</html>
