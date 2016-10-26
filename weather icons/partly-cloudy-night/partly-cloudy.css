@@ -46,7 +46,7 @@ body{
   transform: rotate(120deg);
 }
 .cloud + .sun {
-  margin: -2em 4em;
+  margin: -2em 1em;
 }
 
 
