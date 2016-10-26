@@ -31,8 +31,6 @@ function createTime(data){
   var months = ['Januar','Februar','Mars','April','May','Juni','July','August','September','October','November','December'];
   var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday' ];
 
-  var directions = ['N','NE','E','SE','S','SW','W','NW'];
-
   for (var i = 0; i < 8; i++) {
     var container = document.createElement('ul');
     container.setAttribute('class','list-container');
