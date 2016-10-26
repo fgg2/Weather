@@ -19,7 +19,7 @@ body{
 .list-item{
   padding: 40px;
   font-family: 'Roboto';
-  font-size: 2rem;
+  font-size: 1.2rem;
   border: 1px solid;
   display: flex;
   justify-content: space-between;

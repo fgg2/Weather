@@ -1,6 +1,11 @@
-body{
-  background-color: black;
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 12em;
+  height: 10em;
+  font-size: 1em; /* control icon size here */
 }
+
 
 .cloud {
   position: absolute;
@@ -19,21 +24,64 @@ body{
     -2.1875em 0.6875em 0 -0.3125em #7789a5,
     2.0625em 0.9375em 0 -0.5625em #7789a5;
 }
-.rain{
+
+.snow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 3.75em;
+  height: 3.75em;
+  margin: 0.375em 0 0 -2em;
+  background: inherit;
+  font-size: 1.2rem;
+}
+
+.flake:before,
+.flake:after {
+  content: '\2744';
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  margin: -1.025em 0 0 -1.0125em;
+  color: black;
+  list-height: 1em;
+  opacity: 0.2;
+  animation: spin 8s linear infinite reverse;
+}
+.flake:after {
+  margin: 0em 0 0 -1em;
+  font-size: 2.5em;
+  opacity: 0.4;
+  animation: spin 14s linear infinite;
+}
+.flake:nth-child(2):before {
+  margin: -0.5em 0 0 0.25em;
+  font-size: 1.25em;
+  opacity: 0.2;
+  animation: spin 10s linear infinite;
+}
+.flake:nth-child(2):after {
+  margin: 0.1em 0 0 0.525em;
+  font-size: 2em;
+  opacity: 0.4;
+  animation: spin 16s linear infinite reverse;
+}
+.sleet-rain{
   position: absolute;
   top: 75.5%;
   left: 46.5%;
 
 }
 
-.rain:after {
+.sleet-rain:after {
   content: '';
   position: absolute;
   z-index: 2;
   top: 75.5%;
   left: 46.5%;
-  width: 1.125em;
-  height: 1.125em;
+  width: 1em;
+  height: 1em;
   margin: -1em 0 0 -0.25em;
   background: #0cf;
   border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
@@ -42,17 +90,17 @@ body{
     -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
     -1.375em -0.125em 0 rgba(255,255,255,0.2);
   transform: rotate(-30deg);
-  animation: rain 3s linear infinite;
+  animation: sleet-rain 3s linear infinite;
 }
 
-.rain:nth-child(2){
+.sleet-rain:nth-child(2){
   position: absolute;
   top: 75.5%;
   left: 46.5%;
 
 }
 
-@keyframes rain {
+@keyframes sleet-rain {
   0% {
     background: #0cf;
     box-shadow:
@@ -79,4 +127,7 @@ body{
       -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
       -1.375em -0.125em 0 #0cf;
   }
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
