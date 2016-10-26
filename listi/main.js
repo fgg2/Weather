@@ -31,9 +31,16 @@ function createTime(data){
   var months = ['Januar','Februar','Mars','April','May','Juni','July','August','September','October','November','December'];
   var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday' ];
 
+  var wholeListContainer = document.getElementById('whole-list')
+
   for (var i = 0; i < 8; i++) {
     var container = document.createElement('ul');
-    container.setAttribute('class','list-container');
+    if(i%2 === 0){
+      container.setAttribute('class','list-container mod2-color');
+    }
+    else {
+      container.setAttribute('class','list-container');
+    }
 
     var date =  new Date(daily.data[i].time*1000);
     timedays[i] = days[date.getDay()] + ' ' + date.getDate() +'.'+ months[date.getMonth()];
@@ -62,10 +69,38 @@ function createTime(data){
 
     var summary = document.createElement('li');
     summary.innerHTML = daily.data[i].summary;
-    summary.setAttribute('class','degrees list-item');
+    summary.setAttribute('class','degrees list-item summary');
 
     var iconListElement = document.createElement('li');
     iconListElement.setAttribute('class','list-item icon');
+
+    /*var windAmountIcon = document.createElement('li');
+    windAmountIcon.setAttribute('class', 'list-item windmill');
+    var stick = document.createElement('div');
+    var wind0 = document.createElement('div');
+    var wind1 = document.createElement('div');
+    var wind2 = document.createElement('div');
+    var wind3 = document.createElement('div');
+    var wind4 = document.createElement('div');
+    stick.setAttribute('class','stick');
+    wind0.setAttribute('class','wind0');
+    wind1.setAttribute('class','wind1');
+    wind2.setAttribute('class','wind2');
+    wind3.setAttribute('class','wind3');
+    wind4.setAttribute('class','wind4');
+    windAmountIcon.appendChild(stick);
+    windAmountIcon.appendChild(wind0);
+    windAmountIcon.appendChild(wind1);
+    windAmountIcon.appendChild(wind2);
+    windAmountIcon.appendChild(wind3);
+    windAmountIcon.appendChild(wind4);
+
+    if(daily.data[i].windSpeed < 1 ){
+
+
+
+    }
+    */
 
     if (daily.data[i].icon === 'clear-day') {
       var firstDiv = document.createElement('div');
@@ -163,8 +198,9 @@ function createTime(data){
     container.appendChild(windbearing);
     container.appendChild(summary);
     container.appendChild(iconListElement);
+    //container.appendChild(windAmountIcon);
 
-    document.body.appendChild(container);
+    wholeListContainer.appendChild(container);
 
   }
 

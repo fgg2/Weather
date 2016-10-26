@@ -1,69 +1,56 @@
 body{
   margin: 0;
   font-size: 10px;
+  background-color: #D0E1F9;
 }
 
 .list-container{
-  border: 1px solid;
 
   display: flex;
-  flex-direction: row;
   justify-content: center;
   flex: 1;
+  background-color: #4D648D;
+  height: 100px
 }
 
 .day{
   display: flex;
-  flex: 5;
+  flex: 4;
+  font-size: 2rem !important;
 }
-
+.week-header{
+  font-family: 'Bungee';
+  font-size: 4rem;
+  text-align: center;
+  color: #1E1F26
+}
 .list-item{
-  padding: 20px;
   font-family: 'Roboto';
   font-size: 1.2rem;
-  border: 1px solid;
   display: flex;
   justify-content: space-between;
   list-style: none;
-  flex-direction: row;
+  flex-direction: row;;
+  align-items: center;
+  color: beige;
 }
-.subtitle{
-  flex-direction: column;
-  font-style: italic;
-  margin: 0;
-  font-size: 0.5rem;
-}
-
-.day-1{
-
+.summary{
+  font-size: 1rem;
 }
 
-.day-2{
-}
 
-.day-3{
-
-}
-
-.day-4{
-
-}
-
-.day-5{
-
-}
-
-.day-6{
-
-}
-
-.day-7{
-
-}
 
 .degrees{
   flex: 1;
 
+}
+.mod2-color{
+  background-color: #283655;
+}
+.whole-list-container{
+  max-width: 75%;
+  max-height: 75%;
+  margin: 20px auto;
 }
 
 
