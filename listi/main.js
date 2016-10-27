@@ -95,8 +95,13 @@ function createTime(data){
     wind.appendChild(wind4);
     windAmountIcon.appendChild(wind);
     windContainer.appendChild(windAmountIcon);
-    $('wind').removeAttr('style');
     console.log(daily.data[i].windSpeed)
+    if(daily.data[i].windSpeed < 0.5  ){
+      wind.setAttribute('class','sec1');
+    }
+    if(daily.data[i].windSpeed < 1.0  ){
+      wind.setAttribute('class','sec1');
+    }
     if(daily.data[i].windSpeed < 2.0  ){
       wind.setAttribute('class','sec2');
     }
@@ -225,13 +230,59 @@ function createTime(data){
     if (daily.data[i].icon === 'wind') {
       var firstDiv = document.createElement('div');
       var secondDiv = document.createElement('div');
-      var thirdDiv = document.createElement('div')
       firstDiv.setAttribute('class', 'sky-wind');
       secondDiv.setAttribute('class', 'sky-wind');
       iconListElement.appendChild(firstDiv);
       iconListElement.appendChild(secondDiv);
     }
 
+    var createFillName = ('thermometer-fill' + i);
+
+    var createBottomName = ('thermometer-bottom' + i);
+    var thermoContainer = document.createElement('div');
+    thermoContainer.setAttribute('class','thermo-container');
+    var thermoTop = document.createElement('div');
+    thermoTop.setAttribute('class', 'thermometer-top');
+    var thermoFill = document.createElement('div');
+    thermoFill.setAttribute('class', createFillName);
+    thermoFill.setAttribute('id', 'thermoFillId')
+
+
+
+    var fillPercentage = daily.data[i].temperatureMax / 100;
+    var fillHeight = fillPercentage * 500;
+    var thermoBottom = document.createElement('div');
+    thermoBottom.setAttribute('class', 'thermometer-bottom');
+    thermoBottom.setAttribute('id', 'thermoBottomId');
+    var span = document.createElement('span');
+    var thermoColor;
+    if( daily.data[i].temperatureMax < 0 ){
+      thermoColor = 'blue';
+    }
+    else{
+     thermoColor = 'tomato';
+    }
+
+
+    thermoContainer.type = 'text/css';
+    thermoContainer.innerHTML = '<style> .'+createBottomName + '{color: white;  width: 100%;\
+    height: 100%;  text-align: center; display: block; background: '+ thermoColor +'\
+    padding-top: 15px; font-size: 24px;}'+'.' + createFillName + '{ height: '+ (fillHeight) +
+    'px;width: 30px; min-height: 12px; background: '+ thermoColor +' !important;\
+    position: absolute; bottom: -5px; left: -5px;\
+    border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }'+' .thermometer-bottom{background: '+ thermoColor +'}</style>';
+    document.getElementsByTagName('div')[0].appendChild(thermoBottom);
+    document.getElementsByTagName('div')[0].appendChild(thermoFill);
+    document.getElementById('thermoBottomId').className = 'thermometer-bottom';
+
+
+    span.innerHTML = Math.round(daily.data[i].temperatureMax);
+    thermoTop.appendChild(thermoFill);
+    thermoBottom.appendChild(span);
+    thermoContainer.appendChild(thermoTop);
+    thermoContainer.appendChild(thermoBottom);
+
+    console.log(daily.data[i].temperatureMax);
     container.appendChild(day);
     container.appendChild(tempMax);
     container.appendChild(tempMin);
@@ -240,6 +291,7 @@ function createTime(data){
     container.appendChild(summary);
     container.appendChild(iconListElement);
     container.appendChild(windContainer);
+    container.appendChild(thermoContainer);
 
     wholeListContainer.appendChild(container);
 
@@ -247,6 +299,7 @@ function createTime(data){
 
 
 }
+
 
 
 function checkWindDirection(degrees){
