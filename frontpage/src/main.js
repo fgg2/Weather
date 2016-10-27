@@ -44,7 +44,7 @@ function initAutocomplete() {
         'address': input
       }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          getWeather(results[0].geometry.location.lng(),results[0].geometry.location.lat());
+          getWeather(results[0].geometry.location.lat(),results[0].geometry.location.lng());
         } else {
           alert("Something got wrong " + status);
         }

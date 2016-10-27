@@ -1,11 +1,11 @@
 
 
-function getWeather(longi,latti) {
+function getWeather(latti,longi) {
     var mainurl = "https://api.darksky.net/forecast/";
     var code = '0fe876b2f29e459c7d7b163d9be370e1';
 
     $.ajax({
-        url: mainurl + code + "/" + longi + ',' + latti + '?' + 'units=auto' + '&' + 'lang=is',
+        url: mainurl + code + "/" + latti + ',' + longi + '?' + 'units=si' + '&' + 'lang=is',
         type: "GET",
         dataType: 'jsonp',
         cache: true,
