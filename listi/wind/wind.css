@@ -1,5 +1,5 @@
 .wind-container{
-  zoom: 26%;
+  zoom: 40%;
 }
 
 .windmill{
@@ -94,6 +94,27 @@
 }.wind4:after{
   background-image:radial-gradient(circle at 0px 0px, rgba(52, 152, 219,0) 40px, #3498db 41px);
 }
+
+.sec0{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 20s infinite linear;
+  -moz-animation:rotates 20s infinite linear;
+  -webkit-animation:rotates 20s infinite linear;
+  -o-animation:rotates 20s infinite linear;
+
+}
+.sec1{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 10s infinite linear;
+  -moz-animation:rotates 10s infinite linear;
+  -webkit-animation:rotates 10s infinite linear;
+  -o-animation:rotates 10s infinite linear;
+}
+
 
 .sec2{
   width:100px;
