@@ -71,36 +71,77 @@ function createTime(data){
     summary.innerHTML = daily.data[i].summary;
     summary.setAttribute('class','degrees list-item summary');
 
-    var iconListElement = document.createElement('li');
-    iconListElement.setAttribute('class','list-item icon');
 
-    /*var windAmountIcon = document.createElement('li');
-    windAmountIcon.setAttribute('class', 'list-item windmill');
+    var windAmountIcon = document.createElement('li');
+    windAmountIcon.setAttribute('class','windmill');
+    var windContainer = document.createElement('div');
     var stick = document.createElement('div');
-    var wind0 = document.createElement('div');
+    var wind = document.createElement('div');
     var wind1 = document.createElement('div');
     var wind2 = document.createElement('div');
     var wind3 = document.createElement('div');
     var wind4 = document.createElement('div');
+    windContainer.setAttribute('class', 'list-item degrees wind-container');
     stick.setAttribute('class','stick');
-    wind0.setAttribute('class','wind0');
+    wind.setAttribute('class','wind');
     wind1.setAttribute('class','wind1');
     wind2.setAttribute('class','wind2');
     wind3.setAttribute('class','wind3');
     wind4.setAttribute('class','wind4');
     windAmountIcon.appendChild(stick);
-    windAmountIcon.appendChild(wind0);
-    windAmountIcon.appendChild(wind1);
-    windAmountIcon.appendChild(wind2);
-    windAmountIcon.appendChild(wind3);
-    windAmountIcon.appendChild(wind4);
-
-    if(daily.data[i].windSpeed < 1 ){
-
-
-
+    wind.appendChild(wind1);
+    wind.appendChild(wind2);
+    wind.appendChild(wind3);
+    wind.appendChild(wind4);
+    windAmountIcon.appendChild(wind);
+    windContainer.appendChild(windAmountIcon);
+    $('wind').removeAttr('style');
+    console.log(daily.data[i].windSpeed)
+    if(daily.data[i].windSpeed < 2.0  ){
+      wind.setAttribute('class','sec2');
     }
-    */
+    else if(daily.data[i].windSpeed < 3.0){
+      wind.setAttribute('class','sec3');
+    }
+    else if(daily.data[i].windSpeed < 4.0 ){
+      wind.setAttribute('class','sec4');
+    }
+    else if(daily.data[i].windSpeed < 5.0 ){
+      wind.setAttribute('class','sec5');
+    }
+    else if(daily.data[i].windSpeed < 6.0 ){
+      wind.setAttribute('class','sec6');
+    }
+    else if(daily.data[i].windSpeed < 8.0 ){
+      wind.setAttribute('class','sec8');
+    }
+    else if(daily.data[i].windSpeed < 10.0 ){
+      wind.setAttribute('class','sec10');
+    }
+    else if(daily.data[i].windSpeed < 12.0 ){
+      wind.setAttribute('class','sec12');
+    }
+    else if(daily.data[i].windSpeed < 14.0 ){
+      wind.setAttribute('class','sec14');
+    }
+    else if(daily.data[i].windSpeed < 16.0 ){
+      wind.setAttribute('class','sec16');
+    }
+    else if(daily.data[i].windSpeed < 20.0 ){
+      wind.setAttribute('class','sec20');
+    }
+    else if(daily.data[i].windSpeed < 25.0 ){
+      wind.setAttribute('class','sec25');
+    }
+    else if(daily.data[i].windSpeed < 30.0 ){
+      wind.setAttribute('class','sec30');
+    }
+    /*else{
+      wind.setAttribute('class','');
+    }
+*/
+    var iconListElement = document.createElement('li');
+    iconListElement.setAttribute('class','list-item icon degrees');
 
     if (daily.data[i].icon === 'clear-day') {
       var firstDiv = document.createElement('div');
@@ -185,8 +226,8 @@ function createTime(data){
       var firstDiv = document.createElement('div');
       var secondDiv = document.createElement('div');
       var thirdDiv = document.createElement('div')
-      firstDiv.setAttribute('class', 'wind');
-      secondDiv.setAttribute('class', 'wind');
+      firstDiv.setAttribute('class', 'sky-wind');
+      secondDiv.setAttribute('class', 'sky-wind');
       iconListElement.appendChild(firstDiv);
       iconListElement.appendChild(secondDiv);
     }
@@ -198,7 +239,7 @@ function createTime(data){
     container.appendChild(windbearing);
     container.appendChild(summary);
     container.appendChild(iconListElement);
-    //container.appendChild(windAmountIcon);
+    container.appendChild(windContainer);
 
     wholeListContainer.appendChild(container);
 
