@@ -95,7 +95,6 @@ function createTime(data){
     wind.appendChild(wind4);
     windAmountIcon.appendChild(wind);
     windContainer.appendChild(windAmountIcon);
-    $('wind').removeAttr('style');
     console.log(daily.data[i].windSpeed)
     if(daily.data[i].windSpeed < 0.5  ){
       wind.setAttribute('class','sec1');
@@ -231,7 +230,6 @@ function createTime(data){
     if (daily.data[i].icon === 'wind') {
       var firstDiv = document.createElement('div');
       var secondDiv = document.createElement('div');
-      var thirdDiv = document.createElement('div')
       firstDiv.setAttribute('class', 'sky-wind');
       secondDiv.setAttribute('class', 'sky-wind');
       iconListElement.appendChild(firstDiv);
@@ -278,25 +276,12 @@ function createTime(data){
     document.getElementById('thermoBottomId').className = 'thermometer-bottom';
 
 
-    span.innerHTML = daily.data[i].temperatureMax;
+    span.innerHTML = Math.round(daily.data[i].temperatureMax);
     thermoTop.appendChild(thermoFill);
     thermoBottom.appendChild(span);
     thermoContainer.appendChild(thermoTop);
     thermoContainer.appendChild(thermoBottom);
 
-
-  /*  $('thermometer-fill').css('height', 12 + fillHeight);
-    $('thermometer-bottom span').text(Math.round(fillPercentage * 100));
-
-      $('<style>'+ createFillName + '{ color: green; }</style>')
-      $('html > head').append(thermoFill);*/
-
-    /*var style =
-      $('<style>'+ createFillName + '{ height: '+ (12 +fillHeight)+ '; }</style>')
-      $('html > head').append(style);
-
-
-*/
     console.log(daily.data[i].temperatureMax);
     container.appendChild(day);
     container.appendChild(tempMax);
