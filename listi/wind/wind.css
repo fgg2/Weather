@@ -1,6 +1,10 @@
+.wind-container{
+  zoom: 26%;
+}
+
 .windmill{
   width:100px;
-  height:100px;
+  height:200px;
   position:relative;
   margin:100px auto;
 }
@@ -87,7 +91,128 @@
   -webkit-transform:rotate(315deg);
   -o-transform:rotate(315deg);
   background:#2980b9;
-}.wind4:after{background-image:radial-gradient(circle at 0px 0px, rgba(52, 152, 219,0) 40px, #3498db 41px);}
+}.wind4:after{
+  background-image:radial-gradient(circle at 0px 0px, rgba(52, 152, 219,0) 40px, #3498db 41px);
+}
+
+.sec2{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 8s infinite linear;
+  -moz-animation:rotates 8s infinite linear;
+  -webkit-animation:rotates 8s infinite linear;
+  -o-animation:rotates 8s infinite linear;
+}
+.sec3{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 7s infinite linear;
+  -moz-animation:rotates 7s infinite linear;
+  -webkit-animation:rotates 7s infinite linear;
+  -o-animation:rotates 7s infinite linear;
+}
+.sec4{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 6s infinite linear;
+  -moz-animation:rotates 6s infinite linear;
+  -webkit-animation:rotates 6s infinite linear;
+  -o-animation:rotates 6s infinite linear;
+}
+.sec5{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 5s infinite linear;
+  -moz-animation:rotates 5s infinite linear;
+  -webkit-animation:rotates 5s infinite linear;
+  -o-animation:rotates 5s infinite linear;
+}
+.sec6{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 4s infinite linear;
+  -moz-animation:rotates 4s infinite linear;
+  -webkit-animation:rotates 4s infinite linear;
+  -o-animation:rotates 4s infinite linear;
+}
+.sec8{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 3s infinite linear;
+  -moz-animation:rotates 3s infinite linear;
+  -webkit-animation:rotates 3s infinite linear;
+  -o-animation:rotates 3s infinite linear;
+}
+.sec10{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 2s infinite linear;
+  -moz-animation:rotates 2s infinite linear;
+  -webkit-animation:rotates 2s infinite linear;
+  -o-animation:rotates 2s infinite linear;
+}
+.sec12{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 1.5s infinite linear;
+  -moz-animation:rotates 1.5s infinite linear;
+  -webkit-animation:rotates 1.5s infinite linear;
+  -o-animation:rotates 1.5s infinite linear;
+}
+.sec14{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 1.3s infinite linear;
+  -moz-animation:rotates 1.3s infinite linear;
+  -webkit-animation:rotates 1.3s infinite linear;
+  -o-animation:rotates 1.3s infinite linear;
+}
+.sec16{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 1s infinite linear;
+  -moz-animation:rotates 1s infinite linear;
+  -webkit-animation:rotates 1s infinite linear;
+  -o-animation:rotates 1s infinite linear;
+}
+.sec20{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 0.8s infinite linear;
+  -moz-animation:rotates 0.8s infinite linear;
+  -webkit-animation:rotates 0.8s infinite linear;
+  -o-animation:rotates 0.8s infinite linear;
+}
+.sec25{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 0.7s infinite linear;
+  -moz-animation:rotates 0.7s infinite linear;
+  -webkit-animation:rotates 0.7s infinite linear;
+  -o-animation:rotates 0.7s infinite linear;
+}
+.sec30{
+  width:100px;
+  height:100px;
+  position:absolute;
+  animation:rotates 0.5s infinite linear;
+  -moz-animation:rotates 0.5s infinite linear;
+  -webkit-animation:rotates 0.5s infinite linear;
+  -o-animation:rotates 0.5s infinite linear;
+}
+
 
 @keyframes rotates{
   form{transform:rotate(0deg);}
