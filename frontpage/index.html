@@ -4,9 +4,26 @@
     <meta charset="utf-8">
     <title>Welcome to our Weatherside</title>
     <link rel="stylesheet" href="src/frontpage.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+
+    <link rel="stylesheet" href="src/main.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Lobster|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/clear.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/cloudy.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/fog.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/partly-cloudy.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/partly-cloudy-night.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/rain.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/sleet.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/snow.css" media="screen" title="no title">
+    <link rel="stylesheet" href="src/css/wind.css" media="screen" title="no title">
   </head>
   <body>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <input id="pac-input" class="controls" type="text" placeholder="Search">
+    <h1 class = 'header'></h1>
+    <div class="whole-list-container" id="whole-list"></div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <script src="src/weather.js"></script>
     <script src="src/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete" async defer></script>
   </body>

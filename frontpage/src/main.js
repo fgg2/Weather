@@ -1,3 +1,4 @@
+
 function initAutocomplete() {
   var pos;
 
@@ -11,6 +12,8 @@ function initAutocomplete() {
       geocoder.geocode({'location': pos}, function(results, status) {
           if (status === 'OK') {
             var location = results[1].formatted_address;
+            var s = document.getElementById('pac-input');
+            s.placeholder = location;
             putinFrontpage(location);
           } else {
             window.alert('Geocoder failed due to: ' + status);
@@ -41,7 +44,7 @@ function initAutocomplete() {
         'address': input
       }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          alert("location : " + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+          getWeather(results[0].geometry.location.lng(),results[0].geometry.location.lat());
         } else {
           alert("Something got wrong " + status);
         }
@@ -50,14 +53,12 @@ function initAutocomplete() {
 }
 
 function putinFrontpage(location){
-  let container = document.querySelector('h1');
+  let container = document.querySelector('.header');
 
   if(container){
-    container.parentNode.removeChild(container);
+    container.innerHTML = "";
   }
 
-  var header = document.createElement('h1');
-  header.innerHTML = 'Your current location is ' + location;
-  document.body.appendChild(header);
+  container.innerHTML = 'Your current location is ' + location;
 
 }
