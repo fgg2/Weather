@@ -35,7 +35,7 @@ function initAutocomplete() {
           getgps(input.value);
         })
     function getgps(input){
-      console.log(input);
+      putinFrontpage(input);
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({
         'address': input
@@ -50,6 +50,12 @@ function initAutocomplete() {
 }
 
 function putinFrontpage(location){
+  let container = document.querySelector('h1');
+
+  if(container){
+    container.parentNode.removeChild(container);
+  }
+
   var header = document.createElement('h1');
   header.innerHTML = 'Your current location is ' + location;
   document.body.appendChild(header);
