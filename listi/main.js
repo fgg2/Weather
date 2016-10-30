@@ -5,22 +5,33 @@ function getWeather(longi,latti) {
     var code = '0fe876b2f29e459c7d7b163d9be370e1';
 
     $.ajax({
-        url: mainurl + code + "/" + longi + ',' + latti + '?' + 'units=auto' + '&' + 'lang=is',
+        url: mainurl + code + "/" + longi + ',' + latti + '?' + 'units=auto' + '&' + 'lang=en',
         type: "GET",
         dataType: 'jsonp',
         cache: true,
         success: function(data, status, error) {
             console.log('success', data);
+            $('#container-loading')
+            .delay(2500).queue(function (next) {
+              $(this).fadeOut(200);
+              next();
+            });
             createTime(data);
         },
         error: function(data, status, error) {
             console.log('error', data, status, error);
+            var error = document.getElementById('loading')
+            error.innerHTML = 'Failed to connect to API';
         }
     });
 }
 
 function init(){
   getWeather(64.1265, -21.8174);
+  document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("DOM fully loaded and parsed");
+
+  });
 
 }
 
@@ -57,10 +68,6 @@ function createTime(data){
     tempMin.innerHTML = 'mintemp = ' + daily.data[i].temperatureMin + '°C';
     tempMin.setAttribute('class','degrees list-item');
 
-    var windspeed = document.createElement('li');
-    windspeed.innerHTML = 'windspeed = ' + daily.data[i].windSpeed + 'm/s';
-    windspeed.setAttribute('class','degrees list-item');
-
     var windbearing = document.createElement('li');
     windbear =  daily.data[i].windBearing ;
     winddir = checkWindDirection(windbear);
@@ -71,7 +78,6 @@ function createTime(data){
     summary.innerHTML = daily.data[i].summary;
     summary.setAttribute('class','degrees list-item summary');
 
-
     var windAmountIcon = document.createElement('li');
     windAmountIcon.setAttribute('class','windmill');
     var windContainer = document.createElement('div');
@@ -81,6 +87,9 @@ function createTime(data){
     var wind2 = document.createElement('div');
     var wind3 = document.createElement('div');
     var wind4 = document.createElement('div');
+    var windText = document.createElement('p');
+    windText.setAttribute('class', 'wind-text');
+    windText.innerHTML = (daily.data[i].windSpeed) + 'm/s';
     windContainer.setAttribute('class', 'list-item degrees wind-container');
     stick.setAttribute('class','stick');
     wind.setAttribute('class','wind');
@@ -94,8 +103,8 @@ function createTime(data){
     wind.appendChild(wind3);
     wind.appendChild(wind4);
     windAmountIcon.appendChild(wind);
+    windContainer.appendChild(windText)
     windContainer.appendChild(windAmountIcon);
-    console.log(daily.data[i].windSpeed)
     if(daily.data[i].windSpeed < 0.5  ){
       wind.setAttribute('class','sec1');
     }
@@ -141,10 +150,7 @@ function createTime(data){
     else if(daily.data[i].windSpeed < 30.0 ){
       wind.setAttribute('class','sec30');
     }
-    /*else{
-      wind.setAttribute('class','');
-    }
-*/
+
     var iconListElement = document.createElement('li');
     iconListElement.setAttribute('class','list-item icon degrees');
 
@@ -235,26 +241,48 @@ function createTime(data){
       iconListElement.appendChild(firstDiv);
       iconListElement.appendChild(secondDiv);
     }
-
+    var thermoLi = document.createElement('li');
+    thermoLi.setAttribute('class', 'list-item degrees');
+    //create min thermoLi
+    var thermoLiMin = document.createElement('li');
+    thermoLiMin.setAttribute('class', 'list-item degrees haha');
     var createFillName = ('thermometer-fill' + i);
+    var createFillNameMin = ('thermometer-fill-min' + i);
 
     var createBottomName = ('thermometer-bottom' + i);
     var thermoContainer = document.createElement('div');
+    var createBottomNameMin = ('thermometer-bottom-min' + i);
     thermoContainer.setAttribute('class','thermo-container');
     var thermoTop = document.createElement('div');
     thermoTop.setAttribute('class', 'thermometer-top');
+    var thermoTopMin = document.createElement('div');
+    thermoTopMin.setAttribute('class', 'thermometer-top');
     var thermoFill = document.createElement('div');
     thermoFill.setAttribute('class', createFillName);
     thermoFill.setAttribute('id', 'thermoFillId')
 
+    var thermoFillMin = document.createElement('div');
+    thermoFillMin.setAttribute('class', createFillNameMin);
+    thermoFillMin.setAttribute('id', 'thermoFillMinId')
+
 
 
     var fillPercentage = daily.data[i].temperatureMax / 100;
-    var fillHeight = fillPercentage * 500;
+    var fillHeight = fillPercentage * 1000;
+
+    // create min values
+    var fillPercentageMin = daily.data[i].temperatureMin / 100;
+    var fillHeightMin = fillPercentageMin * 1000;
     var thermoBottom = document.createElement('div');
+    var thermoBottomMin = document.createElement('div');
     thermoBottom.setAttribute('class', 'thermometer-bottom');
     thermoBottom.setAttribute('id', 'thermoBottomId');
+    thermoBottomMin.setAttribute('class', 'thermometer-bottom');
+    thermoBottomMin.setAttribute('id', 'thermoBottomIdMin');
     var span = document.createElement('span');
+    var spanMin = document.createElement('span');
+    span.setAttribute('class', 'bottom-text')
+    spanMin.setAttribute('class', 'bottom-text-min')
     var thermoColor;
     if( daily.data[i].temperatureMax < 0 ){
       thermoColor = 'blue';
@@ -262,9 +290,18 @@ function createTime(data){
     else{
      thermoColor = 'tomato';
     }
+    var thermoContainerMin = document.createElement('div');
+    thermoContainerMin.setAttribute('class','thermo-container');
 
 
+    var tempText = document.createElement('p');
+    tempText.setAttribute('class','temp-text');
+    tempText.innerHTML = 'Max temperature';
+    var tempTextMin = document.createElement('p');
+    tempTextMin.setAttribute('class','temp-text');
+    tempTextMin.innerHTML = 'Min temperature';
     thermoContainer.type = 'text/css';
+
     thermoContainer.innerHTML = '<style> .'+createBottomName + '{color: white;  width: 100%;\
     height: 100%;  text-align: center; display: block; background: '+ thermoColor +'\
     padding-top: 15px; font-size: 24px;}'+'.' + createFillName + '{ height: '+ (fillHeight) +
@@ -275,23 +312,45 @@ function createTime(data){
     document.getElementsByTagName('div')[0].appendChild(thermoFill);
     document.getElementById('thermoBottomId').className = 'thermometer-bottom';
 
+    //create min container
 
-    span.innerHTML = Math.round(daily.data[i].temperatureMax);
+
+    thermoContainerMin.type = 'text/css';
+    thermoContainerMin.innerHTML = '<style> .'+createBottomNameMin + '{color: white;  width: 100%;\
+    height: 100%;  text-align: center; display: block; background: '+ thermoColor +'\
+    padding-top: 15px; font-size: 24px;}'+'.' + createFillNameMin + '{ height: '+ (fillHeightMin) +
+    'px;width: 30px; min-height: 12px; background: '+ thermoColor +' !important;\
+    position: absolute; bottom: -5px; left: -5px;\
+    border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }'+' .thermometer-bottom-min{background: '+ thermoColor +'}</style>';
+    document.getElementsByTagName('div')[0].appendChild(thermoBottomMin);
+    //document.getElementsByTagName('div')[0].appendChild(thermoFillMin);
+    document.getElementById('thermoBottomIdMin').className = 'thermometer-bottom-min';
+    console.log(thermoContainer);
+    console.log(thermoContainerMin);
+
+
+    span.innerHTML = (Math.round(daily.data[i].temperatureMax) +'°');
+    spanMin.innerHTML = (Math.round(daily.data[i].temperatureMin) +'°');
     thermoTop.appendChild(thermoFill);
+    thermoTopMin.appendChild(thermoFillMin);
     thermoBottom.appendChild(span);
+    thermoBottomMin.appendChild(spanMin);
+    thermoLi.appendChild(tempText);
+    thermoLiMin.appendChild(tempTextMin);
     thermoContainer.appendChild(thermoTop);
     thermoContainer.appendChild(thermoBottom);
+    thermoContainerMin.appendChild(thermoTopMin);
+    thermoContainerMin.appendChild(thermoBottomMin);
+    thermoLi.appendChild(thermoContainer);
+    thermoLiMin.appendChild(thermoContainerMin);
 
-    console.log(daily.data[i].temperatureMax);
     container.appendChild(day);
-    container.appendChild(tempMax);
-    container.appendChild(tempMin);
-    container.appendChild(windspeed);
+    container.appendChild(thermoLi);
+    container.appendChild(thermoLiMin);
+    container.appendChild(windContainer);
     container.appendChild(windbearing);
     container.appendChild(summary);
     container.appendChild(iconListElement);
-    container.appendChild(windContainer);
-    container.appendChild(thermoContainer);
 
     wholeListContainer.appendChild(container);
 

@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>This week</title>
-    <link href="https://fonts.googleapis.com/css?family=Bungee|Lobster|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="main.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/clear.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/cloudy.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/fog.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/partly-cloudy.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/partly-cloudy-night.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/rain.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/sleet.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/snow.css" media="screen" title="no title">
-    <link rel="stylesheet" href="css/wind.css" media="screen" title="no title">
-    <link rel="stylesheet" href="wind/wind.css" media="screen" title="no title">
 
-  </head>
-  <body>
-    <h1 class="week-header">THIS WEEK IN *YOUR LOCATION*</h1>
-    <div class="whole-list-container" id="whole-list"></div>
-    <script src='node_modules/jquery/dist/jquery.min.js'></script>
-    <script src='main.js'>
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>This week</title>
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Lobster|Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="main.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/clear.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/cloudy.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/fog.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/partly-cloudy.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/partly-cloudy-night.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/rain.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/sleet.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/snow.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/wind.css" media="screen" title="no title">
+  <link rel="stylesheet" href="wind/wind.css" media="screen" title="no title">
+</head>
+
+<body>
+  <div class="container-loading" id="container-loading">
+        <h1 class="loading-header" id="loading">Looking outside for you...</h>
+    <div class="container-cloud">
+
+
+    <div class="icon-rain-loading">
+      <div class="cloud-base">
+        <div class="cloud-c2"></div>
+        <div class="cloud-c1"></div>
+        <div class="cloud-c3"></div>
+
+        <div class="rain-loading drop1"></div>
+        <div class="rain-loading drop2"></div>
+        <div class="rain-loading drop3"></div>
+      </div>
+    </div>
+      </div>
+  </div>
+  <h1 class="week-header">THIS WEEK IN *YOUR LOCATION*</h1>
+  <div class="whole-list-container" id="whole-list"></div>
+  <script src='node_modules/jquery/dist/jquery.min.js'></script>
+  <script src='main.js'>
+  </script>
+</body>
 </html>

@@ -22,7 +22,7 @@ body{
   font-family: 'Bungee';
   font-size: 4rem;
   text-align: center;
-  color: #1E1F26;
+  color: tomato;
   animation: fadeInRight 0.2s;
 }
 .list-item{
@@ -42,7 +42,24 @@ body{
 
 
 .degrees{
-  flex: 1;
+  flex: 2;
+  justify-content: center;
+
+}
+.bottom-text{
+  position: relative;
+  font-size: 2.7rem;
+  bottom: -4px;
+  left: 15px;
+
+
+}
+.bottom-text-min{
+  position: relative;
+  font-size: 2.7rem;
+  bottom: -4px;
+  left: 15px;
+
 
 }
 .mod2-color{
@@ -51,11 +68,17 @@ body{
 .whole-list-container{
   max-width: 75%;
   max-height: 75%;
-  margin: 20px auto;
-  animation: fadeInRight 1.2s;
+  margin: 20px auto ;
+}
+.temp-text{
+  position: relative;
+  top: -63px;
+  left: 69px;
+  font-size: 0.8rem;
 }
 .thermo-container{
   zoom: 50%;
+  margin-top: 23px;
 }
 .thermometer-top {
     height: 150px;
@@ -81,6 +104,25 @@ body{
     z-index: -1;
     margin: -7px auto;
 }
+.thermometer-bottom-min {
+    content: '';
+    background: tomato;
+    width:60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 5px solid #d1d1d1;
+    z-index: -1;
+    margin: -7px auto;
+}
+.thermometer-bottom-min{
+    content: '';
+    background: tomato;
+    width:60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 5px solid #d1d1d1;
+    margin: -7px auto;
+}
 
 .thermometer-fill{
     width: 30px;
@@ -94,14 +136,15 @@ body{
     transition: all .2s;
 }
 
-.thermometer-bottom span{
+.thermometer-bottom{
     color: white;
     width: 100%;
     height: 100%;
     text-align: center;
+    padding-left: 4px;
     display: block;
-    padding-top: 15px;
-    font-size: 24px;
+    padding-top: 9px;
+    font-size: 36px;
 }
 
 
@@ -121,41 +164,153 @@ label {
         margin: 30px auto;
     }
     */
-
-
+.wind-text{
+  position: relative;
+  top: -163px;
+  left: 201px;
+  font-size: 2rem;
+}
 .icon{
   flex:2;
   justify-content: center;
 }
-@-webkit-keyframes fadeInRight {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-  }
+.loading-header{
+  margin-top: 200px;
+  text-align: center;
+  font-family: 'Bungee';
+  font-size: 5rem;
+  color: tomato;
+}
+.container-cloud{
+  position: absolute;
+  height: 200px;
+  width: 300px;
+  margin: -100px 0 0 -200px;
+  top: 50%;
+  left: 50%;
 
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+}
+.container-loading {
+  top: 0; left: 0; bottom: 0; right: 0;
+  position:absolute;
+  max-width: 100vw;
+  background: #D0E1F9;
+  z-index: 10;
+  position:fixed;
+  display:none;
 }
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+.icon-rain-loading {
+  background: #eb1d47;
+  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
-.fadeInRight {
-  -webkit-animation-name: fadeInRight;
-  animation-name: fadeInRight;
+.icon-loading-i {
+  width:200px;
+  height:200px;
+  border-radius:20px;
+  background: #d11a3f;
+  position: relative;
+  box-shadow: inset 0 -6px 10px #DE1C43,
+    inset 0 2px 10px rgba(0, 0, 0, .2),
+    0 1px 0 rgba(255, 255, 255, .2);
 }
+
+.cloud-base {
+  position:absolute;
+  width:90px;
+  height:60px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, .5);
+}
+
+.cloud-c1 {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background: #fff;
+  position: absolute;
+  left: -40px;
+  top: -20px;
+  box-shadow: 3px 0 0 #fff,
+    0 -2px 5px rgba(0, 0, 0, .5);
+}
+
+.cloud-c2 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -60px;
+  box-shadow: 0 4px 0 #fff,
+    -2px 0 5px rgba(0, 0, 0, .5);
+}
+
+.cloud-c3 {
+  width: 100px;
+  height: 100px;
+  border-radius: 60px;
+  background: #fff;
+  position: absolute;
+  right: -50px;
+  top: -40px;
+  box-shadow: -4px 0 0 #fff,
+    0 -2px 5px rgba(0, 0, 0, .5);
+}
+
+
+/***************
+Rain
+***************/
+.icon-loading-rain {
+  top: 0; right: 10px; bottom: 0;
+  position:absolute;
+  width:220px;
+  height:220px;
+  background: #eb1d47;
+  padding: 10px;
+  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+}
+
+.rain-loading {
+  position:absolute;
+  width: 10px;
+  height: 20px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.drop1 {
+  right: 0; bottom: -40px;
+  animation:drop-a 1s infinite;
+  -webkit-animation:drop-a 1s infinite;
+}
+.drop2 {
+  left: 0; bottom: -20px;
+  animation:drop-a 1.5s infinite;
+  -webkit-animation:drop-a 1.5s infinite;
+}
+.drop3 {
+  right: 0; left: 0; bottom: 0;
+  animation:drop-a 2s infinite;
+  -webkit-animation:drop-a 2s infinite;
+}
+
+@keyframes drop-a
+{
+from {bottom:0; opacity:1;}
+to {bottom:-100px; opacity:0;}
+}
+
+@-webkit-keyframes drop-a
+{
+from {bottom:0; opacity:1;}
+to {bottom:-100px; opacity:0;}
