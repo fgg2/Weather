@@ -192,7 +192,10 @@ body{
   background: #D0E1F9;
   z-index: 10;
   position:fixed;
+<<<<<<< HEAD
   display: none;
+=======
+>>>>>>> origin/fannar-branch
 }
 
 .icon-rain-loading {

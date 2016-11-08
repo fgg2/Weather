@@ -12,7 +12,7 @@ function getWeather(longi,latti) {
         success: function(data, status, error) {
             console.log('success', data);
             $('#container-loading')
-            .delay(2500).queue(function (next) {
+            .delay(0).queue(function (next) {
               $(this).fadeOut(200);
               next();
             });
