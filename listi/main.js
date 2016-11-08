@@ -21,7 +21,7 @@ function getWeather(longi,latti) {
         error: function(data, status, error) {
             console.log('error', data, status, error);
             var error = document.getElementById('loading')
-            error.innerHTML = 'Failed to connect to API';
+            error.innerHTML = error;
         }
     });
 }
@@ -32,7 +32,6 @@ function init(){
   console.log("DOM fully loaded and parsed");
 
   });
-
 }
 
 function createTime(data){
@@ -78,6 +77,7 @@ function createTime(data){
     summary.innerHTML = daily.data[i].summary;
     summary.setAttribute('class','degrees list-item summary');
 
+
     var windAmountIcon = document.createElement('li');
     windAmountIcon.setAttribute('class','windmill');
     var windContainer = document.createElement('div');
@@ -105,51 +105,8 @@ function createTime(data){
     windAmountIcon.appendChild(wind);
     windContainer.appendChild(windText)
     windContainer.appendChild(windAmountIcon);
-    if(daily.data[i].windSpeed < 0.5  ){
-      wind.setAttribute('class','sec1');
-    }
-    if(daily.data[i].windSpeed < 1.0  ){
-      wind.setAttribute('class','sec1');
-    }
-    if(daily.data[i].windSpeed < 2.0  ){
-      wind.setAttribute('class','sec2');
-    }
-    else if(daily.data[i].windSpeed < 3.0){
-      wind.setAttribute('class','sec3');
-    }
-    else if(daily.data[i].windSpeed < 4.0 ){
-      wind.setAttribute('class','sec4');
-    }
-    else if(daily.data[i].windSpeed < 5.0 ){
-      wind.setAttribute('class','sec5');
-    }
-    else if(daily.data[i].windSpeed < 6.0 ){
-      wind.setAttribute('class','sec6');
-    }
-    else if(daily.data[i].windSpeed < 8.0 ){
-      wind.setAttribute('class','sec8');
-    }
-    else if(daily.data[i].windSpeed < 10.0 ){
-      wind.setAttribute('class','sec10');
-    }
-    else if(daily.data[i].windSpeed < 12.0 ){
-      wind.setAttribute('class','sec12');
-    }
-    else if(daily.data[i].windSpeed < 14.0 ){
-      wind.setAttribute('class','sec14');
-    }
-    else if(daily.data[i].windSpeed < 16.0 ){
-      wind.setAttribute('class','sec16');
-    }
-    else if(daily.data[i].windSpeed < 20.0 ){
-      wind.setAttribute('class','sec20');
-    }
-    else if(daily.data[i].windSpeed < 25.0 ){
-      wind.setAttribute('class','sec25');
-    }
-    else if(daily.data[i].windSpeed < 30.0 ){
-      wind.setAttribute('class','sec30');
-    }
+    setWindmillSpeed(daily.data[i].windSpeed, wind);
+
 
     var iconListElement = document.createElement('li');
     iconListElement.setAttribute('class','list-item icon degrees');
@@ -242,10 +199,10 @@ function createTime(data){
       iconListElement.appendChild(secondDiv);
     }
     var thermoLi = document.createElement('li');
-    thermoLi.setAttribute('class', 'list-item degrees');
+    thermoLi.setAttribute('class', 'list-item temp-flex');
     //create min thermoLi
     var thermoLiMin = document.createElement('li');
-    thermoLiMin.setAttribute('class', 'list-item degrees haha');
+    thermoLiMin.setAttribute('class', 'list-item temp-flex');
     var createFillName = ('thermometer-fill' + i);
     var createFillNameMin = ('thermometer-fill-min' + i);
 
@@ -328,9 +285,19 @@ function createTime(data){
     console.log(thermoContainer);
     console.log(thermoContainerMin);
 
-
     span.innerHTML = (Math.round(daily.data[i].temperatureMax) +'°');
     spanMin.innerHTML = (Math.round(daily.data[i].temperatureMin) +'°');
+
+
+    var minAppendingChilds = [thermoFillMin, spanMin, tempTextMin, thermoTopMin, thermoBottomMin, thermoContainerMin];
+    var minAppendingParents = [thermoTopMin, thermoBottomMin, thermoLiMin, thermoContainerMin, thermoContainerMin, thermoLiMin];
+    var appendingChilds = [thermoFill, span, tempText, thermoTop, thermoBottom, thermoContainer];
+    var appendingParents = [thermoTop, thermoBottom, thermoLi, thermoContainer, thermoContainer, thermoLi];
+    for (var j = 0; j < minAppendingParents.length; j++) {
+        minAppendingParents[j].appendChild(minAppendingChilds[j]);
+        appendingParents[j].appendChild(appendingChilds[j]);
+    }
+
     thermoTop.appendChild(thermoFill);
     thermoTopMin.appendChild(thermoFillMin);
     thermoBottom.appendChild(span);
@@ -344,25 +311,111 @@ function createTime(data){
     thermoLi.appendChild(thermoContainer);
     thermoLiMin.appendChild(thermoContainerMin);
 
+
+    /*<div class="compassButton">
+      <div class="compass"></div>
+      <div class="msg">Over here !</div>
+    </div>*/
+
+    var compassContainer = document.createElement('li');
+    compassContainer.setAttribute('class','degrees list-item');
+    var compass = document.createElement('div');
+    compass.setAttribute('class', 'compass');
+    var compassMsg = document.createElement('div');
+    compassMsg.setAttribute('class' , 'compass-msg');
+
+    var compassId = ('compass' + i);
+    compass.setAttribute('id' , compassId);
+
+    //compassMsg.innerHTML = checkWindDirection(daily.data[i].windBearing, compassId);
+
+    //do stuff
+    //daily.data[i].windBearing)
+
+
+    compassContainer.appendChild(compass);
+    compassContainer.appendChild(compassMsg);
+
+
+
+
     container.appendChild(day);
     container.appendChild(thermoLi);
     container.appendChild(thermoLiMin);
     container.appendChild(windContainer);
-    container.appendChild(windbearing);
+    container.appendChild(compassContainer);
     container.appendChild(summary);
     container.appendChild(iconListElement);
 
     wholeListContainer.appendChild(container);
+    compassMsg.innerHTML = checkWindDirection(daily.data[i].windBearing, compassId);
 
   }
 
 
 }
 
-
-
-function checkWindDirection(degrees){
+function checkWindDirection(degrees, id){
   var val = Math.floor((degrees / 22.5) + 0.5);
   var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-  return arr[(val % 16)];
+
+  console.log('#'+ id);
+
+    $('#'+ id)
+        .css('-webkit-transform', 'rotate('+(degrees+45)+'deg)')
+        .css('-moz-transform', 'rotate('+(degrees+45)+'deg)')
+        .css('-ms-transform', 'rotate('+(degrees+45)+'deg)')
+        .css('-o-transform', 'rotate('+(degrees+45)+'deg)')
+        .css('transform', 'rotate('+(degrees+45)+'deg)');
+
+    return arr[(val % 16)];
+
+}
+
+function setWindmillSpeed(speed, wind){
+  if(speed< 0.5  ){
+    wind.setAttribute('class','sec1');
+  }
+  if(speed< 1.0  ){
+    wind.setAttribute('class','sec1');
+  }
+  if(speed< 2.0  ){
+    wind.setAttribute('class','sec2');
+  }
+  else if(speed< 3.0){
+    wind.setAttribute('class','sec3');
+  }
+  else if(speed< 4.0 ){
+    wind.setAttribute('class','sec4');
+  }
+  else if(speed< 5.0 ){
+    wind.setAttribute('class','sec5');
+  }
+  else if(speed< 6.0 ){
+    wind.setAttribute('class','sec6');
+  }
+  else if(speed< 8.0 ){
+    wind.setAttribute('class','sec8');
+  }
+  else if(speed< 10.0 ){
+    wind.setAttribute('class','sec10');
+  }
+  else if(speed< 12.0 ){
+    wind.setAttribute('class','sec12');
+  }
+  else if(speed< 14.0 ){
+    wind.setAttribute('class','sec14');
+  }
+  else if(speed< 16.0 ){
+    wind.setAttribute('class','sec16');
+  }
+  else if(speed< 20.0 ){
+    wind.setAttribute('class','sec20');
+  }
+  else if(speed< 25.0 ){
+    wind.setAttribute('class','sec25');
+  }
+  else if(speed< 30.0 ){
+    wind.setAttribute('class','sec30');
+  }
 }
