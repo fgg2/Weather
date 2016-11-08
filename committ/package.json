@@ -1,14 +1,26 @@
 {
-  "name": "weather",
-  "version": "1.0.0",
-  "description": "lokaverkefni",
-  "main": "getweather.js",
+  "name": "committ",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "fannar",
-  "license": "ISC",
   "dependencies": {
-    "jquery": "^3.1.1"
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "jquery": "^3.1.1",
+    "morgan": "~1.7.0",
+    "pug": "~2.0.0-beta6",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1"
   }
 }
