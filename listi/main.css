@@ -197,7 +197,6 @@ label {
   background: #D0E1F9;
   z-index: 10;
   position:fixed;
-  display:none;
 }
 
 .icon-rain-loading {
