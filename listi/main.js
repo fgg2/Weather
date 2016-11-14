@@ -53,7 +53,8 @@ function createTime(data){
     }
 
     var date =  new Date(daily.data[i].time*1000);
-    timedays[i] = days[date.getDay()] + ' ' + date.getDate() +'.'+ months[date.getMonth()];
+    console.log(date);
+    timedays[i] = days[date.getDay()] + '.' + date.getDate() +'.'+ months[date.getMonth()];
 
     var day = document.createElement('li');
     day.innerHTML = timedays[i];
