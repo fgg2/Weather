@@ -199,6 +199,20 @@ function createTime(data){
       iconListElement.appendChild(firstDiv);
       iconListElement.appendChild(secondDiv);
     }
+    if (daily.data[i].icon === 'snow') {
+      var firstDiv = document.createElement('div');
+      var thirdDiv = document.createElement('div');
+      var fourthDiv = document.createElement('div');
+      var fifthDiv = document.createElement('div');
+      firstDiv.setAttribute('class', 'snow-cloud');
+      secondDiv.setAttribute('class', 'snow')
+      thirdDiv.setAttribute('class', 'flake');
+      fourthDiv.setAttribute('class', 'flake');
+      secondDiv.appendChild(thirdDiv);
+      secondDiv.appendChild(fourthDiv);
+      iconListElement.appendChild(firstDiv);
+      iconListElement.appendChild(secondDiv);
+    }
     var thermoLi = document.createElement('li');
     thermoLi.setAttribute('class', 'list-item temp-flex');
     //create min thermoLi
@@ -225,28 +239,35 @@ function createTime(data){
 
 
 
-    var fillPercentage = daily.data[i].temperatureMax / 100;
+    var fillPercentage = Math.abs(daily.data[i].temperatureMax) / 100;
     var fillHeight = fillPercentage * 1000;
 
     // create min values
-    var fillPercentageMin = daily.data[i].temperatureMin / 100;
+    var fillPercentageMin = Math.abs(daily.data[i].temperatureMin) / 100;
     var fillHeightMin = fillPercentageMin * 1000;
     var thermoBottom = document.createElement('div');
     var thermoBottomMin = document.createElement('div');
-    thermoBottom.setAttribute('class', 'thermometer-bottom');
-    thermoBottom.setAttribute('id', 'thermoBottomId');
-    thermoBottomMin.setAttribute('class', 'thermometer-bottom');
-    thermoBottomMin.setAttribute('id', 'thermoBottomIdMin');
+    thermoBottom.setAttribute('class', createBottomName);
+    thermoBottom.setAttribute('id', createBottomName);
+    thermoBottomMin.setAttribute('class', createBottomNameMin);
+    thermoBottomMin.setAttribute('id', createBottomNameMin);
     var span = document.createElement('span');
     var spanMin = document.createElement('span');
     span.setAttribute('class', 'bottom-text')
     spanMin.setAttribute('class', 'bottom-text-min')
-    var thermoColor;
-    if( daily.data[i].temperatureMax < 0 ){
-      thermoColor = 'blue';
+    var thermoColorMax;
+    var thermoColorMin;
+    if( daily.data[i].temperatureMax <= -1 ){
+      thermoColorMax = 'royalblue';
     }
     else{
-     thermoColor = 'tomato';
+      thermoColorMax = 'tomato';
+    }
+    if( daily.data[i].temperatureMin <= -1 ){
+      thermoColorMin = 'royalblue';
+    }
+    else{
+      thermoColorMin = 'tomato';
     }
     var thermoContainerMin = document.createElement('div');
     thermoContainerMin.setAttribute('class','thermo-container');
@@ -260,29 +281,29 @@ function createTime(data){
     tempTextMin.innerHTML = 'Min temperature';
     thermoContainer.type = 'text/css';
 
-    thermoContainer.innerHTML = '<style> .'+createBottomName + '{color: white;  width: 100%;\
-    height: 100%;  text-align: center; display: block; background: '+ thermoColor +'\
+    thermoContainer.innerHTML = '<style> .'+createBottomName + '{color: white;  width: 63px;\
+    height: 50px; border-radius: 100%; border: 5px solid #d1d1d1; z-index: -1; margin: -7px auto ;text-align: center; display: block; background: '+ thermoColorMax +';\
     padding-top: 15px; font-size: 24px;}'+'.' + createFillName + '{ height: '+ (fillHeight) +
-    'px;width: 30px; min-height: 12px; background: '+ thermoColor +' !important;\
+    'px;width: 30px; min-height: 12px; background: '+ thermoColorMax +'; !important;\
     position: absolute; bottom: -5px; left: -5px;\
-    border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }'+' .thermometer-bottom{background: '+ thermoColor +'}</style>';
+    border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }'+ createBottomName+' createBottomName{background: '+ thermoColorMax +';}</style>';
     document.getElementsByTagName('div')[0].appendChild(thermoBottom);
     document.getElementsByTagName('div')[0].appendChild(thermoFill);
-    document.getElementById('thermoBottomId').className = 'thermometer-bottom';
+    document.getElementById(createBottomName).className = createBottomName;
 
     //create min container
 
 
     thermoContainerMin.type = 'text/css';
-    thermoContainerMin.innerHTML = '<style> .'+createBottomNameMin + '{color: white;  width: 100%;\
-    height: 100%;  text-align: center; display: block; background: '+ thermoColor +'\
+    thermoContainerMin.innerHTML = '<style> .'+createBottomNameMin + '{color: white;  width: 63px;\
+    height: 50px; border-radius: 100%; border: 5px solid #d1d1d1; z-index: -1; margin: -7px auto; text-align: center; display: block; background: '+ thermoColorMin +';\
     padding-top: 15px; font-size: 24px;}'+'.' + createFillNameMin + '{ height: '+ (fillHeightMin) +
-    'px;width: 30px; min-height: 12px; background: '+ thermoColor +' !important;\
+    'px;width: 30px; min-height: 12px; background: '+ thermoColorMin +' !important;\
     position: absolute; bottom: -5px; left: -5px;\
-    border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }'+' .thermometer-bottom-min{background: '+ thermoColor +'}</style>';
+    border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }'+ createBottomNameMin+'{background: '+ thermoColorMin +';}</style>';
     document.getElementsByTagName('div')[0].appendChild(thermoBottomMin);
     //document.getElementsByTagName('div')[0].appendChild(thermoFillMin);
-    document.getElementById('thermoBottomIdMin').className = 'thermometer-bottom-min';
+    document.getElementById(createBottomNameMin).className = createBottomNameMin;
     console.log(thermoContainer);
     console.log(thermoContainerMin);
 
