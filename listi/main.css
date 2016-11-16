@@ -4,8 +4,62 @@ body{
   background-color: #D0E1F9;
 }
 
-.list-container{
+.week-section{
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 
+.day-section{
+  height: 100vh;
+}
+.sub-header{
+  font-size: 1rem !important;
+}
+.icon-container{
+  max-width: 67%;
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1;
+  justify-content: space-between;
+}
+.grid-item{
+  height: 150px;
+  width: 150px;
+  list-style: none;
+  border: 1px solid;
+}
+.hour-list{
+  border: 1px solid;
+  padding: 5px 5px;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  height: 30px;
+}
+.hour-list-item{
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  flex: 1;
+}
+.hour-list-item:hover{
+  background-color: yellow;
+
+}
+.main-day-container{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex: 1;
+  height: 50vh;
+  width: 50vw;
+  border: 1px solid
+}
+.list-container{
   display: flex;
   justify-content: center;
   flex: 1;
@@ -19,6 +73,7 @@ body{
   font-size: 2rem !important;
 }
 .week-header{
+  padding: 20px;
   font-family: 'Bungee';
   font-size: 4rem;
   text-align: center;

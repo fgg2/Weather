@@ -16,7 +16,9 @@ function getWeather(longi,latti) {
               $(this).fadeOut(200);
               next();
             });
-            createTime(data);
+            createWeek(data);
+            createDay(data);
+            waitForHourPress(data);
         },
         error: function(data, status, error) {
             console.log('error', data, status, error);
@@ -27,14 +29,187 @@ function getWeather(longi,latti) {
 }
 
 function init(){
-  getWeather(64.1265, -21.8174);
+ getWeather(64.1265, -21.8174);
+
   document.addEventListener("DOMContentLoaded", function(event) {
   console.log("DOM fully loaded and parsed");
-
-  });
+});
 }
 
-function createTime(data){
+function waitForHourPress(data){
+  $( "#hour0" ).click(function() {
+    var el = document.getElementById('hour0');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour1" ).click(function() {
+    var el = document.getElementById('hour1');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour2" ).click(function() {
+    var el = document.getElementById('hour2');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour3" ).click(function() {
+    var el = document.getElementById('hour3');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour4" ).click(function() {
+    var el = document.getElementById('hour4');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour5" ).click(function() {
+    var el = document.getElementById('hour5');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour6" ).click(function() {
+    var el = document.getElementById('hour6');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour7" ).click(function() {
+    var el = document.getElementById('hour7');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour8" ).click(function() {
+    var el = document.getElementById('hour8');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour10" ).click(function() {
+    var el = document.getElementById('hour10');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour11" ).click(function() {
+    var el = document.getElementById('hour11');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour12" ).click(function() {
+    var el = document.getElementById('hour12');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour13" ).click(function() {
+    var el = document.getElementById('hour13');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour14" ).click(function() {
+    var el = document.getElementById('hour14');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour15" ).click(function() {
+    var el = document.getElementById('hour15');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour16" ).click(function() {
+    var el = document.getElementById('hour16');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour17" ).click(function() {
+    var el = document.getElementById('hour17');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour18" ).click(function() {
+    var el = document.getElementById('hour18');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour19" ).click(function() {
+    var el = document.getElementById('hour19');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour20" ).click(function() {
+    var el = document.getElementById('hour20');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour21" ).click(function() {
+    var el = document.getElementById('hour21');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour22" ).click(function() {
+    var el = document.getElementById('hour22');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+  $( "#hour23" ).click(function() {
+    var el = document.getElementById('hour23');
+    var selectedHour = el.innerHTML;
+    createDayIcons(selectedHour, data);
+  });
+
+
+}
+
+function createDayIcons(hour, data){
+
+  var hourly = data.hourly;
+  var iconContainer = document.getElementById('icon-container')
+  var iconListElement = appendIconChilds(hourly.data[hour].icon);
+  var weatherIconContainer = document.createElement('li');
+  weatherIconContainer.appendChild(iconListElement);
+  weatherIconContainer.setAttribute('class', 'grid-item');
+  var tmpContainer = document.createElement('li');
+  tmpContainer.setAttribute('class','grid-item');
+  var approxTempContainer = document.createElement('li');
+  approxTempContainer.setAttribute('class','grid-item');
+  var windContainer = document.createElement('li');
+  windContainer.setAttribute('class','grid-item');
+  var percContainer = document.createElement('li');
+  percContainer.setAttribute('class','grid-item');
+  var humidContainer = document.createElement('li');
+  humidContainer.setAttribute('class','grid-item');
+  var whut = document.createElement('li');
+  whut.setAttribute('class','grid-item');
+  var whut2 = document.createElement('li');
+  whut2.setAttribute('class','grid-item');
+
+  while (iconContainer.firstChild) {
+    iconContainer.removeChild(iconContainer.firstChild);
+  }
+  iconContainer.appendChild(weatherIconContainer);
+  iconContainer.appendChild(tmpContainer);
+  iconContainer.appendChild(approxTempContainer);
+  iconContainer.appendChild(windContainer);
+  iconContainer.appendChild(percContainer);
+  iconContainer.appendChild(humidContainer);
+
+}
+
+function createDay(data){
+  var hourly = data.hourly;
+  var hourList = document.getElementById('hour-list');
+  for(i = 0 ; i < 24; i++){
+    var todayDate =  new Date(hourly.data[i].time*1000)
+    var hour = todayDate.getHours();
+    var hourListItem = document.createElement('div')
+    var createHourId = 'hour' + i;
+    var hourListItem = document.getElementById('hour' + i);
+    hourListItem.innerHTML = hour;
+    hourList.appendChild(hourListItem);
+
+
+
+  }
+
+}
+
+function createWeek(data){
   var daily = data.daily;
   var timedays = [];
 
@@ -53,7 +228,6 @@ function createTime(data){
     }
 
     var date =  new Date(daily.data[i].time*1000);
-    console.log(date);
     timedays[i] = days[date.getDay()] + '.' + date.getDate() +'.'+ months[date.getMonth()];
 
     var day = document.createElement('li');
@@ -230,7 +404,13 @@ function createTime(data){
     container.appendChild(summary);
     container.appendChild(iconListElement);
 
+    //var weekSection = document.createElement('section')
+    //weekSection.setAttribute('id', 'weekSection');
+
     wholeListContainer.appendChild(container);
+
+    //weekSection.appendChild(wholeListContainer);
+
     compassMsg.innerHTML = checkWindDirection(daily.data[i].windBearing, compassId);
 
   }
@@ -247,8 +427,8 @@ function appendIconChilds(data){
     var secondDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'sun');
     secondDiv.setAttribute('class', 'rays');
+    firstDiv.appendChild(secondDiv);
     iconListElement.appendChild(firstDiv);
-    iconListElement.appendChild(secondDiv);
   }
   if (data === 'clear-night') {
     var firstDiv = document.createElement('div');
@@ -349,10 +529,10 @@ function appendIconChilds(data){
 
 function tempColor(data){
   var color;
-  if( data <= -1 ){
+  if( data < 0 ){
     color = 'royalblue';
   }
-  else{
+  else if(data >= 0){
     color = 'tomato';
   }
   return color;
@@ -362,7 +542,6 @@ function checkWindDirection(degrees, id){
   var val = Math.floor((degrees / 22.5) + 0.5);
   var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
 
-  console.log('#'+ id);
 
     $('#'+ id)
         .css('-webkit-transform', 'rotate('+(degrees+45)+'deg)')
