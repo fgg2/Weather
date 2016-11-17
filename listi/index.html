@@ -19,26 +19,63 @@
 </head>
 
 <body>
-  <div class="container-loading" id="container-loading">
-        <h1 class="loading-header" id="loading">Looking outside for you...</h>
+  <section id ="daySection" class= 'day-section'>
+    <h1 class= "week-header">TODAY IN *YOUR LOCATION</h1>
+    <h2 class= "week-header sub-header">Pick hour</h2>
+    <ul id="hour-list" class="hour-list">
+      <div class=hour-list-item id='hour0'></div>
+      <div class=hour-list-item id ='hour1'></div>
+      <div class=hour-list-item id ='hour2'></div>
+      <div class=hour-list-item id ='hour3'></div>
+      <div class=hour-list-item id ='hour4'></div>
+      <div class=hour-list-item id ='hour5'></div>
+      <div class=hour-list-item id ='hour6'></div>
+      <div class=hour-list-item id ='hour7'></div>
+      <div class=hour-list-item id ='hour8'></div>
+      <div class=hour-list-item id ='hour9'></div>
+      <div class=hour-list-item id ='hour10'></div>
+      <div class=hour-list-item id ='hour11'></div>
+      <div class=hour-list-item id ='hour12'></div>
+      <div class=hour-list-item id ='hour13'></div>
+      <div class=hour-list-item id ='hour14'></div>
+      <div class=hour-list-item id ='hour15'></div>
+      <div class=hour-list-item id ='hour16'></div>
+      <div class=hour-list-item id ='hour17'></div>
+      <div class=hour-list-item id ='hour18'></div>
+      <div class=hour-list-item id ='hour19'></div>
+      <div class=hour-list-item id ='hour20'></div>
+      <div class=hour-list-item id ='hour21'></div>
+      <div class=hour-list-item id ='hour22'></div>
+      <div class=hour-list-item id ='hour23'></div>
+
+
+    </ul>
+    <div class="main-day-container" id="mainDayContainer">
+      <div class="icon-container" id=icon-container>
+
+      </div>
+
+    </div>
+  </section>
+  <section id="weekSection" class="week-section">
+    <div class="container-loading" id="container-loading">
+      <h1 class="loading-header" id="loading">Looking outside for you...</h1>
     <div class="container-cloud">
-
-
-    <div class="icon-rain-loading">
-      <div class="cloud-base">
-        <div class="cloud-c2"></div>
-        <div class="cloud-c1"></div>
-        <div class="cloud-c3"></div>
-
-        <div class="rain-loading drop1"></div>
-        <div class="rain-loading drop2"></div>
-        <div class="rain-loading drop3"></div>
+      <div class="icon-rain-loading">
+        <div class="cloud-base">
+          <div class="cloud-c2"></div>
+          <div class="cloud-c1"></div>
+          <div class="cloud-c3"></div>
+          <div class="rain-loading drop1"></div>
+          <div class="rain-loading drop2"></div>
+          <div class="rain-loading drop3"></div>
+        </div>
       </div>
     </div>
-      </div>
-  </div>
-  <h1 class="week-header">THIS WEEK IN *YOUR LOCATION*</h1>
-  <div class="whole-list-container" id="whole-list"></div>
+    </div>
+    <h1 class="week-header">THIS WEEK IN *YOUR LOCATION*</h1>
+    <div class="whole-list-container" id="whole-list"></div>
+  </section>
   <script src='node_modules/jquery/dist/jquery.min.js'></script>
   <script src='main.js'>
   </script>
