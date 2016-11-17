@@ -7,54 +7,9 @@ block content
     textarea(id='latt' name="latt")
     textarea(id='long' name="long")
     button(type="submit")="Submit"
-  script.
-    function initAutocomplete() {
-      var pos;
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          console.log(pos);
-        }, function() {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      }
-      else {
-        alert('sorry,your broswer doesnt support Geolocation');
-      }
-
-      var input = document.getElementById('pac-input');
-      var searchBox = new google.maps.places.SearchBox(input);
-      var markers = [];
-
-
-      searchBox.addListener('places_changed', function() {
-              var input = document.getElementById('pac-input');
-              getgps(input.value);
-            })
-        function getgps(input){
-          console.log(input);
-          var geocoder = new google.maps.Geocoder();
-          geocoder.geocode({
-            'address': input
-          }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              var lat = document.getElementById('latt');
-              var long = document.getElementById('long');
-
-              lat.innerHTML = results[0].geometry.location.lat();
-              long.innerHTML = results[0].geometry.location.lng();
-            } else {
-              alert("Something got wrong " + status);
-            }
-        })
-      }
-    }
+  script(src="/javascripts/google.js")
   section(id ="daySection" class= 'day-section')
-    h1(class= "week-header")='TODAY IN *YOUR LOCATION'
+    h1(class= "week-header" id='hour-head')='TODAY IN *YOUR LOCATION'
     h2(class= "week-header sub-header")='Pick hour'
     ul(id="hour-list" class="hour-list")
       div(class='hour-list-item' id='hour0')
@@ -82,16 +37,16 @@ block content
       div(class='hour-list-item' id='hour22')
       div(class='hour-list-item' id='hour23')
     div(class="main-day-container" id="mainDayContainer")
-      div(class="icon-container" id=icon-container)
+      div(class="icon-container" id='icon-container')
   section(id="weekSection" class="week-section")
     div(class="container-loading" id="container-loading")
       h1(class="loading-header" id="loading")='Looking outside for you...'
-    div(class="container-cloud")
-      div(class="icon-rain-loading")
-        div(class="cloud-base")
-          div(class="cloud-c2")
-          div(class="cloud-c1")
-          div(class="cloud-c3")
+      div(class="container-cloud")
+        div(class="icon-rain-loading")
+          div(class="cloud-base")
+            div(class="cloud-c2")
+            div(class="cloud-c1")
+            div(class="cloud-c3")
           div(class="rain-loading drop1")
           div(class="rain-loading drop2")
           div(class="rain-loading drop3")
