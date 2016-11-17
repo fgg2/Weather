@@ -1,11 +1,12 @@
-init();
 
-function getWeather(longi,latti) {
+function getWeather(longi, latti) {
+    var mainurl = "https://api.darksky.net/forecast/";
+    var code = '0fe876b2f29e459c7d7b163d9be370e1';
 
     $.ajax({
-        url: 'http://localhost:3000/data',
+        url: mainurl + code + "/" + longi + ',' + latti + '?' + 'units=auto' + '&' + 'lang=en',
         type: "GET",
-        dataType: 'json',
+        dataType: 'jsonp',
         cache: true,
         success: function(data, status, error) {
             console.log('success', data);
@@ -33,6 +34,7 @@ function init(){
   console.log("DOM fully loaded and parsed");
 });
 }
+init();
 
 function waitForHourPress(data){
   $( "#hour0" ).click(function() {
@@ -155,7 +157,6 @@ function waitForHourPress(data){
 }
 
 function createDayIcons(hour, data){
-
   var hourly = data.hourly;
   var iconContainer = document.getElementById('icon-container')
   var iconListElement = appendIconChilds(hourly.data[hour].icon);
