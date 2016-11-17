@@ -4,9 +4,9 @@ function getWeather(longi, latti) {
     var code = '0fe876b2f29e459c7d7b163d9be370e1';
 
     $.ajax({
-        url: mainurl + code + "/" + longi + ',' + latti + '?' + 'units=auto' + '&' + 'lang=en',
+        url: 'http://localhost:3000/data',
         type: "GET",
-        dataType: 'jsonp',
+        dataType: 'json',
         cache: true,
         success: function(data, status, error) {
             console.log('success', data);
