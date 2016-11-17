@@ -19,8 +19,8 @@ router.get('/data', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  res.sendfile('index.html');
-  //res.render('index');
+  //res.sendfile('index.html');
+  res.render('index');
 
 });
 
