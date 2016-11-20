@@ -1,7 +1,5 @@
 
 function getWeather(longi, latti) {
-    var mainurl = "https://api.darksky.net/forecast/";
-    var code = '0fe876b2f29e459c7d7b163d9be370e1';
 
     $.ajax({
         url: 'http://localhost:3000/data',
@@ -18,6 +16,7 @@ function getWeather(longi, latti) {
             createWeek(data);
             createDay(data);
             waitForHourPress(data);
+            setAddress();
         },
         error: function(data, status, error) {
             console.log('error', data, status, error);
@@ -28,7 +27,7 @@ function getWeather(longi, latti) {
 }
 
 function init(){
- getWeather(64.1265, -21.8174);
+ getWeather();
 
   document.addEventListener("DOMContentLoaded", function(event) {
   console.log("DOM fully loaded and parsed");
@@ -213,11 +212,11 @@ function createWeek(data){
   var timedays = [];
 
   var months = ['Januar','Februar','Mars','April','May','Juni','July','August','September','October','November','December'];
-  var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday' ];
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday' ];
 
   var wholeListContainer = document.getElementById('whole-list')
 
-  for (var i = 0; i < 8; i++) {
+  for (var i = 0; i < 7; i++) {
     var container = document.createElement('ul');
     if(i%2 === 0){
       container.setAttribute('class','list-container mod2-color');
@@ -228,7 +227,6 @@ function createWeek(data){
 
     var date =  new Date(daily.data[i].time*1000);
     timedays[i] = days[date.getDay()] + '.' + date.getDate() +'.'+ months[date.getMonth()];
-
     var day = document.createElement('li');
     day.innerHTML = timedays[i];
     day.setAttribute('class','day list-item');
@@ -488,6 +486,8 @@ function appendIconChilds(data){
     var firstDiv = document.createElement('div');
     var secondDiv = document.createElement('div');
     var thirdDiv = document.createElement('div')
+    var fourthDiv = document.createElement('div');
+    var fifthDiv = document.createElement('div')
     firstDiv.setAttribute('class', 'cloud');
     secondDiv.setAttribute('class', 'snow');
     thirdDiv.setAttribute('class', 'sleet-rain');
@@ -599,4 +599,22 @@ function setWindmillSpeed(speed, wind){
   else if(speed< 30.0 ){
     wind.setAttribute('class','sec30');
   }
+}
+
+function setAddress(){
+  $.ajax({
+      url: 'http://localhost:3000/address',
+      type: "GET",
+      dataType: 'json',
+      cache: true,
+      success: function(data, status, error) {
+          var hourheader = document.getElementById('hour-head');
+          hourheader.innerHTML = 'TODAY IN ' + data.address.toUpperCase();
+      },
+      error: function(data, status, error) {
+          console.log('error', data, status, error);
+          var error = document.getElementById('loading')
+          error.innerHTML = error;
+      }
+  });
 }

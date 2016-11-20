@@ -2,17 +2,18 @@ extends layout
 
 block content
   h1= title
-  input(id="pac-input" class="controls" type="text" placeholder="Search Box")
-  form(action="/" method="post")
-    textarea(id='latt' name="latt")
-    textarea(id='long' name="long")
-    button(type="submit")="Submit"
-  script(src="/javascripts/google.js")
+  input(name ='google' id='pac-input' class='controls' type='text' placeholder='Search Box')
+  form(action='/' method='post')
+    textarea(id='latt' name='latt')
+    textarea(id='long' name='long')
+    textarea(id='address' name='address')
+    button(type='submit')='Submit'
+  script(src='/javascripts/google.js')
 
-  section(id ="daySection" class= 'day-section')
-    h1(class= "week-header" id="hour-head")='TODAY IN *YOUR LOCATION'
-    h2(class= "week-header sub-header")='Pick hour'
-    ul(id="hour-list" class="hour-list")
+  section(id ='daySection' class= 'day-section')
+    h1(class= 'week-header' id='hour-head')='TODAY IN *YOUR LOCATION'
+    h2(class= 'week-header sub-header')='Pick hour'
+    ul(id='hour-list' class='hour-list')
       div(class='hour-list-item' id='hour0')
       div(class='hour-list-item' id='hour1')
       div(class='hour-list-item' id='hour2')
@@ -37,22 +38,22 @@ block content
       div(class='hour-list-item' id='hour21')
       div(class='hour-list-item' id='hour22')
       div(class='hour-list-item' id='hour23')
-    div(class="main-day-container" id="mainDayContainer")
-      div(class="icon-container" id="icon-container")
-  section(id="weekSection" class="week-section")
-    div(class="container-loading" id="container-loading")
-      h1(class="loading-header" id="loading")='Looking outside for you...'
-      div(class="container-cloud")
-        div(class="icon-rain-loading")
-          div(class="cloud-base")
-            div(class="cloud-c2")
-            div(class="cloud-c1")
-            div(class="cloud-c3")
-            div(class="rain-loading drop1")
-            div(class="rain-loading drop2")
-            div(class="rain-loading drop3")
-    h1(class="week-header")='THIS WEEK IN *YOUR LOCATION*'
-    div(class="whole-list-container" id="whole-list")
-  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete" async defer)
+    div(class='main-day-container' id='mainDayContainer')
+      div(class='icon-container' id='icon-container')
+  section(id='weekSection' class='week-section')
+    div(class='container-loading' id='container-loading')
+      h1(class='loading-header' id='loading')='Looking outside for you...'
+      div(class='container-cloud')
+        div(class='icon-rain-loading')
+          div(class='cloud-base')
+            div(class='cloud-c2')
+            div(class='cloud-c1')
+            div(class='cloud-c3')
+            div(class='rain-loading drop1')
+            div(class='rain-loading drop2')
+            div(class='rain-loading drop3')
+    h1(class='week-header')='THIS WEEK IN *YOUR LOCATION*'
+    div(class='whole-list-container' id='whole-list')
+  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete' async defer)
   script(src='http://code.jquery.com/jquery-latest.min.js')
-  script(src="/javascripts/main.js")
+  script(src='/javascripts/main.js')
