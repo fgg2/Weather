@@ -61,6 +61,10 @@ body{
   background-color: yellow;
 
 }
+.hour-temp-container{
+  zoom: 50%;
+  margin-top: 23px;
+}
 .main-day-container{
   margin: 0 auto;
   display: flex;

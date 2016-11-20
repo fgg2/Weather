@@ -1,5 +1,7 @@
 
 function getWeather(longi, latti) {
+    var mainurl = "https://api.darksky.net/forecast/";
+    var code = '0fe876b2f29e459c7d7b163d9be370e1';
 
     $.ajax({
         url: 'http://localhost:3000/data',
@@ -16,7 +18,6 @@ function getWeather(longi, latti) {
             createWeek(data);
             createDay(data);
             waitForHourPress(data);
-            setAddress();
         },
         error: function(data, status, error) {
             console.log('error', data, status, error);
@@ -27,7 +28,7 @@ function getWeather(longi, latti) {
 }
 
 function init(){
- getWeather();
+ getWeather(64.1265, -21.8174);
 
   document.addEventListener("DOMContentLoaded", function(event) {
   console.log("DOM fully loaded and parsed");
@@ -164,8 +165,12 @@ function createDayIcons(hour, data){
   weatherIconContainer.setAttribute('class', 'grid-item');
   var tmpContainer = document.createElement('li');
   tmpContainer.setAttribute('class','grid-item');
-  var approxTempContainer = document.createElement('li');
-  approxTempContainer.setAttribute('class','grid-item');
+  var tmpIcon = createHourlyTempIcon(hourly.data[hour].temperature, false);
+  tmpContainer.appendChild(tmpIcon);
+  var apparentTempContainer = document.createElement('li');
+  apparentTempContainer.setAttribute('class','grid-item');
+  var apparentTempIcon = createHourlyTempIcon(hourly.data[hour].apparentTemperature, true);
+  apparentTempContainer.appendChild(apparentTempIcon);
   var windContainer = document.createElement('li');
   windContainer.setAttribute('class','grid-item');
   var percContainer = document.createElement('li');
@@ -182,10 +187,55 @@ function createDayIcons(hour, data){
   }
   iconContainer.appendChild(weatherIconContainer);
   iconContainer.appendChild(tmpContainer);
-  iconContainer.appendChild(approxTempContainer);
+  iconContainer.appendChild(apparentTempContainer);
   iconContainer.appendChild(windContainer);
   iconContainer.appendChild(percContainer);
   iconContainer.appendChild(humidContainer);
+
+}
+function createHourlyTempIcon(data, apparentOrNot) {
+
+  var thermoLi = document.createElement('div');
+  thermoLi.setAttribute('class', 'list-item temp-flex');
+  var thermoContainer = document.createElement('div');
+
+  thermoContainer.setAttribute('class','hour-temp-container');
+  var thermoTop = document.createElement('div');
+  thermoTop.setAttribute('class', 'thermometer-top');
+  var thermoFill = document.createElement('div');
+  thermoFill.setAttribute('class', 'thermometer-fill'); // má eyða, þarf að búa til css fyrir þetta samt sem ég gerði með jquery
+  var fillPercentage = Math.abs(data / 100);
+  var fillHeight = fillPercentage * 1000;
+  var thermoBottom = document.createElement('div');
+  thermoBottom.setAttribute('class', 'thermometer-bottom');
+  var thermoColor = tempColor(Math.round(data));
+  thermoFill.style.height = fillHeight + 'px';
+  thermoFill.style.background = thermoColor + '';
+  thermoBottom.style.background = thermoColor + '';
+
+  $(".thermometer-bottom").css("background" , thermoColor)
+
+  $(".thermometer-fill").css("height", "100px")
+
+
+
+  var span = document.createElement('span');
+  span.setAttribute('class', 'bottom-text')
+
+  var tempText = document.createElement('p');
+  tempText.setAttribute('class','temp-text');
+  apparentOrNot ?  tempText.innerHTML = 'Temperature' : tempText.innerHTML = 'Feels like'
+
+  span.innerHTML = (Math.round(data) +'°');
+
+  thermoTop.appendChild(thermoFill);
+  thermoBottom.appendChild(span);
+  thermoLi.appendChild(tempText);
+  thermoContainer.appendChild(thermoTop);
+  thermoContainer.appendChild(thermoBottom);
+  thermoLi.appendChild(thermoContainer);
+  return thermoLi;
+
 
 }
 
@@ -200,11 +250,7 @@ function createDay(data){
     var hourListItem = document.getElementById('hour' + i);
     hourListItem.innerHTML = hour;
     hourList.appendChild(hourListItem);
-
-
-
   }
-
 }
 
 function createWeek(data){
@@ -212,11 +258,11 @@ function createWeek(data){
   var timedays = [];
 
   var months = ['Januar','Februar','Mars','April','May','Juni','July','August','September','October','November','December'];
-  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday' ];
+  var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday' ];
 
   var wholeListContainer = document.getElementById('whole-list')
 
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < 8; i++) {
     var container = document.createElement('ul');
     if(i%2 === 0){
       container.setAttribute('class','list-container mod2-color');
@@ -227,6 +273,7 @@ function createWeek(data){
 
     var date =  new Date(daily.data[i].time*1000);
     timedays[i] = days[date.getDay()] + '.' + date.getDate() +'.'+ months[date.getMonth()];
+
     var day = document.createElement('li');
     day.innerHTML = timedays[i];
     day.setAttribute('class','day list-item');
@@ -322,8 +369,8 @@ function createWeek(data){
     var spanMin = document.createElement('span');
     span.setAttribute('class', 'bottom-text')
     spanMin.setAttribute('class', 'bottom-text-min')
-    var thermoColorMax = tempColor(daily.data[i].temperatureMax);
-    var thermoColorMin = tempColor(daily.data[i].temperatureMin);
+    var thermoColorMax = tempColor(Math.round(daily.data[i].temperatureMax));
+    var thermoColorMin = tempColor(Math.round(daily.data[i].temperatureMin));
     var thermoContainerMin = document.createElement('div');
     thermoContainerMin.setAttribute('class','thermo-container');
 
@@ -336,7 +383,7 @@ function createWeek(data){
     tempTextMin.innerHTML = 'Min temperature';
     thermoContainer.type = 'text/css';
 
-    thermoContainer.innerHTML = '<style> .'+createBottomName + '{color: white;  width: 63px;\
+    thermoContainer.innerHTML = '<style> .'+ createBottomName + '{color: white;  width: 63px;\
     height: 50px; border-radius: 100%; border: 5px solid #d1d1d1; z-index: -1; margin: -7px auto ;text-align: center; display: block; background: '+ thermoColorMax +';\
     padding-top: 15px; font-size: 24px;}'+'.' + createFillName + '{ height: '+ (fillHeight) +
     'px;width: 30px; min-height: 12px; background: '+ thermoColorMax +'; !important;\
@@ -386,12 +433,8 @@ function createWeek(data){
     var compassId = ('compass' + i);
     compass.setAttribute('id' , compassId);
 
-
     compassContainer.appendChild(compass);
     compassContainer.appendChild(compassMsg);
-
-
-
 
     container.appendChild(day);
     container.appendChild(thermoLi);
@@ -429,11 +472,8 @@ function appendIconChilds(data){
   }
   if (data === 'clear-night') {
     var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'moon');
-    secondDiv.setAttribute('class', 'rays');
     iconListElement.appendChild(firstDiv);
-    iconListElement.appendChild(secondDiv);
   }
   if (data === 'cloudy') {
     var firstDiv = document.createElement('div');
@@ -486,8 +526,6 @@ function appendIconChilds(data){
     var firstDiv = document.createElement('div');
     var secondDiv = document.createElement('div');
     var thirdDiv = document.createElement('div')
-    var fourthDiv = document.createElement('div');
-    var fifthDiv = document.createElement('div')
     firstDiv.setAttribute('class', 'cloud');
     secondDiv.setAttribute('class', 'snow');
     thirdDiv.setAttribute('class', 'sleet-rain');
@@ -599,22 +637,4 @@ function setWindmillSpeed(speed, wind){
   else if(speed< 30.0 ){
     wind.setAttribute('class','sec30');
   }
-}
-
-function setAddress(){
-  $.ajax({
-      url: 'http://localhost:3000/address',
-      type: "GET",
-      dataType: 'json',
-      cache: true,
-      success: function(data, status, error) {
-          var hourheader = document.getElementById('hour-head');
-          hourheader.innerHTML = 'TODAY IN ' + data.address.toUpperCase();
-      },
-      error: function(data, status, error) {
-          console.log('error', data, status, error);
-          var error = document.getElementById('loading')
-          error.innerHTML = error;
-      }
-  });
 }
