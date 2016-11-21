@@ -10,7 +10,7 @@ var address = '';
 const pgp = require('pg-promise')();
 const xss = require('xss');
 
-const DATABASE = process.env.DATABASE_URL || 'postgres://postgres@localhost/WeatherData';
+const DATABASE = process.env.DATABASE_URL || 'postgres://postgres@localhost:5432/WeatherData';
 const db = pgp(DATABASE);
 
 
