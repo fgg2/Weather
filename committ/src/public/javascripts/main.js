@@ -18,6 +18,7 @@ function getWeather(longi, latti) {
       createWeek(data);
       createDay(data);
       waitForHourPress(data);
+      setAddress();
     },
     error(data, status, error) {
       console.log('error', data, status, error);
@@ -650,4 +651,21 @@ function setWindmillSpeed(speed, wind) {
   } else if (speed < 30.0) {
     wind.setAttribute('class', 'sec30');
   }
+}
+function setAddress(){
+  $.ajax({
+      url: 'http://localhost:3000/address',
+      type: "GET",
+      dataType: 'json',
+      cache: true,
+      success: function(data, status, error) {
+          var hourheader = document.getElementById('hour-head');
+          hourheader.innerHTML = 'TODAY IN ' + data.address.toUpperCase();
+      },
+      error: function(data, status, error) {
+          console.log('error', data, status, error);
+          var error = document.getElementById('loading')
+          error.innerHTML = error;
+      }
+  });
 }
