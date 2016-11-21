@@ -490,40 +490,35 @@ function createWeek(data) {
 function appendIconChilds(data) {
   const iconListElement = document.createElement('li');
   iconListElement.setAttribute('class', 'list-item icon degrees');
+  var firstDiv = document.createElement('div');
+  var secondDiv = document.createElement('div');
+  var thirdDiv = document.createElement('div');
+  var fourthDiv = document.createElement('div');
+  var fifthDiv = document.createElement('div');
 
   if (data === 'clear-day') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'sun');
     secondDiv.setAttribute('class', 'rays');
     firstDiv.appendChild(secondDiv);
     iconListElement.appendChild(firstDiv);
   }
   if (data === 'clear-night') {
-    var firstDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'moon');
     iconListElement.appendChild(firstDiv);
   }
   if (data === 'cloudy') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'cloud');
     secondDiv.setAttribute('class', 'cloud');
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
   if (data === 'fog') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'fog');
     secondDiv.setAttribute('class', 'fog');
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
   if (data === 'partly-cloudy-day') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
-    var thirdDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'partly-cloud');
     secondDiv.setAttribute('class', 'sun');
     thirdDiv.setAttribute('class', 'rays');
@@ -532,9 +527,6 @@ function appendIconChilds(data) {
     iconListElement.appendChild(secondDiv);
   }
   if (data === 'partly-cloudy-night') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
-    var thirdDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'cloud');
     secondDiv.setAttribute('class', 'cloud');
     thirdDiv.setAttribute('class', 'partly-cloudy-moon');
@@ -543,18 +535,12 @@ function appendIconChilds(data) {
     iconListElement.appendChild(thirdDiv);
   }
   if (data === 'rain') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
-    var thirdDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'cloud');
     secondDiv.setAttribute('class', 'rain');
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
   if (data === 'sleet') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
-    var thirdDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'cloud');
     secondDiv.setAttribute('class', 'snow');
     thirdDiv.setAttribute('class', 'sleet-rain');
@@ -567,19 +553,12 @@ function appendIconChilds(data) {
     iconListElement.appendChild(fifthDiv);
   }
   if (data === 'wind') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'sky-wind');
     secondDiv.setAttribute('class', 'sky-wind');
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
   if (data === 'snow') {
-    var firstDiv = document.createElement('div');
-    var secondDiv = document.createElement('div');
-    var thirdDiv = document.createElement('div');
-    var fourthDiv = document.createElement('div');
-    var fifthDiv = document.createElement('div');
     firstDiv.setAttribute('class', 'snow-cloud');
     secondDiv.setAttribute('class', 'snow');
     thirdDiv.setAttribute('class', 'flake');
@@ -589,7 +568,6 @@ function appendIconChilds(data) {
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
-
   return iconListElement;
 }
 
