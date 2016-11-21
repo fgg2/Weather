@@ -1,67 +1,63 @@
 function initAutocomplete() {
-  var pos;
+  let pos;
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.getCurrentPosition((position) => {
       pos = {
         lat: position.coords.latitude,
-        lng: position.coords.longitude
+        lng: position.coords.longitude,
       };
-      var lat = document.getElementById('latt');
-      var long = document.getElementById('long');
+      const lat = document.getElementById('latt');
+      const long = document.getElementById('long');
 
       lat.innerHTML = pos.lat;
       long.innerHTML = pos.lng;
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({'location': pos}, function(results, status) {
-      if (status === 'OK') {
-        var location = results[1].formatted_address;
-        var s = document.getElementById('pac-input');
-        s.placeholder = location;
-        var hourheader = document.getElementById('hour-head');
-        hourheader.innerHTML = 'TODAY IN ' + location.toUpperCase();
-        //her gerist hlutirnir
-        var address = document.getElementById('address');
-        address.innerHTML = location;
-
-      } else {
-        window.alert('Geocoder failed due to: ' + status);
-      }
-    });
-    }, function() {
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ location: pos }, (results, status) => {
+        if (status === 'OK') {
+          const location = results[1].formatted_address;
+          const s = document.getElementById('pac-input');
+          s.placeholder = location;
+          const hourheader = document.getElementById('hour-head');
+          hourheader.innerHTML = `TODAY IN ${location.toUpperCase()}`;
+        // her gerist hlutirnir
+          const address = document.getElementById('address');
+          address.innerHTML = location;
+        } else {
+          window.alert(`Geocoder failed due to: ${status}`);
+        }
+      });
+    }, () => {
       handleLocationError(true, infoWindow, map.getCenter());
     });
-  }
-  else {
+  } else {
     alert('sorry,your broswer doesnt support Geolocation');
   }
 
-  var input = document.getElementById('pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
-  var markers = [];
+  const input = document.getElementById('pac-input');
+  const searchBox = new google.maps.places.SearchBox(input);
+  const markers = [];
 
 
-  searchBox.addListener('places_changed', function() {
-          var input = document.getElementById('pac-input');
-          getgps(input.value);
-          var address = document.getElementById('address');
-          address.innerHTML = input.value;
-          
-        })
-    function getgps(input){
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({
-        'address': input
-      }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var lat = document.getElementById('latt');
-          var long = document.getElementById('long');
-          lat.innerHTML = results[0].geometry.location.lat();
-          long.innerHTML = results[0].geometry.location.lng();
-
-        } else {
-          alert("Something got wrong " + status);
-        }
-    })
+  searchBox.addListener('places_changed', () => {
+    const input = document.getElementById('pac-input');
+    getgps(input.value);
+    const address = document.getElementById('address');
+    address.innerHTML = input.value;
+  });
+  function getgps(input) {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      address: input,
+    }, (results, status) => {
+      if (status == google.maps.GeocoderStatus.OK) {
+        const lat = document.getElementById('latt');
+        const long = document.getElementById('long');
+        lat.innerHTML = results[0].geometry.location.lat();
+        long.innerHTML = results[0].geometry.location.lng();
+      } else {
+        alert(`Something got wrong ${status}`);
+      }
+    });
   }
 }

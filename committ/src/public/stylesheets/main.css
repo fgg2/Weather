@@ -15,6 +15,14 @@ body{
     font-stretch: normal;
     color: white;
 }
+.hourly-li-toptext{
+  color: beige;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.hourly-percentage{
+  text-align: center;
+}
 
 .week-section{
   height: 100vh;
@@ -24,6 +32,8 @@ body{
 
 .day-section{
   height: 100vh;
+  font-family: PlayfairDisplay;
+  font-size: 2rem;
 }
 .sub-header{
   font-size: 1rem !important;
@@ -40,6 +50,7 @@ body{
   width: 150px;
   list-style: none;
   border: 1px solid;
+  display: flex;
 }
 .hour-list{
   border: 1px solid;
@@ -86,6 +97,7 @@ body{
 .day{
   display: flex;
   flex: 4;
+  width: 10%;
   font-size: 2rem !important;
 }
 .week-header{
@@ -235,6 +247,26 @@ body{
   top: -163px;
   left: 201px;
   font-size: 2rem;
+}
+.hourly-wind-container{
+  zoom: 40%;
+  width: 375px;
+  height: 375px;
+}
+.hourly-wind-text{
+  position: relative;
+  top: 15px;
+  left: 153px;
+  font-size: 2rem;
+}
+.hourly-windmill{
+  width: 100px;
+  height: 200px;
+  position: relative;
+  margin-left: 80px;
+  align-self: center;
+  margin-top: 25px;
+  margin-left: 50px;
 }
 .icon{
   flex:2;

@@ -9,10 +9,10 @@ const instance = axios.create({ baseURL });
  * hafa latt og longi sem args
  * @returns {Promise} - Promise with weather
  */
-function promise(latt,longi) {
+function promise(latt, longi) {
   latt.toString();
   longi.toString();
-  return instance.get(latt + ','+longi + '?units=si&lang=en');
+  return instance.get(`${latt},${longi}?units=si&lang=en`);
 }
 
 
