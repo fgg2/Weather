@@ -3,6 +3,7 @@ body{
   font-size: 10px;
   background-color: #D0E1F9;
 }
+
 .controls {
     background: transparent;
     border: none;
@@ -15,13 +16,40 @@ body{
     font-stretch: normal;
     color: white;
 }
-.hourly-li-toptext{
+.card-header{
+  position: relative;
+  display: flex;
+  align-self: baseline;
+  justify-content: center;
+  left: 43px !important;
+  top: -6px !important;
+  font-size: 0.8rem;
   color: beige;
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 0.8rem;
+  font-family: 'Roboto';
+   margin-top: 10px;
+}
+.wind-card-header{
+  position: relative;
+  display: flex;
+  align-self: baseline;
+  justify-content: center;
+  left: -75px !important;
+  top: -1px !important;
+  font-size: 0.8rem;
+  color: beige;
+  font-size: 2.2rem;
+  font-family: 'Roboto';
+  margin-top: 10px;
+  width: 292%;
+}
+.select-button{
+  max-width: 150px;
+  margin: 20px auto;
 }
 .hourly-percentage{
-  text-align: center;
+  margin-right: 35px;
+  align-self: center;
 }
 
 .week-section{
@@ -31,7 +59,7 @@ body{
 }
 
 .day-section{
-  height: 100vh;
+  min-height: 100vh;
   font-family: PlayfairDisplay;
   font-size: 2rem;
 }
@@ -74,10 +102,9 @@ body{
 }
 .hour-temp-container{
   zoom: 50%;
-  margin-top: 23px;
 }
 .main-day-container{
-  margin: 0 auto;
+  margin: 75px auto;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -258,6 +285,7 @@ body{
   top: 15px;
   left: 153px;
   font-size: 2rem;
+  font-family: 'Roboto'
 }
 .hourly-windmill{
   width: 100px;

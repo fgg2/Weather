@@ -38,124 +38,9 @@ function init() {
 init();
 
 function waitForHourPress(data) {
-  $('#hour0').click(() => {
-    const el = document.getElementById('hour0');
-    const selectedHour = 0;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour1').click(() => {
-    const el = document.getElementById('hour1');
-    const selectedHour = 1;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour2').click(() => {
-    const el = document.getElementById('hour2');
-    const selectedHour = 2;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour3').click(() => {
-    const el = document.getElementById('hour3');
-    const selectedHour = 3;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour4').click(() => {
-    const el = document.getElementById('hour4');
-    const selectedHour = 4;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour5').click(() => {
-    const el = document.getElementById('hour5');
-    const selectedHour = 5;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour6').click(() => {
-    const el = document.getElementById('hour6');
-    const selectedHour = 6;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour7').click(() => {
-    const el = document.getElementById('hour7');
-    const selectedHour = 7;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour8').click(() => {
-    const el = document.getElementById('hour8');
-    const selectedHour = 8;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour9').click(() => {
-    const el = document.getElementById('hour10');
-    const selectedHour = 9;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour10').click(() => {
-    const el = document.getElementById('hour11');
-    const selectedHour = 10;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour11').click(() => {
-    const el = document.getElementById('hour12');
-    const selectedHour = 11;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour12').click(() => {
-    const el = document.getElementById('hour13');
-    const selectedHour = 12;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour13').click(() => {
-    const el = document.getElementById('hour14');
-    const selectedHour = 13;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour14').click(() => {
-    const el = document.getElementById('hour15');
-    const selectedHour = 14;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour15').click(() => {
-    const el = document.getElementById('hour16');
-    const selectedHour = 15;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour16').click(() => {
-    const el = document.getElementById('hour17');
-    const selectedHour = 16;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour17').click(() => {
-    const el = document.getElementById('hour17');
-    const selectedHour = 17;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour18').click(() => {
-    const el = document.getElementById('hour17');
-    const selectedHour = 18;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour19').click(() => {
-    const el = document.getElementById('hour18');
-    const selectedHour = 19;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour20').click(() => {
-    const el = document.getElementById('hour19');
-    const selectedHour = 20;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour21').click(() => {
-    const el = document.getElementById('hour20');
-    const selectedHour = 21;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour22').click(() => {
-    const el = document.getElementById('hour21');
-    const selectedHour = 22;
-    createDayIcons(selectedHour, data);
-  });
-  $('#hour23').click(() => {
-    const el = document.getElementById('hour22');
-    const selectedHour = 23;
+  $("#hour-list").change(function() {
+    var id = $(this).children(":selected").attr("id");
+    var selectedHour = id.match(/\d+/)[0]
     createDayIcons(selectedHour, data);
   });
 }
@@ -177,6 +62,10 @@ function createDayIcons(hour, data) {
   const apparentTempIcon = createHourlyTempIcon(hourly.data[hour].apparentTemperature, true);
   apparentTempContainer.appendChild(apparentTempIcon);
   const windContainer = createWindmill(hourly.data[hour].windSpeed, true);
+  const windHeader = document.createElement('div');
+  windHeader.setAttribute('class', 'wind-card-header');
+  windHeader.innerHTML = 'Wind speed';
+  windContainer.appendChild(windHeader);
   windContainer.setAttribute('class', 'grid-item hourly-wind-container');
   const percContainer = createPercip(hourly.data[hour].precipProbability);
   percContainer.setAttribute('class', 'grid-item');
@@ -225,7 +114,7 @@ function createHourlyTempIcon(data, apparentOrNot) {
   span.setAttribute('class', 'bottom-text');
 
   const tempText = document.createElement('p');
-  tempText.setAttribute('class', 'temp-text');
+  tempText.setAttribute('class', 'card-header');
   apparentOrNot ? tempText.innerHTML = 'Feels Like' : tempText.innerHTML = 'Temperature';
 
   span.innerHTML = (`${Math.round(data)}°`);
@@ -243,7 +132,7 @@ function createPercip(data) {
   var percTopText = document.createElement('div');
   percTopText.innerHTML = "Precipitation probability"
   var percPercent = document.createElement('div');
-  percTopText.setAttribute('class', 'hourly-li-toptext')
+  percTopText.setAttribute('class', 'card-header')
   percPercent.setAttribute('class', 'hourly-percentage')
   percPercent.innerHTML = Math.round(data * 100) + '%';
   percContainer.appendChild(percTopText);
@@ -258,7 +147,7 @@ function createHumid(data) {
   var humidTopText = document.createElement('div');
   humidTopText.innerHTML = "Humididy"
   var humidPercent = document.createElement('div');
-  humidTopText.setAttribute('class', 'hourly-li-toptext')
+  humidTopText.setAttribute('class', 'card-header')
   humidPercent.setAttribute('class', 'hourly-percentage')
   humidPercent.innerHTML = Math.round(data * 100) + '%';
   humidContainer.appendChild(humidTopText);
@@ -275,10 +164,14 @@ function createDay(data) {
     const hour = todayDate.getHours();
     var hourListItem = document.createElement('div');
     const createHourId = `hour${i}`;
-    var hourListItem = document.getElementById(`hour${i}`);
-    hourListItem.innerHTML = hour;
+    //var hourListItem = document.getElementById(`hour${i}`);
+    //hourListItem.innerHTML = hour + ':00';
+    //console.log(hourListItem.innerHTML)
+    document.getElementById('hour-list').options[i].text = hour +':00'
+    console.log(document.getElementById('hour-list').options[i].value)
     hourList.appendChild(hourListItem);
   }
+  $('select').niceSelect();
 }
 function createWindmill(data, hourWindOrNot) {
   const windContainer = document.createElement('li');
