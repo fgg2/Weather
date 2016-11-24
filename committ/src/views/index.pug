@@ -2,12 +2,13 @@ extends layout
 
 block content
   h1= title
-  input(name ='google' id='pac-input' class='controls' type='text' placeholder='Search Box')
-  form(action='/' method='post')
-    textarea(id='latt' name='latt')
-    textarea(id='long' name='long')
-    textarea(id='address' name='address')
-    button(type='submit')='Submit'
+  section(id ='searchSection' class='search-section')
+    input(name ='google' id='pac-input' class='controls' type='text' placeholder='Search Box')
+    form(action='/' method='post')
+      textarea(id='latt' name='latt')
+      textarea(id='long' name='long')
+      textarea(id='address' name='address')
+      button(type='submit')='Submit'
   script(src='/javascripts/google.js')
 
   section(id ='daySection' class= 'day-section')
