@@ -3,6 +3,14 @@ body{
   font-size: 10px;
   background-color: #D0E1F9;
 }
+textarea{
+  display: none;
+}
+
+.search-section{
+  height: 100vh;
+}
+
 
 .controls {
     background: transparent;

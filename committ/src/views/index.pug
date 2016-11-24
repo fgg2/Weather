@@ -1,6 +1,16 @@
 extends layout
 
 block content
+<<<<<<< HEAD
+  h1= title
+  section(id ='searchSection' class='search-section')
+    input(name ='google' id='pac-input' class='controls' type='text' placeholder='Search Box')
+    form(action='/' method='post')
+      textarea(id='latt' name='latt')
+      textarea(id='long' name='long')
+      textarea(id='address' name='address')
+      button(type='submit')='Submit'
+=======
   a(href='https://testoneone123.herokuapp.com/list')= title
   input(name ='google' id='pac-input' class='controls' type='text' placeholder='Search Box')
   form(action='/' method='post')
@@ -8,6 +18,7 @@ block content
     textarea(id='long' name='long')
     textarea(id='address' name='address')
     button(type='submit')='Submit'
+>>>>>>> 79cdabe0d308945f4f134c8bfb0a7d1cd25376c1
   script(src='/javascripts/google.js')
   p= list1 + ':'+num1
   p= list2 + ':'+num2
