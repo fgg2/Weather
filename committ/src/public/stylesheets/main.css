@@ -214,7 +214,10 @@ textarea{
   max-width: 315px;
   position: absolute;
 }
-
+.top5-element:hover{
+  cursor: pointer;
+  color: red;
+}
 
 
 .degrees{

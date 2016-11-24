@@ -33,11 +33,16 @@ function init() {
 
   document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
-    $("#top5-list").click(function() {
+    /*$("#top5-list").click(function() {
       $('#top5-list').toggleClass('top5-display')
-    });
+    });*/
     $("#top5-container").click(function() {
       $('#top5-list').toggleClass('top5-display')
+    });
+    $("#top5-element").click(function() {
+      const thisInput = this.innerHTML;
+
+      $("#pac-input").val(thisInput.substring(2));
     });
 
     if(document.getElementById('show').innerHTML == 0){
