@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1= title
+  a(href='https://testoneone123.herokuapp.com/list')= title
   input(name ='google' id='pac-input' class='controls' type='text' placeholder='Search Box')
   form(action='/' method='post')
     textarea(id='latt' name='latt')
@@ -9,35 +9,39 @@ block content
     textarea(id='address' name='address')
     button(type='submit')='Submit'
   script(src='/javascripts/google.js')
-
+  p= list1 + ':'+num1
+  p= list2 + ':'+num2
+  p= list3 + ':'+num3
+  p= list4 + ':'+num4
+  p= list5 + ':'+num5
   section(id ='daySection' class= 'day-section')
     h1(class= 'week-header' id='hour-head')='TODAY IN *YOUR LOCATION'
     h2(class= 'week-header sub-header')='Pick hour'
-    select(id='hour-list' class='select-button')
-      option(id='hour0')
-      option(id='hour1')
-      option(id='hour2')
-      option(id='hour3')
-      option(id='hour4')
-      option(id='hour5')
-      option(id='hour6')
-      option(id='hour7')
-      option(id='hour8')
-      option(id='hour9')
-      option(id='hour10')
-      option(id='hour11')
-      option(id='hour12')
-      option(id='hour13')
-      option(id='hour14')
-      option(id='hour15')
-      option(id='hour16')
-      option(id='hour17')
-      option(id='hour18')
-      option(id='hour19')
-      option(id='hour20')
-      option(id='hour21')
-      option(id='hour22')
-      option(id='hour23')
+    ul(id='hour-list' class='hour-list')
+      div(class='hour-list-item' id='hour0')
+      div(class='hour-list-item' id='hour1')
+      div(class='hour-list-item' id='hour2')
+      div(class='hour-list-item' id='hour3')
+      div(class='hour-list-item' id='hour4')
+      div(class='hour-list-item' id='hour5')
+      div(class='hour-list-item' id='hour6')
+      div(class='hour-list-item' id='hour7')
+      div(class='hour-list-item' id='hour8')
+      div(class='hour-list-item' id='hour9')
+      div(class='hour-list-item' id='hour10')
+      div(class='hour-list-item' id='hour11')
+      div(class='hour-list-item' id='hour12')
+      div(class='hour-list-item' id='hour13')
+      div(class='hour-list-item' id='hour14')
+      div(class='hour-list-item' id='hour15')
+      div(class='hour-list-item' id='hour16')
+      div(class='hour-list-item' id='hour17')
+      div(class='hour-list-item' id='hour18')
+      div(class='hour-list-item' id='hour19')
+      div(class='hour-list-item' id='hour20')
+      div(class='hour-list-item' id='hour21')
+      div(class='hour-list-item' id='hour22')
+      div(class='hour-list-item' id='hour23')
     div(class='main-day-container' id='mainDayContainer')
       div(class='icon-container' id='icon-container')
   section(id='weekSection' class='week-section')
@@ -55,7 +59,5 @@ block content
     h1(class='week-header')='THIS WEEK IN *YOUR LOCATION*'
     div(class='whole-list-container' id='whole-list')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete' async defer)
-  script(src='http://code.jquery.com/jquery-latest.min.js')
+  script(src='https://code.jquery.com/jquery-latest.min.js')
   script(src='/javascripts/main.js')
-  script(src="/javascripts/jquery.js")
-  script(src="/javascripts/jquery.nice-select.js")

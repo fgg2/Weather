@@ -1,30 +1,29 @@
+"use strict";
 const express = require('express');
-
+const fs = require("fs");
 const router = new express.Router();
 const api = require('./api');
+var latt = 0;
+var long = 0;
+var address = '';
 
-let latt = 0;
-let long = 0;
-let address = '';
-
-// database
+//database
 const pgp = require('pg-promise')();
 const xss = require('xss');
 
-
-const DATABASE = process.env.DATABASE_URL || 'postgres://postgres@localhost:5432/WeatherData';
-
-const db = pgp(DATABASE);
+const env = process.env.DATABASE_URL;
+const DATABASE = 'postgres://postgres@localhost:5432/WeatherData';
+const db = pgp(env || DATABASE);
 
 
 router.get('/list', (req, res) => {
-  db.any('SELECT * FROM location LIMIT 10 OFFSET 0')
+  db.any(`select name,COUNT(*) as num from location group by name order by num desc;`)
     .then(data => {
       // Hér ættum við að senda niðurstöður í template og vinna með HTML þar
       const result = [`<ul>`];
 
       data.forEach(row => {
-        result.push(`<li><a href="/list/${row.id}">${row.name}</a></li>`);
+        result.push(`<li><p>${row.name} : ${row.num}</p></li>`);
       })
       result.push('</ul>');
 
@@ -64,40 +63,99 @@ router.get('/list/:id', (req, res) => {
 
 
 
-// her endar DATABASE
+//her endar DATABASE
 
 router.get('/data', (req, res) => {
-  api.promise(latt, long)
+  api.promise(latt,long)
   .then((result) => {
     res.json(result.data);
   })
   .catch((error) => {
     res.render('error', { title: error, error });
   });
+
 });
 
 router.get('/address', (req, res) => {
-  address = ({ address: address });
+  address = ({address: address});
   res.json(address);
+
+
 });
 
 router.get('/', (req, res) => {
   //res.sendfile('index.html');
-  res.render('index');
+  const list = [];
+  const num = [];
+
+  db.any('SELECT name,COUNT(*) as num from location group by name order by num desc LIMIT 5')
+    .then(data => {
+      for(var i = 0;i<5;i++){
+        list[i]= data[i].name;
+        num[i]= data[i].num;
+      }
+      let list1 = list[0];
+      let list2 = list[1];
+      let list3 = list[2];
+      let list4 = list[3];
+      let list5 = list[4];
+
+      let num1 = num[0];
+      let num2 = num[1];
+      let num3 = num[2];
+      let num4 = num[3];
+      let num5 = num[4];
+      res.render('index', {list1,list2,list3,list4,list5,num1,num2,num3,num4,num5} );
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+
 });
 
 router.post('/', (req, res) => {
+
   latt = xss(req.body.latt);
   long = xss(req.body.long);
   address = xss(req.body.address);
 
-  db.none(`INSERT INTO location (name,latt, long) VALUES ($1, $2, $3)`, [address, latt, long])
+  db.none(`INSERT INTO location (name,latt, long) VALUES ($1, $2, $3)`, [address,latt, long])
     .then(data => {
-      res.render('index', { title: 'hello' });
+      console.log(data);
     })
     .catch(error => {
       res.send(`<p>Gat ekki bætt gögnum við: ${error}</p>`);
     });
+
+    const list = [];
+    const num = [];
+
+    db.any('SELECT name,COUNT(*) as num from location group by name order by num desc LIMIT 5')
+      .then(data => {
+        for(var i = 0;i<5;i++){
+          list[i]= data[i].name;
+          num[i]= data[i].num;
+        }
+        let list1 = list[0];
+        let list2 = list[1];
+        let list3 = list[2];
+        let list4 = list[3];
+        let list5 = list[4];
+
+        let num1 = num[0];
+        let num2 = num[1];
+        let num3 = num[2];
+        let num4 = num[3];
+        let num5 = num[4];
+        res.render('index', {list1,list2,list3,list4,list5,num1,num2,num3,num4,num5} );
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+
+
 });
 
 
