@@ -39,9 +39,9 @@ function init() {
     $("#top5-container").click(function() {
       $('#top5-list').toggleClass('top5-display')
     });
-    $("#top5-element").click(function() {
+    $(".top5-element").click(function() {
       const thisInput = this.innerHTML;
-
+      console.log(this.innerHTML);
       $("#pac-input").val(thisInput.substring(2));
     });
 
