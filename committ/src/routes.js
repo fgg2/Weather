@@ -12,7 +12,7 @@ const pgp = require('pg-promise')();
 const xss = require('xss');
 
 const env = process.env.DATABASE_URL;
-const DATABASE = 'postgres://postgres@localhost:5432/WeatherData';
+const DATABASE = 'postgres://postgres:Alli8488430@localhost:5432/WeatherData';
 const db = pgp(env || DATABASE);
 
 
