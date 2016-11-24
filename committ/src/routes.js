@@ -87,7 +87,7 @@ router.get('/address', (req, res) => {
 router.get('/', (req, res) => {
   //res.sendfile('index.html');
   const list = [];
-
+/*
   db.any('SELECT name,COUNT(*) as num from location group by name order by num desc LIMIT 5')
     .then(data => {
       for(var i = 0;i<5;i++){
@@ -106,7 +106,8 @@ router.get('/', (req, res) => {
     })
     .catch(error => {
       console.log(error);
-    });
+    });*/
+    res.render('index');
 
 });
 
