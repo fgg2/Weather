@@ -33,6 +33,21 @@ function init() {
 
   document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
+    $("#top5-list").click(function() {
+      $('#top5-list').toggleClass('top5-display')
+    });
+    $("#top5-container").click(function() {
+      $('#top5-list').toggleClass('top5-display')
+    });
+    /*
+    $("#submit").click(function() {
+      $('#weekSection').removeClass('section-display')
+      $('#daySection').removeClass('section-display')
+    });
+    */
+
+
+
   });
 }
 init();

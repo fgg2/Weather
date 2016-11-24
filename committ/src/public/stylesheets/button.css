@@ -1,0 +1,27 @@
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+.submit {
+    /* placing */
+    margin-top: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* end of placing */
+    height: 60px;
+    width: 483px;
+    background-color: #FFF;
+    border: 2px solid tomato;
+    border-radius: 50px;
+    color: tomato;
+    font-size: 16px;
+    font-family: Roboto;
+    transition: 0.4s;
+    outline-style: none;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: tomato;
+    color: #FFF;
+    transition: 0.4s;
+}

@@ -1,24 +1,28 @@
 extends layout
 
 block content
-
-  h1= title
-
   a(href='https://testoneone123.herokuapp.com/list')= title
-  input(name ='google' id='pac-input' class='controls' type='text' placeholder='Search Box')
-  form(action='/' method='post')
-    textarea(id='latt' name='latt')
-    textarea(id='long' name='long')
-    textarea(id='address' name='address')
-    button(type='submit')='Submit'
+  section(class ='search-section' id='search-section')
+    div.search-container
+      input(name ='google' id='pac-input' class='controls' type='text required' placeholder='Search Box')
+      form(action='/' method='post')
+        button(type='submit' id='submit' class='submit')='Submit'
+        textarea(id='latt' name='latt')
+        textarea(id='long' name='long')
+        textarea(id='address' name='address')
+      div(class='top5-button-container' id='top5-container')
+        div(class='top5-button')='Top5'
+      div(class='top5-container-list top5-display' id='top5-list')
+        div(class='the-list-container')
+          h2='Top 5 searches!'
+          p(class='top5-element')='1.'+list1 + ':'+num1
+          p(class='top5-element')='2.'+list2 + ':'+num2
+          p(class='top5-element')='3.'+list3 + ':'+num3
+          p(class='top5-element')='4.'+list4 + ':'+num4
+          p(class='top5-element')='5.'+list5 + ':'+num5
 
   script(src='/javascripts/google.js')
-  p= list1 + ':'+num1
-  p= list2 + ':'+num2
-  p= list3 + ':'+num3
-  p= list4 + ':'+num4
-  p= list5 + ':'+num5
-  section(id ='daySection' class= 'day-section')
+  section(id ='daySection' class= 'day-section section-display')
     h1(class= 'week-header' id='hour-head')='TODAY IN *YOUR LOCATION'
     h2(class= 'week-header sub-header')='Pick hour'
     select(id='hour-list' class='select-button')
@@ -48,7 +52,7 @@ block content
       option(id='hour23')
     div(class='main-day-container' id='mainDayContainer')
       div(class='icon-container' id='icon-container')
-  section(id='weekSection' class='week-section')
+  section(id='weekSection' class='week-section section-display')
     div(class='container-loading' id='container-loading')
       h1(class='loading-header' id='loading')='Looking outside for you...'
       div(class='container-cloud')
