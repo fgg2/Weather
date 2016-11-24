@@ -39,12 +39,16 @@ function init() {
     $("#top5-container").click(function() {
       $('#top5-list').toggleClass('top5-display')
     });
-    /*
-    $("#submit").click(function() {
+
+    if(document.getElementById('show').innerHTML == 0){
+      console.log('hallo');
+    }
+    else {
       $('#weekSection').removeClass('section-display')
       $('#daySection').removeClass('section-display')
-    });
-    */
+    }
+
+
 
 
 

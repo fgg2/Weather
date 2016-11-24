@@ -6,6 +6,7 @@ const api = require('./api');
 var latt = 0;
 var long = 0;
 var address = '';
+var counter = 0;
 
 //database
 const pgp = require('pg-promise')();
@@ -110,7 +111,9 @@ router.get('/', (req, res) => {
     .catch(error => {
       console.log(error);
     });*/
-    res.render('index');
+    counter = 0;
+    console.log(counter);
+    res.render('index', {counter});
 
 });
 
@@ -131,7 +134,7 @@ router.post('/', (req, res) => {
     const list = [];
     const num = [];
 
-    db.any('SELECT name,COUNT(*) as num from location group by name order by num desc LIMIT 5')
+    db.any('SELECT name,COUNT(*) AS num FROM location GROUP BY name ORDER BY num DESC LIMIT 5')
       .then(data => {
         for(var i = 0;i<5;i++){
           list[i]= data[i].name;
@@ -148,7 +151,10 @@ router.post('/', (req, res) => {
         let num3 = num[2];
         let num4 = num[3];
         let num5 = num[4];
-        res.render('index', {list1,list2,list3,list4,list5,num1,num2,num3,num4,num5} );
+        counter = 1;
+        console.log(counter);
+
+        res.render('index', {list1,list2,list3,list4,list5,num1,num2,num3,num4,num5,counter} );
       })
       .catch(error => {
         console.log(error);
