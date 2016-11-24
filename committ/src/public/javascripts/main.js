@@ -50,6 +50,7 @@ function createDayIcons(hour, data) {
   const hourly = data.hourly;
   const iconContainer = document.getElementById('icon-container');
   const iconListElement = appendIconChilds(hourly.data[hour].icon);
+  iconListElement.setAttribute('class', 'hourly-weather-icon')
   const weatherIconContainer = document.createElement('li');
   weatherIconContainer.appendChild(iconListElement);
   weatherIconContainer.setAttribute('class', 'grid-item');
@@ -61,16 +62,40 @@ function createDayIcons(hour, data) {
   apparentTempContainer.setAttribute('class', 'grid-item');
   const apparentTempIcon = createHourlyTempIcon(hourly.data[hour].apparentTemperature, true);
   apparentTempContainer.appendChild(apparentTempIcon);
-  const windContainer = createWindmill(hourly.data[hour].windSpeed, true);
+  const windContainer = createWindmill(Math.round(hourly.data[hour].windSpeed), true);
   const windHeader = document.createElement('div');
-  windHeader.setAttribute('class', 'wind-card-header');
+  windHeader.setAttribute('class', 'card-header');
   windHeader.innerHTML = 'Wind speed';
   windContainer.appendChild(windHeader);
   windContainer.setAttribute('class', 'grid-item hourly-wind-container');
   const percContainer = createPercip(hourly.data[hour].precipProbability);
   percContainer.setAttribute('class', 'grid-item');
-  const humidContainer = createHumid(hourly.data[hour].humidity);
-  humidContainer.setAttribute('class', 'grid-item');
+
+  const windBearing = document.createElement('li');
+
+  const winddir = checkWindDirection(hourly.data[hour].windBearing);
+  const windText = document.createElement('div')
+  windBearing.innerHTML = `winddirection = ${winddir}`;
+  windBearing.setAttribute('class', 'degrees list-item');
+
+  const compassContainer = document.createElement('li');
+  compassContainer.setAttribute('class', 'degrees list-item');
+  const compass = document.createElement('div');
+  compass.setAttribute('class', 'hourly-compass');
+  const compassMsg = document.createElement('div');
+  compassMsg.setAttribute('class', 'hourly-compass-msg');
+  windText.innerHTML = 'Wind direction'
+  windText.setAttribute('class','wind-direction-text');
+  compassContainer.appendChild(windText);
+
+  compass.setAttribute('id', 'compasshourly');
+
+  compassContainer.setAttribute('class', 'grid-item');
+  compassMsg.innerHTML = checkWindDirection(hourly.data[hour].windBearing, 'compasshourly');
+  compassContainer.appendChild(compass);
+  compassContainer.appendChild(compassMsg);
+  compass.style.transform ='rotate('+ (hourly.data[hour].windBearing + 225)+'deg)'
+
   const whut = document.createElement('li');
   whut.setAttribute('class', 'grid-item');
   const whut2 = document.createElement('li');
@@ -84,7 +109,7 @@ function createDayIcons(hour, data) {
   iconContainer.appendChild(apparentTempContainer);
   iconContainer.appendChild(windContainer);
   iconContainer.appendChild(percContainer);
-  iconContainer.appendChild(humidContainer);
+  iconContainer.appendChild(compassContainer);
 }
 function createHourlyTempIcon(data, apparentOrNot) {
   const thermoLi = document.createElement('div');
@@ -184,7 +209,7 @@ function createWindmill(data, hourWindOrNot) {
   const wind3 = document.createElement('div');
   const wind4 = document.createElement('div');
   const windText = document.createElement('p');
-  hourWindOrNot ? windText.setAttribute('class', 'hourly-wind-text') : windText.setAttribute('class', 'wind-text');
+  hourWindOrNot ? windText.setAttribute('class', 'hourly-wind-text') : windText.setAttribute('class', 'wind-mill-text');
 
   windText.innerHTML = `${data}m/s`;
   windContainer.setAttribute('class', 'list-item degrees wind-container');
@@ -240,19 +265,22 @@ function createWeek(data) {
     tempMin.innerHTML = `mintemp = ${daily.data[i].temperatureMin}°C`;
     tempMin.setAttribute('class', 'degrees list-item');
 
-    const windbearing = document.createElement('li');
+    const windBearing = document.createElement('li');
     windbear = daily.data[i].windBearing;
     winddir = checkWindDirection(windbear);
-    windbearing.innerHTML = `winddirection = ${winddir}`;
-    windbearing.setAttribute('class', 'degrees list-item');
+    const windText = document.createElement('div')
+    windBearing.innerHTML = `winddirection = ${winddir}`;
+    windBearing.setAttribute('class', 'degrees list-item');
+
 
     const summary = document.createElement('li');
     summary.innerHTML = daily.data[i].summary;
-    summary.setAttribute('class', 'degrees list-item summary');
+    summary.setAttribute('class', 'list-item summary');
+    day.appendChild(summary)
 
 
 
-    const windContainer = createWindmill(daily.data[i].windSpeed);
+    const windContainer = createWindmill(Math.round(daily.data[i].windSpeed));
     const iconListElement = appendIconChilds(daily.data[i].icon);
 
     const thermoLi = document.createElement('li');
@@ -293,8 +321,8 @@ function createWeek(data) {
     thermoBottomMin.setAttribute('id', createBottomNameMin);
     const span = document.createElement('span');
     const spanMin = document.createElement('span');
-    span.setAttribute('class', 'bottom-text');
-    spanMin.setAttribute('class', 'bottom-text-min');
+    span.setAttribute('class', 'bottom-text-week');
+    spanMin.setAttribute('class', 'bottom-text-week');
     const thermoColorMax = tempColor(Math.round(daily.data[i].temperatureMax));
     const thermoColorMin = tempColor(Math.round(daily.data[i].temperatureMin));
     const thermoContainerMin = document.createElement('div');
@@ -355,6 +383,9 @@ function createWeek(data) {
     compass.setAttribute('class', 'compass');
     const compassMsg = document.createElement('div');
     compassMsg.setAttribute('class', 'compass-msg');
+    windText.innerHTML = 'Wind direction'
+    windText.setAttribute('class','wind-direction-text');
+    compassContainer.appendChild(windText);
 
     const compassId = (`compass${i}`);
     compass.setAttribute('id', compassId);
@@ -363,12 +394,11 @@ function createWeek(data) {
     compassContainer.appendChild(compassMsg);
 
     container.appendChild(day);
+    container.appendChild(iconListElement);
     container.appendChild(thermoLi);
     container.appendChild(thermoLiMin);
     container.appendChild(windContainer);
     container.appendChild(compassContainer);
-    container.appendChild(summary);
-    container.appendChild(iconListElement);
 
     // var weekSection = document.createElement('section')
     // weekSection.setAttribute('id', 'weekSection');
@@ -479,13 +509,13 @@ function checkWindDirection(degrees, id) {
   const val = Math.floor((degrees / 22.5) + 0.5);
   const arr = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 
-
+  console.log('hallo' +degrees + id)
   $(`#${id}`)
-        .css('-webkit-transform', `rotate(${degrees + 45}deg)`)
-        .css('-moz-transform', `rotate(${degrees + 45}deg)`)
-        .css('-ms-transform', `rotate(${degrees + 45}deg)`)
-        .css('-o-transform', `rotate(${degrees + 45}deg)`)
-        .css('transform', `rotate(${degrees + 45}deg)`);
+        .css('-webkit-transform', `rotate(${degrees + 225}deg)`)
+        .css('-moz-transform', `rotate(${degrees + 225}deg)`)
+        .css('-ms-transform', `rotate(${degrees + 225}deg)`)
+        .css('-o-transform', `rotate(${degrees + 225}deg)`)
+        .css('transform', `rotate(${degrees + 225}deg)`);
 
   return arr[(val % 16)];
 }

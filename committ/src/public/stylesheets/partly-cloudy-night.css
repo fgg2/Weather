@@ -6,10 +6,10 @@
   left: 51%;
   width: 4.5em;
   height: 4.5em;
-  margin: -2.25em 3.2em;
+  margin: -2.25em 3em;
   background: inherit;
   border-radius: 50%;
-  box-shadow: -29px 0 0 #fffbbc;
+  box-shadow: -56px 0 0 #fffbbc;
 }
 .moon{
   position: absolute;

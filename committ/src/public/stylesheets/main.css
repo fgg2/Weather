@@ -29,19 +29,10 @@ body{
   font-family: 'Roboto';
    margin-top: 10px;
 }
-.wind-card-header{
-  position: relative;
-  display: flex;
-  align-self: baseline;
-  justify-content: center;
-  left: -75px !important;
-  top: -1px !important;
-  font-size: 0.8rem;
-  color: beige;
-  font-size: 2.2rem;
-  font-family: 'Roboto';
-  margin-top: 10px;
-  width: 292%;
+
+.hourly-weather-icon{
+  transform: scale(0.8,0.8);
+  margin-left: 119px;
 }
 .select-button{
   max-width: 150px;
@@ -74,11 +65,13 @@ body{
   justify-content: space-between;
 }
 .grid-item{
-  height: 150px;
-  width: 150px;
+  height: 225px;
+  width: 225px;
   list-style: none;
   border: 1px solid;
   display: flex;
+  color: beige;
+  font-family: 'Roboto';
 }
 .hour-list{
   border: 1px solid;
@@ -89,19 +82,30 @@ body{
   justify-content: space-between;
   height: 30px;
 }
-.hour-list-item{
-  background-color: aqua;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  flex: 1;
-}
-.hour-list-item:hover{
-  background-color: yellow;
-
+.hourly-compass-msg{
+  position: relative;
+  z-index: 2;
+  right: 40px;
 }
 .hour-temp-container{
-  zoom: 50%;
+  transform: scale(0.8,0.8);
+  margin-left: 7px;
+}
+.hourly-compass{
+  position: absolute;
+  width:100%; height:100%;
+  background: #444;
+  border-radius: 0 50% 50% 50%;
+  border: 10px solid white;
+  box-shadow: 0 0 8px rgba(0,0,0,.2);
+  border-right-color: coral;
+  border-bottom-color: coral;
+  transition: border-radius .2s;
+  box-sizing: border-box;
+  height: 100px;
+  width: 100px;
+  align-self: center;
+  margin-left: 66px;
 }
 .main-day-container{
   margin: 75px auto;
@@ -109,8 +113,8 @@ body{
   justify-content: center;
   flex-direction: row;
   flex: 1;
-  height: 50vh;
-  width: 50vw;
+  height: 75vh;
+  width: 75vw;
   border: 1px solid
 }
 .list-container{
@@ -119,13 +123,15 @@ body{
   flex: 1;
   background-color: #4D648D;
   height: 170px;
+  width: 100%;
 }
 
 .day{
   display: flex;
   flex: 4;
-  width: 10%;
-  font-size: 2rem !important;
+  max-width: 26%;
+  font-size: 2vw;
+  padding-bottom: 26px;
 }
 .week-header{
   padding: 20px;
@@ -137,7 +143,6 @@ body{
 }
 .list-item{
   font-family: 'Roboto';
-  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -146,7 +151,10 @@ body{
   color: beige;
 }
 .summary{
-  font-size: 1rem;
+  font-size: 0.8vw;
+  color: #ff7f50;
+  max-width: 315px;
+  position: absolute;
 }
 
 
@@ -154,17 +162,10 @@ body{
 .degrees{
   flex: 2;
   justify-content: center;
+  font-size: 1.2rem;
 
 }
-.bottom-text{
-  position: relative;
-  font-size: 2.3rem;
-  bottom: 8px;
-  left: 7px;
-
-
-}
-.bottom-text-min{
+.bottom-text-week{
   position: relative;
   font-size: 2.3rem;
   bottom: 8px;
@@ -182,13 +183,27 @@ body{
 }
 .temp-text{
   position: relative;
-  top: -63px;
-  left: 69px;
+  bottom: 66px;
+  left: 40px;
+  font-size: 0.8rem;
+}
+.wind-mill-text{
+  position: relative;
+  bottom: 66px;
+  left: -3px;
+  font-size: 0.8rem;
+}
+.wind-direction-text{
+  position: relative;
+  bottom: 66px;
+  left: 13px;
   font-size: 0.8rem;
 }
 .thermo-container{
-  zoom: 50%;
+  transform: scale(0.55,0.55);
   margin-top: 23px;
+  position: relative;
+  left: -46px;
 }
 .thermometer-top {
     height: 150px;
@@ -262,9 +277,6 @@ body{
     height: 100px;
     width: 100px;
 }
-.button:hover .compass {
-    border-radius: 50%;
-}
 .compass-msg {
     z-index: 2;
 }
@@ -276,9 +288,9 @@ body{
   font-size: 2rem;
 }
 .hourly-wind-container{
-  zoom: 40%;
-  width: 375px;
-  height: 375px;
+  /*transform: scale(0.5,0.5);
+  min-width: 563px;
+  min-height: 563px;*/
 }
 .hourly-wind-text{
   position: relative;
@@ -288,13 +300,11 @@ body{
   font-family: 'Roboto'
 }
 .hourly-windmill{
-  width: 100px;
-  height: 200px;
-  position: relative;
-  margin-left: 80px;
-  align-self: center;
-  margin-top: 25px;
-  margin-left: 50px;
+  transform: scale(0.7,0.7);
+
+  align-content: center;
+  display: flex;
+  justify-content: center;
 }
 .icon{
   flex:2;
@@ -433,11 +443,29 @@ Rain
   -webkit-animation:drop-a 2s infinite;
 }
 
-.compass-button{
-
-}
 .compass-msg{
-
+  position: relative;
+  z-index: 2;
+  right: 40px;
+}
+@media(max-width: 1320px)  {
+    .whole-list-container {
+      max-width: 100%;
+      zoom: 0.8;
+      transform: scale(0.8,0.8);
+    }
+    .day{
+      font-size: 3vw;
+    }
+    .summary{
+      font-size: 1.5vw;
+    }
+}
+@media(max-width: 960px)  {
+    .whole-list-container {
+      zoom: 0.7;
+      transform: scale(0.8,0.8);
+    }
 }
 
 @keyframes drop-a

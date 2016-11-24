@@ -1,12 +1,13 @@
 .wind-container{
-  zoom: 40%;
 }
 
 .windmill{
-  width:100px;
-  height:200px;
-  position:relative;
-  margin:100px auto;
+  transform: scale(0.45,0.45);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 40px;
+  right: 19px;
 }
 .stick{
   width:6px;
@@ -14,7 +15,6 @@
   position:absolute;
   background:#a86;
   top:50px;
-  left:47px;
 }
 .stick:before{
   content:"";
