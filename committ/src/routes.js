@@ -87,13 +87,12 @@ router.get('/address', (req, res) => {
 router.get('/', (req, res) => {
   //res.sendfile('index.html');
   const list = [];
-  const num = [];
- /*
+
   db.any('SELECT name,COUNT(*) as num from location group by name order by num desc LIMIT 5')
     .then(data => {
       for(var i = 0;i<5;i++){
         list[i]= data[i].name;
-        num[i]= data[i].num;
+
       }
       let list1 = list[0];
       let list2 = list[1];
@@ -101,19 +100,13 @@ router.get('/', (req, res) => {
       let list4 = list[3];
       let list5 = list[4];
 
-      let num1 = num[0];
-      let num2 = num[1];
-      let num3 = num[2];
-      let num4 = num[3];
-      let num5 = num[4];
-      res.render('index', {list1,list2,list3,list4,list5,num1,num2,num3,num4,num5} );
+      counter = 0;
+      console.log(counter);
+      res.render('index', {list1,list2,list3,list4,list5,counter} );
     })
     .catch(error => {
       console.log(error);
-    });*/
-    counter = 0;
-    console.log(counter);
-    res.render('index', {counter});
+    });
 
 });
 

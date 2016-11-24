@@ -18,11 +18,6 @@ function initAutocomplete() {
         var location = results[1].formatted_address;
         var s = document.getElementById('pac-input');
         s.placeholder = location;
-        var hourheader = document.getElementById('hour-head');
-        hourheader.innerHTML = 'TODAY IN ' + location.toUpperCase();
-        //her gerist hlutirnir
-        var address = document.getElementById('address');
-        address.innerHTML = location;
 
       } else {
         window.alert('Geocoder failed due to: ' + status);

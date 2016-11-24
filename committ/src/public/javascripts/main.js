@@ -586,6 +586,8 @@ function setAddress(){
       success: function(data, status, error) {
           var hourheader = document.getElementById('hour-head');
           hourheader.innerHTML = 'TODAY IN ' + data.address.toUpperCase();
+          var weekheader = document.getElementById('week-header');
+          weekheader.innerHTML = 'TODAY IN ' + data.address.toUpperCase();
       },
       error: function(data, status, error) {
           console.log('error', data, status, error);

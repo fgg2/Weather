@@ -16,11 +16,12 @@ block content
       div(class='top5-container-list top5-display' id='top5-list')
         div(class='the-list-container')
           h2='Top 5 searches!'
-          p(class='top5-element' id='top5-element')='1.'+list1 + ':'+num1
-          p(class='top5-element' id='top5-element')='2.'+list2 + ':'+num2
-          p(class='top5-element' id='top5-element')='3.'+list3 + ':'+num3
-          p(class='top5-element' id='top5-element')='4.'+list4 + ':'+num4
-          p(class='top5-element' id='top5-element')='5.'+list5 + ':'+num5
+          form(action='/' method='post')
+            p(class='top5-element' id='top5-element')='1.'+list1
+            p(class='top5-element' id='top5-element')='2.'+list2
+            p(class='top5-element' id='top5-element')='3.'+list3
+            p(class='top5-element' id='top5-element')='4.'+list4
+            p(class='top5-element' id='top5-element')='5.'+list5
 
   script(src='/javascripts/google.js')
   section(id ='daySection' class= 'day-section section-display')
@@ -65,7 +66,7 @@ block content
             div(class='rain-loading drop1')
             div(class='rain-loading drop2')
             div(class='rain-loading drop3')
-    h1(class='week-header')='THIS WEEK IN *YOUR LOCATION*'
+    h1(class='week-header' id='week-header')='THIS WEEK IN '
     div(class='whole-list-container' id='whole-list')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete' async defer)
   script(src='https://code.jquery.com/jquery-latest.min.js')
