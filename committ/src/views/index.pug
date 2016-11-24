@@ -5,9 +5,9 @@ block content
   a(href='https://testoneone123.herokuapp.com/list')= title
   section(class ='search-section' id='search-section')
     div.search-container
-      input(name ='google' id='pac-input' class='controls' type='text required' placeholder='Search Box')
+      input(name ='google' id='pac-input' class='controls' type='text required' placeholder='Put some location in me' autofocus)
       form(action='/' method='post')
-        button(type='submit' id='submit' class='submit')='Submit'
+        button(type='submit' id='submit' class='submit')='See forecast!'
         textarea(id='latt' name='latt')
         textarea(id='long' name='long')
         textarea(id='address' name='address')

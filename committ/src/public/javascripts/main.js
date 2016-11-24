@@ -53,15 +53,12 @@ function init() {
       $('#daySection').removeClass('section-display')
     }
 
-
-
-
-
   });
 }
 init();
 
 function waitForHourPress(data) {
+  createDayIcons(0, data)
   $("#hour-list").change(function() {
     var id = $(this).children(":selected").attr("id");
     var selectedHour = id.match(/\d+/)[0]
@@ -78,19 +75,15 @@ function createDayIcons(hour, data) {
   const weatherIconContainer = document.createElement('li');
   weatherIconContainer.appendChild(iconListElement);
   weatherIconContainer.setAttribute('class', 'grid-item');
-  const tmpContainer = document.createElement('li');
-  tmpContainer.setAttribute('class', 'grid-item');
-  const tmpIcon = createHourlyTempIcon(hourly.data[hour].temperature, false);
-  tmpContainer.appendChild(tmpIcon);
-  const apparentTempContainer = document.createElement('li');
+  const tmpContainer = createHourlyTempIcon(hourly.data[hour].apparentTemperature, false)
+  tmpContainer.setAttribute('class','grid-item')
+  const apparentTempContainer = createHourlyTempIcon(hourly.data[hour].apparentTemperature, true);
   apparentTempContainer.setAttribute('class', 'grid-item');
-  const apparentTempIcon = createHourlyTempIcon(hourly.data[hour].apparentTemperature, true);
-  apparentTempContainer.appendChild(apparentTempIcon);
   const windContainer = createWindmill(Math.round(hourly.data[hour].windSpeed), true);
   const windHeader = document.createElement('div');
   windHeader.setAttribute('class', 'card-header');
   windHeader.innerHTML = 'Wind speed';
-  windContainer.appendChild(windHeader);
+  windContainer.prepend(windHeader);
   windContainer.setAttribute('class', 'grid-item hourly-wind-container');
   const percContainer = createPercip(hourly.data[hour].precipProbability);
   percContainer.setAttribute('class', 'grid-item');
@@ -109,7 +102,7 @@ function createDayIcons(hour, data) {
   const compassMsg = document.createElement('div');
   compassMsg.setAttribute('class', 'hourly-compass-msg');
   windText.innerHTML = 'Wind direction'
-  windText.setAttribute('class','wind-direction-text');
+  windText.setAttribute('class','card-header');
   compassContainer.appendChild(windText);
 
   compass.setAttribute('id', 'compasshourly');
@@ -118,12 +111,7 @@ function createDayIcons(hour, data) {
   compassMsg.innerHTML = checkWindDirection(hourly.data[hour].windBearing, 'compasshourly');
   compassContainer.appendChild(compass);
   compassContainer.appendChild(compassMsg);
-  compass.style.transform ='rotate('+ (hourly.data[hour].windBearing + 225)+'deg)'
-
-  const whut = document.createElement('li');
-  whut.setAttribute('class', 'grid-item');
-  const whut2 = document.createElement('li');
-  whut2.setAttribute('class', 'grid-item');
+  compass.style.transform ='translateX(-50%) rotate('+ (hourly.data[hour].windBearing + 225)+'deg)'
 
   while (iconContainer.firstChild) {
     iconContainer.removeChild(iconContainer.firstChild);
@@ -132,12 +120,12 @@ function createDayIcons(hour, data) {
   iconContainer.appendChild(tmpContainer);
   iconContainer.appendChild(apparentTempContainer);
   iconContainer.appendChild(windContainer);
-  iconContainer.appendChild(percContainer);
   iconContainer.appendChild(compassContainer);
+  iconContainer.appendChild(percContainer);
 }
 function createHourlyTempIcon(data, apparentOrNot) {
   const thermoLi = document.createElement('div');
-  thermoLi.setAttribute('class', 'list-item temp-flex');
+  thermoLi.setAttribute('class', 'temp-flex');
   const thermoContainer = document.createElement('div');
 
   thermoContainer.setAttribute('class', 'hour-temp-container');

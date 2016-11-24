@@ -48,11 +48,11 @@ textarea{
 .top5-element{
   margin-top: 50px;
 }
-
+/*
 .section-display{
   display:none;
 }
-
+*/
 
 
 
@@ -60,11 +60,10 @@ textarea{
 .controls {
   margin: auto;
   margin-top: 280px;
-  width: 50%;
-  height: 200px;
+  width: 100%;
+  height: 140px;
   background: transparent;
   border: none;
-  height: 50px;
   text-align: center;
   font-family: Roboto;
   font-size: 2.2rem;
@@ -73,19 +72,29 @@ textarea{
   font-stretch: normal;
   color: tomato;
 }
+.controls:focus {
+  outline: none;
 }
+
 .card-header{
-  position: relative;
-  display: flex;
-  align-self: baseline;
-  justify-content: center;
-  left: 43px !important;
-  top: -6px !important;
   font-size: 0.8rem;
-  color: beige;
-  font-size: 0.8rem;
+  color: tomato;
   font-family: 'Roboto';
-   margin-top: 10px;
+  flex-basis: 100%;
+  text-align: center;
+  align-self: flex-start;
+  margin: 0;
+}
+.temp-flex{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.temp-flex > * {
+  flex-basis: 100%;
 }
 
 .hourly-weather-icon{
@@ -97,8 +106,11 @@ textarea{
   margin: 20px auto;
 }
 .hourly-percentage{
-  margin-right: 35px;
-  align-self: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 11rem;
+  margin-bottom: 82px;
+  color: skyblue;
 }
 
 .week-section{
@@ -127,9 +139,17 @@ textarea{
   width: 225px;
   list-style: none;
   border: 1px solid;
-  display: flex;
   color: beige;
   font-family: 'Roboto';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: beige;
+}
+
+.grid-item > * {
+  flex-basis: 100%;
 }
 .hour-list{
   border: 1px solid;
@@ -141,13 +161,15 @@ textarea{
   height: 30px;
 }
 .hourly-compass-msg{
-  position: relative;
   z-index: 2;
-  right: 40px;
+  -webkit-match-parent;
+  font-size: 1.2rem;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
 }
 .hour-temp-container{
   transform: scale(0.8,0.8);
-  margin-left: 7px;
 }
 .hourly-compass{
   position: absolute;
@@ -158,12 +180,11 @@ textarea{
   box-shadow: 0 0 8px rgba(0,0,0,.2);
   border-right-color: coral;
   border-bottom-color: coral;
-  transition: border-radius .2s;
   box-sizing: border-box;
   height: 100px;
   width: 100px;
   align-self: center;
-  margin-left: 66px;
+  left: 50%;
 }
 .main-day-container{
   margin: 75px auto;
@@ -178,7 +199,6 @@ textarea{
 .list-container{
   display: flex;
   justify-content: center;
-  flex: 1;
   background-color: #4D648D;
   height: 170px;
   width: 100%;
@@ -204,9 +224,10 @@ textarea{
   display: flex;
   justify-content: space-between;
   list-style: none;
-  flex-direction: row;;
+  flex-direction: row;
   align-items: center;
   color: beige;
+  flex: 1 1 6%;
 }
 .summary{
   font-size: 0.8vw;
@@ -219,33 +240,37 @@ textarea{
   color: red;
 }
 
-
-.degrees{
+.degrees {
   flex: 2;
   justify-content: center;
   font-size: 1.2rem;
 
 }
-.bottom-text-week{
+
+.bottom-text-week {
   position: relative;
   font-size: 2.3rem;
   bottom: 8px;
   left: 7px;
-
-
 }
-.mod2-color{
+
+.bottom-text {
+  margin: 0;
+  padding: 0;
+  margin-left: 8px;
+  font-size: 1.6rem;
+}
+
+.mod2-color {
   background-color: #283655;
 }
-.whole-list-container{
+.whole-list-container {
   max-width: 75%;
   max-height: 75%;
   margin: 20px auto ;
 }
-.temp-text{
-  position: relative;
-  bottom: 66px;
-  left: 40px;
+.temp-text {
+  text-align: center;
   font-size: 0.8rem;
 }
 .wind-mill-text{
@@ -261,10 +286,7 @@ textarea{
   font-size: 0.8rem;
 }
 .thermo-container{
-  transform: scale(0.55,0.55);
-  margin-top: 23px;
-  position: relative;
-  left: -46px;
+  transform: scale(0.55,0.55) translateY(-44%);
 }
 .thermometer-top {
     height: 150px;
@@ -279,9 +301,6 @@ textarea{
     margin: auto;
     overflow: hidden;
 }
-.temp-flex{
-
-}
 
 .thermometer-bottom {
     content: '';
@@ -292,6 +311,9 @@ textarea{
     border: 5px solid #d1d1d1;
     z-index: -1;
     margin: -7px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .thermometer-bottom-min {
     content: '';
@@ -354,18 +376,20 @@ textarea{
   min-height: 563px;*/
 }
 .hourly-wind-text{
-  position: relative;
-  top: 15px;
-  left: 153px;
   font-size: 2rem;
-  font-family: 'Roboto'
+  font-family: 'Roboto';
+  text-align: center;
+  margin: 0;
+  color: tomato;
 }
 .hourly-windmill{
-  transform: scale(0.7,0.7);
-
+  transform: scale(0.6,0.6);
+  position: relative;
   align-content: center;
   display: flex;
   justify-content: center;
+  height: 100%;
+  bottom: 40px;
 }
 .icon{
   flex:2;
@@ -394,10 +418,6 @@ textarea{
   background: #D0E1F9;
   z-index: 10;
   position:fixed;
-<<<<<<< HEAD
-  display: none;
-=======
->>>>>>> origin/fannar-branch
 }
 
 .icon-rain-loading {
