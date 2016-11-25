@@ -15,6 +15,23 @@ textarea{
   flex-direction: column;;
 
 }
+.current-container{
+  align-self: flex-end;
+  border: 1px solid;
+}
+.current-loc{
+  align-self: flex-end;
+  font-size: 2rem;
+  max-width: 621px;
+  font-family: 'Roboto'
+}
+.button-current-loc{
+  align-self: flex-end;
+  font-size: 2rem;
+  max-width: 621px;
+  font-family: 'Roboto'
+}
+
 .top5-container-list{
   font-size: 1rem;
   width: 220px;

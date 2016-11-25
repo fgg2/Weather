@@ -5,6 +5,10 @@ block content
   a(href='https://testoneone123.herokuapp.com/list')= title
   section(class ='search-section' id='search-section')
     div.search-container
+      div(id='current-container' class='current-container')
+        div(id='current-loc' class='current-loc')='Hey! I found out where you are! You are in:'
+        div(id='inner-current-loc' class='inner-current-loc')='*LOC*'
+        div(id='button-current-loc' class='button-current-loc')='Press me to check out the weather forecast for your location'
       input(name ='google' id='pac-input' class='controls' type='text required' placeholder='Put some location in me' autofocus)
       form(action='/' method='post')
         button(type='submit' id='submit' class='submit')='See forecast!'
@@ -22,7 +26,6 @@ block content
             p(class='top5-element' id='top5-element')='3.'+list3
             p(class='top5-element' id='top5-element')='4.'+list4
             p(class='top5-element' id='top5-element')='5.'+list5
-
   script(src='/javascripts/google.js')
   section(id ='daySection' class= 'day-section section-display')
     h1(class= 'week-header' id='hour-head')='TODAY IN *YOUR LOCATION'
