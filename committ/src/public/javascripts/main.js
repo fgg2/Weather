@@ -42,8 +42,8 @@ function init() {
     $("#current-container").click(function() {
       const thisInput = document.getElementById('inner-current-loc');
       console.log(thisInput.innerHTML);
-      $("#pac-input").val(thisInput)
-      $("#address").val(thisInput);
+      $("#pac-input").val(thisInput.innerHTML)
+      $("#address").val(thisInput.innerHTML);
     });
     $(".top5-element").click(function() {
       const thisInput = this.innerHTML;
