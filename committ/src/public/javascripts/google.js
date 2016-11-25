@@ -15,7 +15,6 @@ function initAutocomplete() {
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({'location': pos}, function(results, status) {
       if (status === 'OK') {
-        document.getElementById('current-container').style.display = 'none';
         var location = results[1].formatted_address;
         var s = document.getElementById('inner-current-loc');
         s.innerHTML = location;
