@@ -111,7 +111,7 @@ function createDayIcons(hour, data) {
   compassMsg.innerHTML = checkWindDirection(hourly.data[hour].windBearing, 'compasshourly');
   compassContainer.appendChild(compass);
   compassContainer.appendChild(compassMsg);
-  compass.style.transform ='translateX(-50%) rotate('+ (hourly.data[hour].windBearing + 225)+'deg)'
+  compass.style.transform ='rotate('+ (hourly.data[hour].windBearing + 225)+'deg)'
 
   while (iconContainer.firstChild) {
     iconContainer.removeChild(iconContainer.firstChild);

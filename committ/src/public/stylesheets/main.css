@@ -39,6 +39,8 @@ textarea{
 }
 .top5-display{
   display: none;
+  transition: opacity 1s ease-out;
+  opacity: 0;
 }
 .the-list-container{
   position: absolute;
@@ -47,6 +49,15 @@ textarea{
 }
 .top5-element{
   margin-top: 50px;
+}
+.top5-button-container > .top5-container-list {
+  visibility:hidden;
+  opacity:0;
+  transition:opacity 0.5s linear;
+}
+.top5-button-container:hover > .top5-container-list {
+  visibility:visible;
+  opacity:1;
 }
 /*
 .section-display{
@@ -99,7 +110,7 @@ textarea{
 
 .hourly-weather-icon{
   transform: scale(0.8,0.8);
-  margin-left: 119px;
+  margin-left: 13px;
 }
 .select-button{
   max-width: 150px;
@@ -164,8 +175,6 @@ textarea{
   z-index: 2;
   -webkit-match-parent;
   font-size: 1.2rem;
-  transform: translateX(-50%);
-  left: 50%;
   position: absolute;
 }
 .hour-temp-container{
@@ -184,7 +193,6 @@ textarea{
   height: 100px;
   width: 100px;
   align-self: center;
-  left: 50%;
 }
 .main-day-container{
   margin: 75px auto;
