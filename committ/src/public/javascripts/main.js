@@ -39,6 +39,12 @@ function init() {
     $("#top5-container").click(function() {
       $('#top5-list').toggleClass('top5-display')
     });
+    $("#current-container").click(function() {
+      const thisInput = document.getElementById('inner-current-loc');
+      console.log(thisInput.innerHTML);
+      $("#pac-input").val(thisInput)
+      $("#address").val(thisInput);
+    });
     $(".top5-element").click(function() {
       const thisInput = this.innerHTML;
       console.log(this.innerHTML);
