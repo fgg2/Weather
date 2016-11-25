@@ -12,13 +12,13 @@ textarea{
 }
 .search-container{
   display: flex;
-  flex-direction: column;;
+  flex-direction: column;
 
 }
 .current-container{
   align-self: flex-end;
   border: 1px solid;
-  display: none;
+  visibility: hidden;
 }
 .current-loc{
   align-self: flex-end;
