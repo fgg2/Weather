@@ -43,6 +43,7 @@ function init() {
       const thisInput = this.innerHTML;
       console.log(this.innerHTML);
       $("#pac-input").val(thisInput.substring(2));
+      $("#address").val(thisInput.substring(2));
     });
 
     if(document.getElementById('show').innerHTML == 0){
