@@ -250,7 +250,7 @@ function createWeek(data) {
   const timedays = [];
 
   const months = ['Januar', 'Februar', 'Mars', 'April', 'May', 'Juni', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   const wholeListContainer = document.getElementById('whole-list');
 
