@@ -6,9 +6,14 @@ body{
 textarea{
   display: none;
 }
+hr{
+  width: 130px;
+  height: 1px;
+  border-color: tomato;
+}
 
 .search-section{
-  height: 100vh;
+  min-height: 100vh;
 }
 .search-container{
   display: flex;
@@ -16,21 +21,35 @@ textarea{
 
 }
 .current-container{
+  transform: translateX(100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36%;
   align-self: flex-end;
-  border: 1px solid;
-  visibility: hidden;
+  border-radius: 5px;
+  height: 6vw;
+  font-size: 2vw;
+  justify-content: space-between;
+  flex: 3;
+  background: tomato;
+  margin-top: 10px;
+  /*transition: color 2s ease;*/
+  color: #d0e1f9;
+}
+.current-container:hover{
+  cursor: pointer;
+  color: beige;
 }
 .current-loc{
-  align-self: flex-end;
-  font-size: 2rem;
+  flex: 1;
   max-width: 621px;
-  font-family: 'Roboto'
+  font-family: 'Lobster';
 }
-.button-current-loc{
-  align-self: flex-end;
-  font-size: 2rem;
-  max-width: 621px;
-  font-family: 'Roboto'
+
+.inner-current-loc{
+  flex: 1;
+  font-family: 'Lobster';
 }
 
 .top5-container-list{
@@ -42,40 +61,63 @@ textarea{
   position: absolute;
   font-family: Roboto;
 }
+
 .top5-button-container{
   background: tomato;
   height: 100vh;
   position: absolute;
   z-index: 5;
-  width: 20px;
+  width: 30px;
+  transition: width 0.3s ease;
+}
+.top5-button-container:hover{
+  cursor: pointer;
+  width: 35px;
+}
+.top5-header{
+  color: tomato;
+}
+.pac-container{
+  font-family: 'Roboto' !important;
+  border-radius: 5px;
 }
 .top5-button{
   transform: rotate(-90deg);
   top: 50vh;
   position: absolute;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
+  min-width: 44px;
+  color: beige;
+  font-family: 'Lobster';
+  left: -6px;
+}
+.top5-no-display{
+  transform: translateX(-100%);
+  transition: 1s ease transform;
+
 }
 .top5-display{
-  display: none;
-  transition: opacity 1s ease-out;
-  opacity: 0;
+  transform: translateX(0);
+  transition: 1s ease transform;
 }
 .the-list-container{
-  position: absolute;
-  top: 18vh;
+  font-family: 'Lobster';
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
   margin-left: 36px;
 }
+.top5-el-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15vh;
+  justify-content: center;
+}
 .top5-element{
-  margin-top: 50px;
-}
-.top5-button-container > .top5-container-list {
-  visibility:hidden;
-  opacity:0;
-  transition:opacity 0.5s linear;
-}
-.top5-button-container:hover > .top5-container-list {
-  visibility:visible;
-  opacity:1;
+  margin-top: 18px;
+  color: #d0e1f9;
 }
 /*
 .section-display{
@@ -83,23 +125,23 @@ textarea{
 }
 */
 
-
-
-
 .controls {
-  margin: auto;
-  margin-top: 280px;
-  width: 100%;
+  margin-top: 150px;
+  width: 50%;
+  align-self: center;
   height: 140px;
-  background: transparent;
   border: none;
   text-align: center;
   font-family: Roboto;
-  font-size: 2.2rem;
+  font-size: 3vw;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   color: tomato;
+  border-radius: 130px;
+  background-image: url('../img/search.png');
+  background-repeat: no-repeat;
+  background-position: right;
 }
 .controls:focus {
   outline: none;
@@ -129,6 +171,7 @@ textarea{
 .hourly-weather-icon{
   transform: scale(0.8,0.8);
   margin-left: 13px;
+  height: 100%;
 }
 .select-button{
   max-width: 150px;
@@ -138,12 +181,12 @@ textarea{
   justify-content: center;
   text-align: center;
   font-size: 7rem;
-  margin-bottom: 82px;
+  margin-bottom: 50px;
   color: skyblue;
 }
 
 .week-section{
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -157,7 +200,7 @@ textarea{
   font-size: 1rem !important;
 }
 .icon-container{
-  max-width: 67%;
+  max-width: 860px;
   display: flex;
   flex-flow: row wrap;
   flex: 1;
@@ -171,10 +214,12 @@ textarea{
   color: beige;
   font-family: 'Roboto';
   display: flex;
+  box-shadow: 4px 14px 29px -8px rgba(0,0,0,0.75);
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: beige;
+  border-color: transparent;
+  border-radius: 29px;
 }
 
 .grid-item > * {
@@ -567,12 +612,21 @@ Rain
     .summary{
       font-size: 1.5vw;
     }
+    .icon-container{
+      max-width: 60vw;
+      display: flex;
+      max-height: 76vh;
+      flex-flow: row wrap;
+      flex: 1;
+      justify-content: space-between;
+    }
 }
 @media(max-width: 960px)  {
     .whole-list-container {
       zoom: 0.7;
       transform: scale(0.8,0.8);
     }
+
 }
 
 @keyframes drop-a

@@ -6,26 +6,30 @@ block content
   section(class ='search-section' id='search-section')
     div.search-container
       div(id='current-container' class='current-container')
-        div(id='current-loc' class='current-loc')='Hey! I found out where you are! You are in:'
+        div(id='current-loc' class='current-loc')='Press here to see the weather forecast for'
         div(id='inner-current-loc' class='inner-current-loc')='*LOC*'
-        div(id='button-current-loc' class='button-current-loc')='Press me to check out the weather forecast for your location'
-      input(name ='google' id='pac-input' class='controls' type='text required' placeholder='Put some location in me' autofocus)
+      input(name ='google' id='pac-input' class='controls' type='text required' placeholder='Put location in me' autofocus)
       form(action='/' method='post')
         button(type='submit' id='submit' class='submit')='See forecast!'
         textarea(id='latt' name='latt')
         textarea(id='long' name='long')
         textarea(id='address' name='address')
       div(class='top5-button-container' id='top5-container')
-        div(class='top5-button')='Top5'
-      div(class='top5-container-list top5-display' id='top5-list')
+        div(class='top5-button')='Top 5'
+      div(class='top5-container-list top5-no-display' id='top5-list')
         div(class='the-list-container')
-          h2='Top 5 searches!'
-          form(action='/' method='post')
+          h2(class='top5-header')='Top 5 searches!'
+          formc(class='top5-el-container' action='/' method='post')
             p(class='top5-element' id='top5-element')='1.'+list1
+            hr
             p(class='top5-element' id='top5-element')='2.'+list2
+            hr
             p(class='top5-element' id='top5-element')='3.'+list3
+            hr
             p(class='top5-element' id='top5-element')='4.'+list4
+            hr
             p(class='top5-element' id='top5-element')='5.'+list5
+            hr
   script(src='/javascripts/google.js')
   section(id ='daySection' class= 'day-section section-display')
     h1(class= 'week-header' id='hour-head')='TODAY IN *YOUR LOCATION'

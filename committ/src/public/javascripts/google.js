@@ -20,7 +20,8 @@ function initAutocomplete() {
         s.innerHTML = location;
         var address = document.getElementById('address');
         address.innerHTML = location;
-        document.getElementById('current-container').style.visibility = 'visible';
+        document.getElementById('current-container').style.transform = 'translateX(0)'
+        document.getElementById('current-container').style.transition = 'transform 1s ease, color 0.5s'
 
       } else {
         window.alert('Geocoder failed due to: ' + status);
