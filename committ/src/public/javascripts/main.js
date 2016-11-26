@@ -546,11 +546,11 @@ function checkWindDirection(degrees, id) {
 
   console.log('hallo' +degrees + id)
   $(`#${id}`)
-        .css('-webkit-transform', `rotate(${degrees + 225}deg)`)
-        .css('-moz-transform', `rotate(${degrees + 225}deg)`)
-        .css('-ms-transform', `rotate(${degrees + 225}deg)`)
-        .css('-o-transform', `rotate(${degrees + 225}deg)`)
-        .css('transform', `rotate(${degrees + 225}deg)`);
+        .css('-webkit-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+        .css('-moz-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+        .css('-ms-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+        .css('-o-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+        .css('transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `);
 
   return arr[(val % 16)];
 }

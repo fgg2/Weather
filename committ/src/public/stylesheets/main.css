@@ -281,6 +281,7 @@ hr{
   max-width: 26%;
   font-size: 2vw;
   padding-bottom: 26px;
+  min-width: 29%;
 }
 .week-header{
   padding: 20px;
@@ -301,7 +302,7 @@ hr{
   flex: 1 1 6%;
 }
 .summary{
-  font-size: 0.8vw;
+  font-size: 1vw;
   color: #ff7f50;
   max-width: 315px;
   position: absolute;
@@ -430,6 +431,10 @@ hr{
     box-sizing: border-box;
     height: 100px;
     width: 100px;
+    margin-top: 10px;
+}
+.compass-msg{
+  margin-top: 10px;
 }
 .compass-msg {
     z-index: 2;
@@ -625,6 +630,28 @@ Rain
     .whole-list-container {
       zoom: 0.7;
       transform: scale(0.8,0.8);
+    }
+    .icon-container{
+      min-width: 500px;
+      max-width: 60vw;
+      display: flex;
+      max-height: 76vh;
+      flex-flow: row wrap;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+}
+@media(max-width: 600px)  {
+    .icon-container{
+      zoom: 0.7;
+      transform: scale(0.9,0.9);
+      min-width: 500px;
+      display: flex;
+      max-height: 76vh;
+      flex-flow: row wrap;
+      flex: 1;
+      justify-content: space-between;
     }
 
 }
