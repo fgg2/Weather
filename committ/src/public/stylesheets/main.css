@@ -6,14 +6,45 @@ body{
 textarea{
   display: none;
 }
-hr{
+.hr-top5{
   width: 130px;
   height: 1px;
   border-color: tomato;
 }
+.hr-heading{
+  color: #b53a53;
+  background: #b53a53;
+  border-color: transparent;
+  margin: 0;
+}
+.header-container{
+  align-self: center;
+}
 
 .search-section{
   min-height: 100vh;
+}
+.main-header {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  font-size: 9rem;
+  font-family: Source Sans Pro;
+  color: #7c728e;
+  font-weight: 800;
+  position: relative;
+  top: 20px;
+}
+.sub-header-main{
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  font-size: 7rem;
+  font-family: Source Sans Pro;
+  font-weight: 200;
+  color: #7aa3a5;
+  position: relative;
+  bottom: 20px;
 }
 .search-container{
   display: flex;
@@ -25,16 +56,15 @@ hr{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 36%;
+  width: 29%;
   align-self: flex-end;
   border-radius: 5px;
-  height: 6vw;
-  font-size: 2vw;
+  height: 4vw;
+  font-size: 1.5vw;
   justify-content: space-between;
   flex: 3;
   background: tomato;
   margin-top: 10px;
-  /*transition: color 2s ease;*/
   color: #d0e1f9;
 }
 .current-container:hover{
@@ -129,11 +159,11 @@ hr{
   margin-top: 150px;
   width: 50%;
   align-self: center;
-  height: 140px;
+  height: 100px;
   border: none;
   text-align: center;
   font-family: Roboto;
-  font-size: 3vw;
+  font-size: 2vw;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -285,7 +315,7 @@ hr{
 }
 .week-header{
   padding: 20px;
-  font-family: 'Bungee';
+  font-family: 'Arvo';
   font-size: 4rem;
   text-align: center;
   color: tomato;
@@ -474,7 +504,7 @@ hr{
 .loading-header{
   margin-top: 200px;
   text-align: center;
-  font-family: 'Bungee';
+  font-family: 'Arvo';
   font-size: 5rem;
   color: tomato;
 }
