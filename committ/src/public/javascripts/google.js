@@ -45,7 +45,6 @@ function initAutocomplete() {
           getgps(input.value);
           var address = document.getElementById('address');
           address.innerHTML = input.value;
-
         })
     function getgps(input){
       var geocoder = new google.maps.Geocoder();
