@@ -2,6 +2,7 @@ body{
   margin: 0;
   font-size: 10px;
   background-color: #D0E1F9;
+  overflow-x: hidden;
 }
 textarea{
   display: none;
@@ -497,7 +498,7 @@ textarea{
   font-family: 'Roboto';
   text-align: center;
   margin: 0;
-  color: tomato;
+  color: aliceblue;
 }
 .hourly-windmill{
   transform: scale(0.6,0.6);
