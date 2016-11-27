@@ -178,13 +178,13 @@ textarea{
 }
 
 .card-header{
-  font-size: 0.8rem;
-  color: tomato;
+  font-size: 1rem;
   font-family: 'Roboto';
   flex-basis: 100%;
   text-align: center;
   align-self: flex-start;
   margin: 0;
+  color: aliceblue;
 }
 .temp-flex{
   display: flex;
@@ -216,6 +216,7 @@ textarea{
 }
 
 .week-section{
+  background: linear-gradient(to bottom, #D0E1F9, #517fa4 );
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -225,9 +226,20 @@ textarea{
   min-height: 100vh;
   font-family: PlayfairDisplay;
   font-size: 2rem;
+  background: #ffb347; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(bottom, #ffb347, #ffcc33);
+  background: -o-linear-gradient(bottom, #ffb347, #ffcc33);
+  background: linear-gradient(to bottom, #ffb347, #ffcc33);
+}
+.day-header{
+  font-family: 'Arvo';
+  font-size: 4rem;
+  text-align: center;
+  color: deepskyblue;
+  animation: fadeInRight 0.2s;
 }
 .sub-header{
-  font-size: 1rem !important;
+  font-size: 2rem !important;
 }
 .icon-container{
   max-width: 860px;
@@ -240,8 +252,7 @@ textarea{
   height: 225px;
   width: 225px;
   list-style: none;
-  border: 1px solid;
-  color: beige;
+  background-color: teal;
   font-family: 'Roboto';
   display: flex;
   box-shadow: 4px 14px 29px -8px rgba(0,0,0,0.75);
@@ -249,7 +260,7 @@ textarea{
   align-items: center;
   flex-wrap: wrap;
   border-color: transparent;
-  border-radius: 29px;
+  border-radius: 16px;
 }
 
 .grid-item > * {
@@ -269,6 +280,7 @@ textarea{
   -webkit-match-parent;
   font-size: 1.2rem;
   position: absolute;
+  color: aliceblue;
 }
 .hour-temp-container{
   transform: scale(0.8,0.8);
@@ -295,7 +307,6 @@ textarea{
   flex: 1;
   height: 75vh;
   width: 75vw;
-  border: 1px solid
 }
 .list-container{
   display: flex;
@@ -314,11 +325,10 @@ textarea{
   min-width: 29%;
 }
 .week-header{
-  padding: 20px;
   font-family: 'Arvo';
   font-size: 4rem;
   text-align: center;
-  color: tomato;
+  color: tomato;;
   animation: fadeInRight 0.2s;
 }
 .list-item{
@@ -361,6 +371,7 @@ textarea{
   padding: 0;
   margin-left: 8px;
   font-size: 1.6rem;
+  color: aliceblue;
 }
 
 .mod2-color {
@@ -634,6 +645,30 @@ Rain
   position: relative;
   z-index: 2;
   right: 40px;
+}
+.footer{
+  height: 40vh;
+  background-color: cadetblue;
+  margin-top: 158px;
+  display: flex;
+  flex-direction: column;
+}
+.footer-header{
+  margin: 20px auto;
+  font-family: 'Bungee';
+  font-size: 4rem;
+}
+.persons {
+  display: flex;
+
+}
+.person{
+  margin: auto;
+  font-family: 'Bungee';
+  font-size: 2rem;
+}
+.email {
+  text-align: center;
 }
 @media(max-width: 1320px)  {
     .whole-list-container {

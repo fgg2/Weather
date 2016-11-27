@@ -33,58 +33,58 @@ function init() {
 
   document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
-    /*$("#top5-list").click(function() {
+    // Changing the defaults
+    window.sr = ScrollReveal({ reset: true });
+
+    // Customizing a reveal set
+    sr.reveal('.icon-container', { distance: '40vw', origin: 'right', duration: 1000, delay: 200, easing: 'ease', reset: false });
+    /* $("#top5-list").click(function() {
       $('#top5-list').toggleClass('top5-display')
     });*/
-    let displayCounter = 1
-    $("#top5-container").click(function() {
+    let displayCounter = 1;
+    $('#top5-container').click(() => {
       displayCounter++;
       console.log(displayCounter);
-      if (displayCounter % 2){
+      if (displayCounter % 2) {
         console.log('remove');
-        $('#top5-list').removeClass('top5-display')
-        $('#top5-list').addClass('top5-no-display')
-      }
-      else{
+        $('#top5-list').removeClass('top5-display');
+        $('#top5-list').addClass('top5-no-display');
+      } else {
         console.log('show');
-        $('#top5-list').removeClass('top5-no-display')
-        $('#top5-list').addClass('top5-display')
-
+        $('#top5-list').removeClass('top5-no-display');
+        $('#top5-list').addClass('top5-display');
       }
-
     });
-    $("#current-container").click(function() {
+    $('#current-container').click(() => {
       const thisInput = document.getElementById('inner-current-loc');
       console.log(thisInput.innerHTML);
-      $("#pac-input").val(thisInput.innerHTML)
-      $("#address").val(thisInput.innerHTML);
-      document.getElementById("submit").click();
+      $('#pac-input').val(thisInput.innerHTML);
+      $('#address').val(thisInput.innerHTML);
+      document.getElementById('submit').click();
     });
-    $(".top5-element").click(function() {
+    $('.top5-element').click(function () {
       const thisInput = this.innerHTML;
       console.log(this.innerHTML);
-      $("#pac-input").val(thisInput.substring(2));
-      $("#address").val(thisInput.substring(2));
-      document.getElementById("submit").click();
+      $('#pac-input').val(thisInput.substring(2));
+      $('#address').val(thisInput.substring(2));
+      document.getElementById('submit').click();
     });
 
-    if(document.getElementById('show').innerHTML == 0){
+    if (document.getElementById('show').innerHTML == 0) {
       console.log('hallo');
+    } else {
+      $('#weekSection').removeClass('section-display');
+      $('#daySection').removeClass('section-display');
     }
-    else {
-      $('#weekSection').removeClass('section-display')
-      $('#daySection').removeClass('section-display')
-    }
-
   });
 }
 init();
 
 function waitForHourPress(data) {
-  createDayIcons(0, data)
-  $("#hour-list").change(function() {
-    var id = $(this).children(":selected").attr("id");
-    var selectedHour = id.match(/\d+/)[0]
+  createDayIcons(0, data);
+  $('#hour-list').change(function () {
+    const id = $(this).children(':selected').attr('id');
+    const selectedHour = id.match(/\d+/)[0];
     createDayIcons(selectedHour, data);
   });
 }
@@ -94,12 +94,12 @@ function createDayIcons(hour, data) {
   const hourly = data.hourly;
   const iconContainer = document.getElementById('icon-container');
   const iconListElement = appendIconChilds(hourly.data[hour].icon);
-  iconListElement.setAttribute('class', 'hourly-weather-icon')
+  iconListElement.setAttribute('class', 'hourly-weather-icon');
   const weatherIconContainer = document.createElement('li');
   weatherIconContainer.appendChild(iconListElement);
   weatherIconContainer.setAttribute('class', 'grid-item');
-  const tmpContainer = createHourlyTempIcon(hourly.data[hour].apparentTemperature, false)
-  tmpContainer.setAttribute('class','grid-item')
+  const tmpContainer = createHourlyTempIcon(hourly.data[hour].apparentTemperature, false);
+  tmpContainer.setAttribute('class', 'grid-item');
   const apparentTempContainer = createHourlyTempIcon(hourly.data[hour].apparentTemperature, true);
   apparentTempContainer.setAttribute('class', 'grid-item');
   const windContainer = createWindmill(Math.round(hourly.data[hour].windSpeed), true);
@@ -114,7 +114,7 @@ function createDayIcons(hour, data) {
   const windBearing = document.createElement('li');
 
   const winddir = checkWindDirection(hourly.data[hour].windBearing);
-  const windText = document.createElement('div')
+  const windText = document.createElement('div');
   windBearing.innerHTML = `winddirection = ${winddir}`;
   windBearing.setAttribute('class', 'degrees list-item');
 
@@ -124,8 +124,8 @@ function createDayIcons(hour, data) {
   compass.setAttribute('class', 'hourly-compass');
   const compassMsg = document.createElement('div');
   compassMsg.setAttribute('class', 'hourly-compass-msg');
-  windText.innerHTML = 'Wind direction'
-  windText.setAttribute('class','card-header');
+  windText.innerHTML = 'Wind direction';
+  windText.setAttribute('class', 'card-header');
   compassContainer.appendChild(windText);
 
   compass.setAttribute('id', 'compasshourly');
@@ -134,7 +134,7 @@ function createDayIcons(hour, data) {
   compassMsg.innerHTML = checkWindDirection(hourly.data[hour].windBearing, 'compasshourly');
   compassContainer.appendChild(compass);
   compassContainer.appendChild(compassMsg);
-  compass.style.transform ='rotate('+ (hourly.data[hour].windBearing + 225)+'deg)'
+  compass.style.transform = `rotate(${hourly.data[hour].windBearing + 225}deg)`;
 
   while (iconContainer.firstChild) {
     iconContainer.removeChild(iconContainer.firstChild);
@@ -188,32 +188,30 @@ function createHourlyTempIcon(data, apparentOrNot) {
   return thermoLi;
 }
 function createPercip(data) {
-  var percContainer = document.createElement('li');
-  var percTopText = document.createElement('div');
-  percTopText.innerHTML = "Precipitation probability"
-  var percPercent = document.createElement('div');
-  percTopText.setAttribute('class', 'card-header')
-  percPercent.setAttribute('class', 'hourly-percentage')
-  percPercent.innerHTML = Math.round(data * 100) + '%';
+  const percContainer = document.createElement('li');
+  const percTopText = document.createElement('div');
+  percTopText.innerHTML = 'Precipitation probability';
+  const percPercent = document.createElement('div');
+  percTopText.setAttribute('class', 'card-header');
+  percPercent.setAttribute('class', 'hourly-percentage');
+  percPercent.innerHTML = `${Math.round(data * 100)}%`;
   percContainer.appendChild(percTopText);
   percContainer.appendChild(percPercent);
   return percContainer;
-
 }
 
 function createHumid(data) {
   console.log(data);
-  var humidContainer = document.createElement('li');
-  var humidTopText = document.createElement('div');
-  humidTopText.innerHTML = "Humididy"
-  var humidPercent = document.createElement('div');
-  humidTopText.setAttribute('class', 'card-header')
-  humidPercent.setAttribute('class', 'hourly-percentage')
-  humidPercent.innerHTML = Math.round(data * 100) + '%';
+  const humidContainer = document.createElement('li');
+  const humidTopText = document.createElement('div');
+  humidTopText.innerHTML = 'Humididy';
+  const humidPercent = document.createElement('div');
+  humidTopText.setAttribute('class', 'card-header');
+  humidPercent.setAttribute('class', 'hourly-percentage');
+  humidPercent.innerHTML = `${Math.round(data * 100)}%`;
   humidContainer.appendChild(humidTopText);
   humidContainer.appendChild(humidPercent);
   return humidContainer;
-
 }
 
 function createDay(data) {
@@ -222,13 +220,13 @@ function createDay(data) {
   for (i = 0; i < 24; i++) {
     const todayDate = new Date(hourly.data[i].time * 1000);
     const hour = todayDate.getHours();
-    var hourListItem = document.createElement('div');
+    const hourListItem = document.createElement('div');
     const createHourId = `hour${i}`;
-    //var hourListItem = document.getElementById(`hour${i}`);
-    //hourListItem.innerHTML = hour + ':00';
-    //console.log(hourListItem.innerHTML)
-    document.getElementById('hour-list').options[i].text = hour +':00'
-    console.log(document.getElementById('hour-list').options[i].value)
+    // var hourListItem = document.getElementById(`hour${i}`);
+    // hourListItem.innerHTML = hour + ':00';
+    // console.log(hourListItem.innerHTML)
+    document.getElementById('hour-list').options[i].text = `${hour}:00`;
+    console.log(document.getElementById('hour-list').options[i].value);
     hourList.appendChild(hourListItem);
   }
   $('select').niceSelect();
@@ -264,8 +262,6 @@ function createWindmill(data, hourWindOrNot) {
   windContainer.appendChild(windAmountIcon);
   setWindmillSpeed(data, wind);
   return windContainer;
-
-
 }
 
 function createWeek(data) {
@@ -273,7 +269,7 @@ function createWeek(data) {
   const timedays = [];
 
   const months = ['Januar', 'Februar', 'Mars', 'April', 'May', 'Juni', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   const wholeListContainer = document.getElementById('whole-list');
 
@@ -303,7 +299,7 @@ function createWeek(data) {
     const windBearing = document.createElement('li');
     windbear = daily.data[i].windBearing;
     winddir = checkWindDirection(windbear);
-    const windText = document.createElement('div')
+    const windText = document.createElement('div');
     windBearing.innerHTML = `winddirection = ${winddir}`;
     windBearing.setAttribute('class', 'degrees list-item');
 
@@ -311,8 +307,7 @@ function createWeek(data) {
     const summary = document.createElement('li');
     summary.innerHTML = daily.data[i].summary;
     summary.setAttribute('class', 'list-item summary');
-    day.appendChild(summary)
-
+    day.appendChild(summary);
 
 
     const windContainer = createWindmill(Math.round(daily.data[i].windSpeed));
@@ -418,8 +413,8 @@ function createWeek(data) {
     compass.setAttribute('class', 'compass');
     const compassMsg = document.createElement('div');
     compassMsg.setAttribute('class', 'compass-msg');
-    windText.innerHTML = 'Wind direction'
-    windText.setAttribute('class','wind-direction-text');
+    windText.innerHTML = 'Wind direction';
+    windText.setAttribute('class', 'wind-direction-text');
     compassContainer.appendChild(windText);
 
     const compassId = (`compass${i}`);
@@ -449,11 +444,11 @@ function createWeek(data) {
 function appendIconChilds(data) {
   const iconListElement = document.createElement('li');
   iconListElement.setAttribute('class', 'list-item icon degrees');
-  var firstDiv = document.createElement('div');
-  var secondDiv = document.createElement('div');
-  var thirdDiv = document.createElement('div');
-  var fourthDiv = document.createElement('div');
-  var fifthDiv = document.createElement('div');
+  const firstDiv = document.createElement('div');
+  const secondDiv = document.createElement('div');
+  const thirdDiv = document.createElement('div');
+  const fourthDiv = document.createElement('div');
+  const fifthDiv = document.createElement('div');
 
   if (data === 'clear-day') {
     firstDiv.setAttribute('class', 'sun');
@@ -544,7 +539,7 @@ function checkWindDirection(degrees, id) {
   const val = Math.floor((degrees / 22.5) + 0.5);
   const arr = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 
-  console.log('hallo' +degrees + id)
+  console.log(`hallo${degrees}${id}`);
   $(`#${id}`)
         .css('-webkit-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
         .css('-moz-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
@@ -588,22 +583,22 @@ function setWindmillSpeed(speed, wind) {
     wind.setAttribute('class', 'sec30');
   }
 }
-function setAddress(){
+function setAddress() {
   $.ajax({
-      url: 'http://localhost:3000/address',
-      type: "GET",
-      dataType: 'json',
-      cache: true,
-      success: function(data, status, error) {
-          var hourheader = document.getElementById('hour-head');
-          hourheader.innerHTML = 'TODAY IN ' + data.address.toUpperCase();
-          var weekheader = document.getElementById('week-header');
-          weekheader.innerHTML = 'TODAY IN ' + data.address.toUpperCase();
-      },
-      error: function(data, status, error) {
-          console.log('error', data, status, error);
-          var error = document.getElementById('loading')
-          error.innerHTML = error;
-      }
+    url: 'http://localhost:3000/address',
+    type: 'GET',
+    dataType: 'json',
+    cache: true,
+    success(data, status, error) {
+      const hourheader = document.getElementById('hour-head');
+      hourheader.innerHTML = `TODAY IN ${data.address.toUpperCase()}`;
+      const weekheader = document.getElementById('week-header');
+      weekheader.innerHTML = `TODAY IN ${data.address.toUpperCase()}`;
+    },
+    error(data, status, error) {
+      console.log('error', data, status, error);
+      var error = document.getElementById('loading');
+      error.innerHTML = error;
+    },
   });
 }

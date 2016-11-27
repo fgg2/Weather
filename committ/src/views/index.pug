@@ -36,8 +36,8 @@ block content
             hr.hr-top5
   script(src='/javascripts/google.js')
   section(id ='daySection' class= 'day-section section-display')
-    h1(class= 'week-header' id='hour-head')='TODAY IN *YOUR LOCATION'
-    h2(class= 'week-header sub-header')='Pick hour'
+    h1(class= 'day-header' id='hour-head')='TODAY IN *YOUR LOCATION'
+    h2(class= 'day-header sub-header')='Pick hour'
     select(id='hour-list' class='select-button')
       option(id='hour0')
       option(id='hour1')
@@ -79,8 +79,16 @@ block content
             div(class='rain-loading drop3')
     h1(class='week-header' id='week-header')='THIS WEEK IN '
     div(class='whole-list-container' id='whole-list')
+    section(class='footer')
+      h2(class='footer-header')='Project by'
+      div(class='persons')
+        div(class='person')='Aðalsteinn Ingi Pálsson'
+          div(class='email')='aip7@hi.is'
+        div(class='person')='Fannar Gauti Guðmundsson'
+          div(class='email')='fgg2@hi.is'
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete' async defer)
   script(src='https://code.jquery.com/jquery-latest.min.js')
   script(src='/javascripts/main.js')
   script(src="/javascripts/jquery.js")
   script(src="/javascripts/jquery.nice-select.js")
+  script(src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js")
