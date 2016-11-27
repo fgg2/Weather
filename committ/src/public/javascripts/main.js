@@ -60,13 +60,15 @@ function init() {
       console.log(thisInput.innerHTML);
       $('#pac-input').val(thisInput.innerHTML);
       $('#address').val(thisInput.innerHTML);
-      document.getElementById('submit').click();
+      getgps(thisInput.innerHTML);
+      //document.getElementById('submit').click();
     });
     $('.top5-element').click(function () {
       const thisInput = this.innerHTML;
       console.log(this.innerHTML);
       $('#pac-input').val(thisInput.substring(2));
       $('#address').val(thisInput.substring(2));
+      getgps(thisInput.substring(2));
       document.getElementById('submit').click();
     });
 
