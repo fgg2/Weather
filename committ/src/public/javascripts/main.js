@@ -62,14 +62,12 @@ function init() {
       document.getElementById('submit').click();
     });
     $('.top5-element').click(function () {
-
-    }unction () {
       const thisInput = this.innerHTML;
       console.log(thisInput);
       $('#pac-input').val(thisInput.substring(2));
       $('#address').val(thisInput.substring(2));
       getgps(thisInput.substring(2));
-      //document.getElementById('submit').click();
+      // document.getElementById('submit').click();
     });
 
     if (document.getElementById('show').innerHTML == 0) {
