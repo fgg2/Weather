@@ -57,14 +57,15 @@ function init() {
     });
     $('#current-container').click(() => {
       const thisInput = document.getElementById('inner-current-loc');
-      console.log(thisInput.innerHTML);
       $('#pac-input').val(thisInput.innerHTML);
       $('#address').val(thisInput.innerHTML);
       document.getElementById('submit').click();
     });
     $('.top5-element').click(function () {
+
+    }unction () {
       const thisInput = this.innerHTML;
-      console.log(this.innerHTML);
+      console.log(thisInput);
       $('#pac-input').val(thisInput.substring(2));
       $('#address').val(thisInput.substring(2));
       document.getElementById('submit').click();
