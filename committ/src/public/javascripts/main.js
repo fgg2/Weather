@@ -84,14 +84,23 @@ function appendIconChilds(data) {
 function checkWindDirection(degrees, id) {
   const val = Math.floor((degrees / 22.5) + 0.5);
   const arr = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
-
-  $(`#${id}`)
-        .css('-webkit-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-        .css('-moz-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-        .css('-ms-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-        .css('-o-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-        .css('transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `);
-
+  const isFirefox = typeof InstallTrigger !== 'undefined';
+  if (isFirefox) {
+    $(`#${id}`)
+          .css('-webkit-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('-moz-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('-ms-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('-o-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('left', '85vw');
+  } else {
+    $(`#${id}`)
+          .css('-webkit-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('-moz-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('-ms-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('-o-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+          .css('transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `);
+  }
   return arr[(val % 16)];
 }
 function setWindmillSpeed(speed, wind) {
@@ -459,8 +468,12 @@ function createDayIcons(hour, data) {
   compassMsg.innerHTML = checkWindDirection(hourly.data[hour].windBearing, 'compasshourly');
   compassContainer.appendChild(compass);
   compassContainer.appendChild(compassMsg);
-  compass.style.transform = `rotate(${hourly.data[hour].windBearing + 225}deg)`;
-
+  const isFirefox = typeof InstallTrigger !== 'undefined';
+  if (isFirefox) {
+    compass.style.transform = `translateY(-50%) translateX(-50%) rotate(${hourly.data[hour].windBearing + 225}deg)`;
+  } else {
+    compass.style.transform = `rotate(${hourly.data[hour].windBearing + 225}deg)`;
+  }
   while (iconContainer.firstChild) {
     iconContainer.removeChild(iconContainer.firstChild);
   }

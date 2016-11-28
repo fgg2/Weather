@@ -251,3 +251,8 @@
   form{-o-transform:rotate(0deg);}
   to{-o-transform:rotate(-360deg);}
 }
+@-moz-document url-prefix() {
+    .stick {
+       margin-left: 40px;
+    }
+}

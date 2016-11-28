@@ -295,7 +295,6 @@ textarea{
 }
 .hourly-compass-msg{
   z-index: 2;
-  -webkit-match-parent;
   font-size: 1.2rem;
   position: absolute;
   color: aliceblue;
@@ -316,6 +315,16 @@ textarea{
   height: 100px;
   width: 100px;
   align-self: center;
+}
+@-moz-document url-prefix() {
+    .hourly-compass-msg {
+      transform: translateX(-50%);
+      left: 50%;
+      bottom: 135px;
+    }
+    .hourly-compass{
+      left: 50%;
+    }
 }
 .main-day-container{
   margin: 75px auto;
