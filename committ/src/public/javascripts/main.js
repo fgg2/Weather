@@ -137,7 +137,7 @@ function setWindmillSpeed(speed, wind) {
   }
 }
 function tempColor(data) {
-  let color;
+  let color = 'blue';
   if (data < 0) {
     color = 'royalblue';
   } else if (data >= 0) {

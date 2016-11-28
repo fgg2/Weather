@@ -23,7 +23,8 @@ textarea{
 }
 
 .search-section{
-  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: hidden;
 }
 .main-header {
   display: flex;
@@ -327,7 +328,7 @@ textarea{
     }
 }
 .main-day-container{
-  margin: 75px auto;
+  margin: auto;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -371,7 +372,7 @@ textarea{
 .summary{
   font-size: 1vw;
   color: #ff7f50;
-  max-width: 315px;
+  max-width: 359px;
   position: absolute;
 }
 .top5-element:hover{
@@ -425,7 +426,7 @@ textarea{
   left: 13px;
   font-size: 0.8rem;
 }
-.thermo-container{
+.thermo-container {
   transform: scale(0.55,0.55) translateY(-44%);
 }
 .thermometer-top {
@@ -465,7 +466,7 @@ textarea{
     z-index: -1;
     margin: -7px auto;
 }
-.thermometer-bottom-min{
+.thermometer-bottom-min {
     content: '';
     background: tomato;
     width:60px;
@@ -475,7 +476,7 @@ textarea{
     margin: -7px auto;
 }
 
-.thermometer-fill{
+.thermometer-fill {
     width: 30px;
     min-height: 12px;
     background: tomato;
@@ -501,32 +502,34 @@ textarea{
     width: 100px;
     margin-top: 10px;
 }
-.compass-msg{
+.compass-msg {
   margin-top: 10px;
 }
 .compass-msg {
     z-index: 2;
 }
 
-.wind-text{
+.wind-text {
   position: relative;
   top: -163px;
   left: 201px;
   font-size: 2rem;
 }
-.hourly-wind-container{
+
+.hourly-wind-container {
   /*transform: scale(0.5,0.5);
   min-width: 563px;
   min-height: 563px;*/
 }
-.hourly-wind-text{
+
+.hourly-wind-text {
   font-size: 2rem;
   font-family: 'Roboto';
   text-align: center;
   margin: 0;
   color: aliceblue;
 }
-.hourly-windmill{
+.hourly-windmill {
   transform: scale(0.6,0.6);
   position: relative;
   align-content: center;
@@ -535,18 +538,20 @@ textarea{
   height: 100%;
   bottom: 40px;
 }
-.icon{
+.icon {
   flex:2;
   justify-content: center;
 }
-.loading-header{
+
+.loading-header {
   margin-top: 200px;
   text-align: center;
   font-family: 'Arvo';
   font-size: 5rem;
   color: tomato;
 }
-.container-cloud{
+
+.container-cloud {
   position: absolute;
   height: 200px;
   width: 300px;
@@ -629,10 +634,6 @@ textarea{
     0 -2px 5px rgba(0, 0, 0, .5);
 }
 
-
-/***************
-Rain
-***************/
 .icon-loading-rain {
   top: 0; right: 10px; bottom: 0;
   position:absolute;
@@ -668,40 +669,47 @@ Rain
   -webkit-animation:drop-a 2s infinite;
 }
 
-.compass-msg{
+.compass-msg {
   position: relative;
   z-index: 2;
   right: 40px;
 }
-.footer{
+
+.footer {
   height: 40vh;
   background-color: cadetblue;
   margin-top: 158px;
   display: flex;
   flex-direction: column;
 }
-.footer-header{
+
+.footer-header {
   margin: 20px auto;
   font-family: 'Bungee';
   font-size: 4rem;
 }
+
 .persons {
   display: flex;
 
 }
-.person{
+
+.person {
   margin: auto;
   font-family: 'Bungee';
   font-size: 2rem;
 }
+
 .email {
   text-align: center;
 }
-.powered-container{
+
+.powered-container {
   display: flex;
 
 }
-.powered-by{
+
+.powered-by {
   margin: auto;
   width: 15vw;
 }
