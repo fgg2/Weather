@@ -7,5 +7,11 @@ module.exports = {
     ],
     "rules": {
       "linebreak-style": 0,
+      "no-undef": "off",
+    },
+    "env": {
+      "browser": true,
+      "jquery": true,
+
     },
 };
