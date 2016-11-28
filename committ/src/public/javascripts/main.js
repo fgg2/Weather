@@ -1,6 +1,5 @@
 
 function getWeather() {
-
   $.ajax({
     url: 'http://localhost:3000/data',
     type: 'GET',

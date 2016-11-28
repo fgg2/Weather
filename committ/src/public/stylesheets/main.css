@@ -379,9 +379,9 @@ textarea{
 
 .bottom-text-week {
   position: relative;
-  font-size: 2.3rem;
-  bottom: 8px;
-  left: 7px;
+  font-size: 2rem;
+  bottom: 3px;
+  left: 2px;
 }
 
 .bottom-text {
@@ -687,6 +687,14 @@ Rain
 }
 .email {
   text-align: center;
+}
+.powered-container{
+  display: flex;
+
+}
+.powered-by{
+  margin: auto;
+  width: 15vw;
 }
 @media(max-width: 1320px)  {
     .whole-list-container {
