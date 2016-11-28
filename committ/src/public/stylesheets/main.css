@@ -150,17 +150,34 @@ textarea{
   margin-top: 18px;
   color: #d0e1f9;
 }
+.scroll-plz{
+  margin: 20px auto;
+  font-size: 2rem;
+}
+.scroll-icon{
+  text-align: center;
+  font-size: 4rem;
+  animation: bounce 2s infinite;
+}
 
+.scroll-button {
+  margin: 20px auto;
+  color: darkorange;
+  font-family: 'Lobster';
+  visibility: hidden;
+  cursor: pointer;
+
+}
 .section-display{
   display:none;
 }
 
 
 .controls {
-  margin-top: 150px;
+  margin-top: 85px;
   width: 50%;
   align-self: center;
-  height: 100px;
+  height: 83px;
   border: none;
   text-align: center;
   font-family: Roboto;
@@ -170,7 +187,7 @@ textarea{
   font-stretch: normal;
   color: tomato;
   border-radius: 130px;
-  background-image: url('../img/search.png');
+  background-image: url(../img/search.png);
   background-repeat: no-repeat;
   background-position: right;
 }
@@ -721,6 +738,57 @@ Rain
     }
 
 }
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0) rotate(90deg);
+    transform: translateY(0) rotate(90deg);
+  }
+  40% {
+    -moz-transform: translateY(-30px) rotate(90deg);
+    transform: translateY(-30px) rotate(90deg);
+  }
+  60% {
+    -moz-transform: translateY(-15px) rotate(90deg);
+    transform: translateY(-15px) rotate(90deg);
+  }
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0) rotate(90deg);
+    transform: translateY(0) rotate(90deg);
+  }
+  40% {
+    -webkit-transform: translateY(-30px) rotate(90deg);
+    transform: translateY(-30px) rotate(90deg);
+  }
+  60% {
+    -webkit-transform: translateY(-15px) rotate(90deg);
+    transform: translateY(-15px) rotate(90deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0) rotate(90deg);
+    -ms-transform: translateY(0) rotate(90deg);
+    -webkit-transform: translateY(0) rotate(90deg);
+    transform: translateY(0) rotate(90deg);
+  }
+  40% {
+    -moz-transform: translateY(-30px) rotate(90deg);
+    -ms-transform: translateY(-30px) rotate(90deg);
+    -webkit-transform: translateY(-30px) rotate(90deg);
+    transform: translateY(-30px) rotate(90deg);
+  }
+  60% {
+    -moz-transform: translateY(-15px) rotate(90deg);
+    -ms-transform: translateY(-15px) rotate(90deg);
+    -webkit-transform: translateY(-15px) rotate(90deg);
+    transform: translateY(-15px) rotate(90deg);
+  }
+}
+
 
 @keyframes drop-a
 {

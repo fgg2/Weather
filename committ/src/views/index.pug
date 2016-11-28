@@ -34,7 +34,9 @@ block content
             hr.hr-top5
             p(class='top5-element' id='top5-element')='5.'+list5
             hr.hr-top5
-  script(src='/javascripts/google.js')
+      div(id='scroll-button' class='scroll-button')
+        div(class='scroll-plz' id='scroll-plz')='Scroll down for weather!'
+        div(class='scroll-icon' id='scroll-icon')='❯'
   section(id ='daySection' class= 'day-section section-display')
     h1(class= 'day-header' id='hour-head')='TODAY IN *YOUR LOCATION'
     h2(class= 'day-header sub-header')='Pick hour'
@@ -86,6 +88,7 @@ block content
           div(class='email')='aip7@hi.is'
         div(class='person')='Fannar Gauti Guðmundsson'
           div(class='email')='fgg2@hi.is'
+  script(src='/javascripts/google.js')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete' async defer)
   script(src='https://code.jquery.com/jquery-latest.min.js')
   script(src='/javascripts/main.js')

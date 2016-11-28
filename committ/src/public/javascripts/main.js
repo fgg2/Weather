@@ -1,4 +1,93 @@
 
+<<<<<<< HEAD
+=======
+function getWeather() {
+
+  $.ajax({
+    url: 'http://localhost:3000/data',
+    type: 'GET',
+    dataType: 'json',
+    cache: true,
+    success(data, status, error) {
+      console.log('success', data);
+      $('#container-loading')
+            .delay(0).queue(function (next) {
+              $(this).fadeOut(200);
+              next();
+            });
+      createWeek(data);
+      createDay(data);
+      waitForHourPress(data);
+      setAddress();
+    },
+    error(data, status, error) {
+      console.log('error', data, status, error);
+      var error = document.getElementById('loading');
+      error.innerHTML = error;
+    },
+  });
+}
+
+function init() {
+  getWeather();
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    // Changing the defaults
+    window.sr = ScrollReveal({ reset: true });
+
+    // Customizing a reveal set
+    sr.reveal('.icon-container', { distance: '40vw', origin: 'right', duration: 1000, delay: 200, easing: 'ease', reset: false });
+    /* $("#top5-list").click(function() {
+      $('#top5-list').toggleClass('top5-display')
+    });*/
+    let displayCounter = 1;
+    $('#top5-container').click(() => {
+      displayCounter++;
+      console.log(displayCounter);
+      if (displayCounter % 2) {
+        console.log('remove');
+        $('#top5-list').removeClass('top5-display');
+        $('#top5-list').addClass('top5-no-display');
+      } else {
+        console.log('show');
+        $('#top5-list').removeClass('top5-no-display');
+        $('#top5-list').addClass('top5-display');
+      }
+    });
+    $('#current-container').click(() => {
+      const thisInput = document.getElementById('inner-current-loc');
+      $('#pac-input').val(thisInput.innerHTML);
+      $('#address').val(thisInput.innerHTML);
+      document.getElementById('submit').click();
+    });
+    $('.top5-element').click(function () {
+      const thisInput = this.innerHTML;
+      console.log(thisInput);
+      $('#pac-input').val(thisInput.substring(2));
+      $('#address').val(thisInput.substring(2));
+      getgps(thisInput.substring(2));
+      // document.getElementById('submit').click();
+    });
+
+    if (document.getElementById('show').innerHTML == 0) {
+      console.log('hallo');
+    } else {
+      $('#weekSection').removeClass('section-display');
+      $('#daySection').removeClass('section-display');
+
+      $('#scroll-button').css('visibility', 'visible');
+    }
+    $('#scroll-button').click(() => {
+      $('html, body').animate({
+        scrollTop: $('#daySection').offset().top,
+      }, 700);
+      console.log('worked');
+    });
+  });
+}
+init();
+>>>>>>> 738b6fc1e6145795abd31a7478d5e187243eb057
 
 function waitForHourPress(data) {
   createDayIcons(0, data);
