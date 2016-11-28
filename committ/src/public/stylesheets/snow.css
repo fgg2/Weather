@@ -50,7 +50,7 @@
   animation: spin 8s linear infinite reverse;
 }
 .flake:after {
-  margin: 0em 0 0 -1em;
+  margin: -0.2em 0 0 -1em;
   font-size: 2.5em;
   opacity: 0.4;
   animation: spin 14s linear infinite;

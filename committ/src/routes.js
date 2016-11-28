@@ -14,7 +14,7 @@ const pgp = require('pg-promise')();
 const xss = require('xss');
 
 const env = process.env.DATABASE_URL;
-const DATABASE = 'postgres://postgres@localhost:5432/WeatherData';
+const DATABASE = 'postgres://test@localhost:5432/WeatherData';
 
 const db = pgp(env || DATABASE);
 
@@ -24,6 +24,8 @@ router.get('/list', (req, res) => {
     .then((data) => {
       // Hér ættum við að senda niðurstöður í template og vinna með HTML þar
       const result = ['<ul>'];
+
+      console.log(111, data);
 
       data.forEach((row) => {
         result.push(`<li><p>${row.name} : ${row.num}</p></li>`);
@@ -83,18 +85,18 @@ router.get('/address', (req, res) => {
 router.get('/', (req, res) => {
   const list = [];
   db.any('SELECT name,COUNT(*) as num from location group by name order by num desc LIMIT 5')
-    .then((data) => {
-      for (let i = 0; i < 5; i += 1) {
-        list[i] = data[i].name;
-      }
-      const list1 = list[0];
-      const list2 = list[1];
-      const list3 = list[2];
-      const list4 = list[3];
-      const list5 = list[4];
-      counter = 0;
-      res.render('index', { list1, list2, list3, list4, list5, counter });
-    })
+     .then((data) => {
+       for (let i = 0; i < 5; i += 1) {
+         list[i] = data[i].name;
+       }
+       const list1 = list[0];
+       const list2 = list[1];
+       const list3 = list[2];
+       const list4 = list[3];
+       const list5 = list[4];
+       counter = 0;
+       res.render('index', { list1, list2, list3, list4, list5, counter });
+     })
     .catch((error) => {
       res.render('error', { title: error, error });
     });

@@ -46,9 +46,7 @@ function initAutocomplete() {
           var address = document.getElementById('address');
           address.innerHTML = input.value;
         })
-    getgps(input);
 }
-
 function getgps(input){
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode({
@@ -59,8 +57,6 @@ function getgps(input){
       var long = document.getElementById('long');
       lat.innerHTML = results[0].geometry.location.lat();
       long.innerHTML = results[0].geometry.location.lng();
-      console.log(lat);
-      console.log(long);
 
     } else {
       alert("Something got wrong " + status);
