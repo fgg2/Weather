@@ -75,7 +75,15 @@ function init() {
     } else {
       $('#weekSection').removeClass('section-display');
       $('#daySection').removeClass('section-display');
+
+      $('#scroll-button').css('visibility', 'visible');
     }
+    $('#scroll-button').click(() => {
+      $('html, body').animate({
+        scrollTop: $('#daySection').offset().top,
+      }, 700);
+      console.log('worked');
+    });
   });
 }
 init();

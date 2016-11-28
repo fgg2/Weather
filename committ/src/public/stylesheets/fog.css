@@ -22,7 +22,6 @@
  -ms-filter: blur(5px);
  filter: blur(5px);
 }
-}
 .fog:after {
   content: '';
   position: absolute;
@@ -49,7 +48,7 @@
 }
 
 .fog{
-  margin: -2em 1em;
+    margin: -2em -2em;
 }
 
 @keyframes fog {
