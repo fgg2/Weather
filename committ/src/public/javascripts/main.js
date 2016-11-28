@@ -1,7 +1,5 @@
 
-function getWeather(longi, latti) {
-  const mainurl = 'https://api.darksky.net/forecast/';
-  const code = '0fe876b2f29e459c7d7b163d9be370e1';
+function getWeather() {
 
   $.ajax({
     url: 'http://localhost:3000/data',
@@ -29,7 +27,7 @@ function getWeather(longi, latti) {
 }
 
 function init() {
-  getWeather(64.1265, -21.8174);
+  getWeather();
 
   document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
