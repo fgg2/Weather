@@ -68,7 +68,8 @@ function init() {
       console.log(thisInput);
       $('#pac-input').val(thisInput.substring(2));
       $('#address').val(thisInput.substring(2));
-      document.getElementById('submit').click();
+      getgps(thisInput.substring(2));
+      //document.getElementById('submit').click();
     });
 
     if (document.getElementById('show').innerHTML == 0) {

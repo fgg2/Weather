@@ -46,20 +46,20 @@ function initAutocomplete() {
           var address = document.getElementById('address');
           address.innerHTML = input.value;
         })
-    function getgps(input){
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({
-        'address': input
-      }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var lat = document.getElementById('latt');
-          var long = document.getElementById('long');
-          lat.innerHTML = results[0].geometry.location.lat();
-          long.innerHTML = results[0].geometry.location.lng();
+}
+function getgps(input){
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({
+    'address': input
+  }, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      var lat = document.getElementById('latt');
+      var long = document.getElementById('long');
+      lat.innerHTML = results[0].geometry.location.lat();
+      long.innerHTML = results[0].geometry.location.lng();
 
-        } else {
-          alert("Something got wrong " + status);
-        }
-    })
-  }
+    } else {
+      alert("Something got wrong " + status);
+    }
+})
 }
