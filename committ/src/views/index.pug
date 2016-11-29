@@ -28,7 +28,7 @@ block content
         div(class='main-header')='WEATHER'
         hr.hr-heading
         div(class='sub-header-main')='WHEREVER'
-      input(name ='google' id='pac-input' class='controls' type='text' placeholder='Put location in me' autofocus)
+      input(name ='google' id='pac-input' class='controls' type='text' placeholder='Put location in me' required autofocus)
       form(action='/' method='post')
         textarea(id='latt' name='latt')
         textarea(id='long' name='long')
@@ -83,15 +83,15 @@ block content
     h1(class='week-header-today')='TODAY IN'
     h1(class='week-header' id='week-header')='THIS WEEK IN '
     div(class='whole-list-container' id='whole-list')
-    section(class='footer')
-      h2(class='footer-header')='Project by'
-      div(class='persons')
-        div(class='person')='Aðalsteinn Ingi Pálsson'
-          div(class='email')='aip7@hi.is'
-        div(class='person')='Fannar Gauti Guðmundsson'
-          div(class='email')='fgg2@hi.is'
-      img(class='powered-by' src='./img/darksky.png' alt='darksky')
-      img(class='powered-by' src='./img/google.png' alt='google')
+  section(class='footer section-display' id='footSection')
+    h2(class='footer-header')='Project by'
+    div(class='persons')
+      div(class='person')='Aðalsteinn Ingi Pálsson'
+        div(class='email')='aip7@hi.is'
+      div(class='person')='Fannar Gauti Guðmundsson'
+        div(class='email')='fgg2@hi.is'
+    img(class='powered-by' src='./img/darksky.png' alt='darksky')
+    img(class='powered-by' src='./img/google.png' alt='google')
 
   script(src='/javascripts/google.js')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete' async defer)

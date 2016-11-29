@@ -572,6 +572,7 @@ function init() {
     if (document.getElementById('show').innerHTML != 0) {
       $('#weekSection').removeClass('section-display');
       $('#daySection').removeClass('section-display');
+      $('#footSection').removeClass('section-display');
       $('#scroll-button').css('visibility', 'visible');
     }
     $('#scroll-button').click(() => {

@@ -178,6 +178,7 @@ textarea {
   text-align: center;
   font-size: 4vw;
   animation: bounce 2s infinite;
+  margin-bottom: 6vw;
 }
 
 .scroll-button {
@@ -189,7 +190,7 @@ textarea {
 }
 
 .section-display {
-  display: none;
+  display: none !important;
 }
 
 .controls {
@@ -275,6 +276,7 @@ textarea {
 }
 
 .day-header-today {
+  margin-top: 0;
   font-family: 'Arvo';
   font-size: 3vw;
   text-align: center;
@@ -388,6 +390,7 @@ textarea {
   background-color: #4d648d;
   height: 170px;
   width: 100%;
+  margin-bottom: 0;
 }
 
 .day {
@@ -403,7 +406,7 @@ textarea {
   font-family: 'Arvo';
   font-size: 3vw;
   text-align: center;
-  color: #60bfa6;
+  color: tomato;
   margin-bottom: 0;
   animation: fadeInRight 0.2s;
 }
@@ -412,7 +415,7 @@ textarea {
   font-family: 'Lobster';
   font-size: 3vw;
   text-align: center;
-  color: #bfa24f;
+  color: #60bfa6;
   animation: fadeInRight 0.2s;
   margin-top: 0;
 }
@@ -469,6 +472,7 @@ textarea {
   max-width: 75%;
   max-height: 75%;
   margin: 20px auto;
+  margin-bottom: 0;
 }
 
 .temp-text {
@@ -757,7 +761,6 @@ textarea {
 .footer {
   height: 40vh;
   background-color: cadetblue;
-  margin-top: 158px;
   display: flex;
   flex-direction: column;
 }
