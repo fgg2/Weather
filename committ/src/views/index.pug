@@ -11,15 +11,15 @@ block content
         div(class='the-list-container')
           h2(class='top5-header')='Top 5 searches!'
           form(class='top5-el-container' action='/' method='post')
-            p(class='top5-element' id='top5-element')='1.'+list1
+            p(class='top5-element')='1.'+list1
             hr.hr-top5
-            p(class='top5-element' id='top5-element')='2.'+list2
+            p(class='top5-element')='2.'+list2
             hr.hr-top5
-            p(class='top5-element' id='top5-element')='3.'+list3
+            p(class='top5-element')='3.'+list3
             hr.hr-top5
-            p(class='top5-element' id='top5-element')='4.'+list4
+            p(class='top5-element')='4.'+list4
             hr.hr-top5
-            p(class='top5-element' id='top5-element')='5.'+list5
+            p(class='top5-element')='5.'+list5
             hr.hr-top5
       div(id='current-container' class='current-container')
         div(id='current-loc' class='current-loc')='Press here to see the weather forecast for'
@@ -28,7 +28,7 @@ block content
         div(class='main-header')='WEATHER'
         hr.hr-heading
         div(class='sub-header-main')='WHEREVER'
-      input(name ='google' id='pac-input' class='controls' type='text required' placeholder='Put location in me' autofocus)
+      input(name ='google' id='pac-input' class='controls' type='text' placeholder='Put location in me' autofocus)
       form(action='/' method='post')
         textarea(id='latt' name='latt')
         textarea(id='long' name='long')
@@ -41,30 +41,30 @@ block content
     h1(class= 'day-header' id='hour-head')='TODAY IN *YOUR LOCATION'
     h2(class= 'day-header sub-header')='Pick hour'
     select(id='hour-list' class='select-button')
-      option(id='hour0')
-      option(id='hour1')
-      option(id='hour2')
-      option(id='hour3')
-      option(id='hour4')
-      option(id='hour5')
-      option(id='hour6')
-      option(id='hour7')
-      option(id='hour8')
-      option(id='hour9')
-      option(id='hour10')
-      option(id='hour11')
-      option(id='hour12')
-      option(id='hour13')
-      option(id='hour14')
-      option(id='hour15')
-      option(id='hour16')
-      option(id='hour17')
-      option(id='hour18')
-      option(id='hour19')
-      option(id='hour20')
-      option(id='hour21')
-      option(id='hour22')
-      option(id='hour23')
+      option(id='hour0' label ='hour0')
+      option(id='hour1' label ='hour1')
+      option(id='hour2' label ='hour2')
+      option(id='hour3' label ='hour3')
+      option(id='hour4' label ='hour4')
+      option(id='hour5' label ='hour5')
+      option(id='hour6' label ='hour6')
+      option(id='hour7' label ='hour7')
+      option(id='hour8' label ='hour8')
+      option(id='hour9' label ='hour9')
+      option(id='hour10' label ='hour10')
+      option(id='hour11' label ='hour11')
+      option(id='hour12' label ='hour12')
+      option(id='hour13' label ='hour13')
+      option(id='hour14' label ='hour14')
+      option(id='hour15' label ='hour15')
+      option(id='hour16' label ='hour16')
+      option(id='hour17' label ='hour17')
+      option(id='hour18' label ='hour18')
+      option(id='hour19' label ='hour19')
+      option(id='hour20' label ='hour20')
+      option(id='hour21' label ='hour21')
+      option(id='hour22' label ='hour22')
+      option(id='hour23' label ='hour23')
     div(class='main-day-container' id='mainDayContainer')
       div(class='icon-container' id='icon-container')
   section(id='weekSection' class='week-section section-display')
@@ -88,8 +88,8 @@ block content
           div(class='email')='aip7@hi.is'
         div(class='person')='Fannar Gauti Guðmundsson'
           div(class='email')='fgg2@hi.is'
-      img(class='powered-by' src='./img/darksky.png')
-      img(class='powered-by' src='./img/google.png')
+      img(class='powered-by' src='./img/darksky.png' alt='darksky')
+      img(class='powered-by' src='./img/google.png' alt='google')
 
   script(src='/javascripts/google.js')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmmJUUvukFE9TlZ-xHYi_K3BUDCo2JGg8&libraries=places&callback=initAutocomplete' async defer)
