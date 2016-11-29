@@ -200,7 +200,6 @@ function createPercip(data) {
 }
 function createDay(data) {
   const hourly = data.hourly;
-  const hourList = document.getElementById('hour-list');
   for (i = 0; i < 24; i += 1) {
     const todayDate = new Date(hourly.data[i].time * 1000);
     const hour = todayDate.getHours();
