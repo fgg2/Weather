@@ -4,5 +4,6 @@
     "indentation": 2,
     "max-line-length": 80
     "jquery = true;"
+    "selector-pseudo-element-colon-notation": "off",
   }
 }

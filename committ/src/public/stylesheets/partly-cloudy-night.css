@@ -1,5 +1,3 @@
-
-
 .partly-cloudy-moon {
   position: absolute;
   top: 46%;
@@ -11,7 +9,8 @@
   border-radius: 50%;
   box-shadow: -32px 0 0 #fffbbc;
 }
-.moon{
+
+.moon {
   position: absolute;
   top: 46%;
   left: 51%;
@@ -26,7 +25,6 @@
 .cloud + .sun {
   margin: -2em 1em;
 }
-
 
 .cloud {
   position: absolute;
@@ -45,7 +43,8 @@
     -2.1875em 0.6875em 0 -0.3125em #7789a5,
     2.0625em 0.9375em 0 -0.5625em #7789a5;
 }
-.cloud:after {
+
+.cloud::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -56,6 +55,7 @@
   background: #7789a5;
   box-shadow: 0 0.4375em 0 -0.0625em #7789a5;
 }
+
 .cloud:nth-child(2) {
   z-index: 0;
   background: #7789a5;
@@ -70,13 +70,14 @@
   animation: cloud 4s linear infinite;
 }
 
-.cloud{
+.cloud {
   margin: -2em 1em;
 }
 
 @keyframes cloud {
   0% { opacity: 1; }
   50% { opacity: 1; }
+
   100% {
     opacity: 0;
     transform: scale(0.5) translate(-300%, -3em);

@@ -1,6 +1,3 @@
-body{
-}
-
 .sun {
   position: absolute;
   top: 50%;
@@ -13,6 +10,7 @@ body{
   box-shadow: 0 0 0 0.375em rgb(252, 212, 64);
   animation: spin 12s infinite linear;
 }
+
 .rays {
   position: absolute;
   top: -2em;
@@ -25,12 +23,11 @@ body{
   border-radius: 0.25em;
   box-shadow: 0 5.375em rgb(252, 212, 64);
 }
-.rays:before,
-.rays:after {
+
+.rays::before,
+.rays::after {
   content: '';
   position: absolute;
-  top: 0em;
-  left: 0em;
   display: block;
   width: 0.375em;
   height: 1.125em;
@@ -40,9 +37,11 @@ body{
   border-radius: 0.25em;
   box-shadow: 0 5.375em rgb(252, 212, 64);
 }
-.rays:before {
+
+.rays::before {
   transform: rotate(120deg);
 }
+
 .cloud + .sun {
   margin: -2em 1em;
 }
