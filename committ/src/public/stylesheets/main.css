@@ -35,24 +35,24 @@ textarea {
   display: flex;
   margin: 0;
   justify-content: center;
-  font-size: 9rem;
+  font-size: 9vw;
   font-family: Source Sans Pro;
   color: #7c728e;
   font-weight: 800;
   position: relative;
-  top: 20px;
+  top: 2vw;
 }
 
 .sub-header-main {
   display: flex;
   margin: 0;
   justify-content: center;
-  font-size: 7rem;
+  font-size: 7vw;
   font-family: Source Sans Pro;
   font-weight: 200;
   color: #7aa3a5;
   position: relative;
-  bottom: 20px;
+  bottom: 2vw;
 }
 
 .search-container {
@@ -65,7 +65,7 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 29%;
+  width: 29vw;
   align-self: flex-end;
   border-radius: 5px;
   height: 4vw;
@@ -84,7 +84,7 @@ textarea {
 
 .current-loc {
   flex: 1;
-  max-width: 621px;
+  max-width: 47vw;
   font-family: 'Lobster';
 }
 
@@ -171,12 +171,12 @@ textarea {
 
 .scroll-plz {
   margin: 20px auto;
-  font-size: 2rem;
+  font-size: 2vw;
 }
 
 .scroll-icon {
   text-align: center;
-  font-size: 4rem;
+  font-size: 4vw;
   animation: bounce 2s infinite;
 }
 
@@ -193,10 +193,10 @@ textarea {
 }
 
 .controls {
-  margin-top: 85px;
+  margin-top: 5vw;
   width: 50%;
   align-self: center;
-  height: 83px;
+  height: 5vw;
   border: none;
   text-align: center;
   font-family: Roboto;
@@ -207,6 +207,7 @@ textarea {
   color: tomato;
   border-radius: 130px;
   background-image: url(../img/search.png);
+  background-size: 7vw;
   background-repeat: no-repeat;
   background-position: right;
 }
@@ -268,21 +269,33 @@ textarea {
   font-family: PlayfairDisplay;
   font-size: 2rem;
   background: #ffb347;
-  background: -webkit-linear-gradient(bottom, #ffb347, #fc3);
-  background: -o-linear-gradient(bottom, #ffb347, #fc3);
-  background: linear-gradient(to bottom, #ffb347, #fc3);
+  background: -webkit-linear-gradient(bottom, #ffb347, #ec4c00);
+  background: -o-linear-gradient(bottom, #ffb347, #ec4c00);
+  background: linear-gradient(to bottom, #ffb347, #ec4c00);
 }
 
-.day-header {
+.day-header-today {
   font-family: 'Arvo';
-  font-size: 4rem;
+  font-size: 3vw;
   text-align: center;
   color: deepskyblue;
   animation: fadeInRight 0.2s;
 }
 
+.day-header {
+  font-family: 'Lobster';
+  font-size: 3vw;
+  text-align: center;
+  color: purple;
+  animation: fadeInRight 0.2s;
+}
+
 .sub-header {
-  font-size: 2rem !important;
+  font-family: 'Arvo';
+  font-size: 2vw;
+  text-align: center;
+  color: deepskyblue;
+  animation: fadeInRight 0.2s;
 }
 
 .icon-container {
@@ -297,7 +310,7 @@ textarea {
   height: 225px;
   width: 225px;
   list-style: none;
-  background-color: teal;
+  background-color: #42697b;
   font-family: 'Roboto';
   display: flex;
   box-shadow: 4px 14px 29px -8px rgba(0, 0, 0, 0.75);
@@ -386,12 +399,22 @@ textarea {
   min-width: 29%;
 }
 
-.week-header {
+.week-header-today {
   font-family: 'Arvo';
-  font-size: 4rem;
+  font-size: 3vw;
   text-align: center;
-  color: tomato;
+  color: #60bfa6;
+  margin-bottom: 0;
   animation: fadeInRight 0.2s;
+}
+
+.week-header {
+  font-family: 'Lobster';
+  font-size: 3vw;
+  text-align: center;
+  color: #bfa24f;
+  animation: fadeInRight 0.2s;
+  margin-top: 0;
 }
 
 .list-item {
@@ -742,7 +765,7 @@ textarea {
 .footer-header {
   margin: 20px auto;
   font-family: 'Bungee';
-  font-size: 4rem;
+  font-size: 4vw;
 }
 
 .persons {
@@ -752,7 +775,7 @@ textarea {
 .person {
   margin: auto;
   font-family: 'Bungee';
-  font-size: 2rem;
+  font-size: 2vw;
 }
 
 .email {
@@ -764,11 +787,28 @@ textarea {
 }
 
 .powered-by {
-  margin: auto;
+  margin: 0 auto;
   width: 15vw;
 }
 
 @media (max-width: 1320px) {
+  .current-container {
+    transform: translateX(100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 38vw;
+    align-self: flex-end;
+    border-radius: 5px;
+    height: 6vw;
+    font-size: 2vw;
+    justify-content: space-between;
+    flex: 3;
+    background: tomato;
+    margin-top: 10px;
+    color: #d0e1f9;
+  }
+
   .whole-list-container {
     max-width: 100%;
     zoom: 0.8;

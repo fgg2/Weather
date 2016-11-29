@@ -204,13 +204,11 @@ function createDay(data) {
   for (i = 0; i < 24; i += 1) {
     const todayDate = new Date(hourly.data[i].time * 1000);
     const hour = todayDate.getHours();
-    const hourListItem = document.createElement('div');
     `hour${i}`;
     // var hourListItem = document.getElementById(`hour${i}`);
     // hourListItem.innerHTML = hour + ':00';
     // console.log(hourListItem.innerHTML)
     document.getElementById('hour-list').options[i].text = `${hour}:00`;
-    hourList.appendChild(hourListItem);
   }
   $('select').niceSelect();
 }
@@ -500,9 +498,9 @@ function setAddress() {
     cache: true,
     success(data) {
       const hourheader = document.getElementById('hour-head');
-      hourheader.innerHTML = `TODAY IN ${data.address.toUpperCase()}`;
+      hourheader.innerHTML = `${data.address}`;
       const weekheader = document.getElementById('week-header');
-      weekheader.innerHTML = `TODAY IN ${data.address.toUpperCase()}`;
+      weekheader.innerHTML = `${data.address}`;
     },
     error() {
       const error = document.getElementById('loading');

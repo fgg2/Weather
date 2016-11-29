@@ -38,8 +38,9 @@ block content
         div(class='scroll-plz' id='scroll-plz')='Scroll down for weather!'
         div(class='scroll-icon' id='scroll-icon')='❯'
   section(id ='daySection' class= 'day-section section-display')
+    h1(class=' day-header-today')='TODAY IN'
     h1(class= 'day-header' id='hour-head')='TODAY IN *YOUR LOCATION'
-    h2(class= 'day-header sub-header')='Pick hour'
+    h2(class= 'sub-header')='Pick hour'
     select(id='hour-list' class='select-button')
       option(id='hour0' label ='hour0')
       option(id='hour1' label ='hour1')
@@ -79,6 +80,7 @@ block content
             div(class='rain-loading drop1')
             div(class='rain-loading drop2')
             div(class='rain-loading drop3')
+    h1(class='week-header-today')='TODAY IN'
     h1(class='week-header' id='week-header')='THIS WEEK IN '
     div(class='whole-list-container' id='whole-list')
     section(class='footer')
