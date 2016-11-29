@@ -768,7 +768,8 @@ textarea {
 .footer-header {
   margin: 20px auto;
   font-family: 'Bungee';
-  font-size: 4vw;
+  font-size: 2vw;
+  color: yellow;
 }
 
 .persons {
