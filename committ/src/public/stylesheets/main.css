@@ -867,6 +867,19 @@ textarea {
   }
 }
 
+@media (max-width: 400px) {
+  .icon-container {
+    zoom: 0.7;
+    transform: scale(0.7, 0.7);
+    min-width: 500px;
+    display: flex;
+    max-height: 76vh;
+    flex-flow: row wrap;
+    flex: 1;
+    justify-content: space-between;
+  }
+}
+
 @-moz-keyframes bounce {
   0%,
   20%,
