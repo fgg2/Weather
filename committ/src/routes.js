@@ -18,57 +18,6 @@ const env = process.env.DATABASE_URL;
 const DATABASE = 'postgres://test@localhost:5432/weatherdata';
 const db = pgp(env || DATABASE);
 
-
-router.get('/list', (req, res) => {
-  db.any('select name,COUNT(*) as num from location group by name order by num desc;')
-    .then((data) => {
-      // Hér ættum við að senda niðurstöður í template og vinna með HTML þar
-      const result = ['<ul>'];
-
-      console.log(111, data);
-
-      data.forEach((row) => {
-        result.push(`<li><p>${row.name} : ${row.num}</p></li>`);
-      });
-      result.push('</ul>');
-
-      res.send(result.join('\n'));
-    })
-    .catch((error) => {
-      res.send(`<p>Error selecting data: ${error}</p>`);
-    });
-});
-
-router.get('/list/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-
-  const displayId = xss(req.params.id);
-
-  if (isNaN(id) || id <= 0) {
-    res.send(`<p>${displayId} er ekki gilt</p>`);
-  }
-
-  db.one('SELECT * FROM location WHERE id = $1', [id])
-    .then((data) => {
-      res.send(`<dl>
-  <dt>Nafn</dt>
-  <dd>${data.name}</dd>
-  <dt>latt</dt>
-  <dd>${data.latt}</dd>
-  <dt>long</dt>
-  <dd>${data.long}</dd>
-  <dt>Date</dt>
-  <dd>${data.date}</dd>
-</dl>`);
-    })
-    .catch((error) => {
-      res.send(`<p>Gat ekki sótt gögn: ${error}</p>`);
-    });
-});
-
-
-// her endar DATABASE
-
 router.get('/data', (req, res) => {
   api.promise(latt, long)
   .then((result) => {
