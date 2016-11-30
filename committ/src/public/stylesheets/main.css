@@ -12,7 +12,8 @@ textarea {
 .hr-top5 {
   width: 130px;
   height: 1px;
-  border-color: tomato;
+  background-color: tomato;
+  border-color: transparent;
 }
 
 .hr-heading {
@@ -27,7 +28,7 @@ textarea {
 }
 
 .search-section {
-  max-height: 100vh;
+  min-height: 100vh;
   overflow-y: hidden;
 }
 
@@ -178,7 +179,6 @@ textarea {
   text-align: center;
   font-size: 4vw;
   animation: bounce 2s infinite;
-  margin-bottom: 6vw;
 }
 
 .scroll-button {
