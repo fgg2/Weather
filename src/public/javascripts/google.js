@@ -49,13 +49,13 @@ function initAutocomplete() {
     alert('sorry,your broswer doesnt support Geolocation');
   }
 
-  let input = document.getElementById('pac-input');
+  const input = document.getElementById('pac-input');
+
 
   const searchBox = new google.maps.places.SearchBox(input);
 
   searchBox.addListener('places_changed', () => {
     const place = document.getElementById('pac-input');
-    console.log(place);
     getgps(place.value);
     const address = document.getElementById('address');
     address.textContent = place.value;

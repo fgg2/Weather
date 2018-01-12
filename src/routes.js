@@ -27,6 +27,8 @@ router.get('/data', (req, res) => {
     res.render('error', { title: error, error });
   });
 });
+
+`${env}/adress`
 router.get('/address', (req, res) => {
   address = ({ address });
   res.json(address);
@@ -55,6 +57,10 @@ router.post('/', (req, res) => {
   latt = xss(req.body.latt);
   long = xss(req.body.long);
   address = xss(req.body.address);
+
+  if (!latt) {
+    return;
+  }
 
   db.none('INSERT INTO location (name, latt, long) VALUES ($1, $2, $3)', [address, latt, long])
     .then((data) => {
