@@ -689,9 +689,4 @@ function init() {
     });
   });
 }
-const button = document.querySelector(".submit").onclick = () => {
-  console.log("button pressed")
-  const input = document.querySelector("#pac-input");
-  if(!input)
-}
 init();
