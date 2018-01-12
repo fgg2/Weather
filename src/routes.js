@@ -19,6 +19,7 @@ const DATABASE = 'postgres://test@localhost:5432/weatherdata';
 const db = pgp(env || DATABASE);
 
 router.get('/data', (req, res) => {
+  console.log("hallo");
   api.promise(latt, long)
   .then((result) => {
     res.json(result.data);
