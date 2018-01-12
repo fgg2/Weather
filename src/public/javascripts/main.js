@@ -589,7 +589,7 @@ function setAddress() {
     },
     error() {
       const error = document.getElementById("loading");
-      error.innerHTML = "Villa kom upp!";
+      error.innerHTML = "Please enter a valid location!";
     }
   });
 }
@@ -614,7 +614,7 @@ function getWeather() {
     },
     error() {
       const error = document.getElementById("loading");
-      error.innerHTML = "Villa kom upp!";
+      error.innerHTML = "Please enter a valid location!";
     }
   });
 }
@@ -677,5 +677,10 @@ function init() {
       );
     });
   });
+}
+const button = document.querySelector(".submit").onclick = () => {
+  console.log("button pressed")
+  const input = document.querySelector("#pac-input");
+  if(!input)
 }
 init();
