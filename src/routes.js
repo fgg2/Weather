@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
        res.render('index', { list1, list2, list3, list4, list5, counter });
      })
     .catch((error) => {
-      res.render('error', { title: error, error });
+      res.render('index', { title: error, error });
     });
 });
 
@@ -58,10 +58,11 @@ router.post('/', (req, res) => {
   long = xss(req.body.long);
   address = xss(req.body.address);
 
+  let errorlocation = "";
+
 
   if (!latt) {
-    res.render('Choose location please', { title: error, error });
-    return;
+    errorlocation = 'Choose a valid location!';
   }
 
   db.none('INSERT INTO location (name, latt, long) VALUES ($1, $2, $3)', [address, latt, long])
@@ -94,7 +95,7 @@ router.post('/', (req, res) => {
       counter = 1;
 
 
-      res.render('index', { list1, list2, list3, list4, list5, num1, num2, num3, num4, num5, counter });
+      res.render('index', { list1, list2, list3, list4, list5, num1, num2, num3, num4, num5, counter , errorlocation});
     })
       .catch((error) => {
         res.render('error', { title: error, error });
