@@ -588,8 +588,7 @@ function setAddress() {
       weekheader.innerHTML = `${data.address}`;
     },
     error() {
-      const error = document.getElementById("loading");
-      error.innerHTML = "Please enter a valid location!";
+      handleError();
     }
   });
 }
@@ -613,7 +612,13 @@ function getWeather() {
       setAddress();
     },
     error() {
-      var container = querySelector('.container-loading')
+      handleError();
+    
+    }
+  });
+}
+function handleError(){
+  var container = document.querySelector('.container-loading')
       const error = document.getElementById("loading");
       error.innerHTML = "Please enter a valid location!";
       var a = document.createElement('a');
@@ -625,11 +630,7 @@ function getWeather() {
       errorMsg.setAttribute('id', 'loading');
       
       container.appendChild(a)
-    
-    }
-  });
 }
-
 function init() {
   getWeather();
   document.addEventListener("DOMContentLoaded", () => {
