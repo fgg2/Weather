@@ -50,16 +50,12 @@ function initAutocomplete() {
   }
 
   let input = document.getElementById('pac-input');
-  if (!input) {
-    input = 'Reykjavik';
-    console.log(input);
-  }
 
-  console.log(input.textContent);
   const searchBox = new google.maps.places.SearchBox(input);
 
   searchBox.addListener('places_changed', () => {
     const place = document.getElementById('pac-input');
+    console.log(place);
     getgps(place.value);
     const address = document.getElementById('address');
     address.textContent = place.value;
