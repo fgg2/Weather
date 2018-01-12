@@ -49,7 +49,13 @@ function initAutocomplete() {
     alert('sorry,your broswer doesnt support Geolocation');
   }
 
-  const input = document.getElementById('pac-input');
+  let input = document.getElementById('pac-input');
+  if (!input) {
+    input = 'Reykjavik';
+    console.log(input);
+  }
+
+  console.log(input);
   const searchBox = new google.maps.places.SearchBox(input);
 
   searchBox.addListener('places_changed', () => {
