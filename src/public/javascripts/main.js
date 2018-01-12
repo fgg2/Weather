@@ -1,3 +1,5 @@
+const env = "https://weatherwherever.herokuapp.com";
+
 function appendIconChilds(data) {
   const iconListElement = document.createElement("li");
   iconListElement.setAttribute("class", "list-item icon degrees");
@@ -575,7 +577,7 @@ function waitForHourPress(data) {
 }
 function setAddress() {
   $.ajax({
-    url: "http://localhost:3000/address",
+    url: `${env}/address`,
     type: "GET",
     dataType: "json",
     cache: true,
@@ -594,7 +596,7 @@ function setAddress() {
 
 function getWeather() {
   $.ajax({
-    url: "http://localhost:3000/data",
+    url: `${env}/data`,
     type: "GET",
     dataType: "json",
     cache: true,
@@ -612,7 +614,7 @@ function getWeather() {
     },
     error() {
       const error = document.getElementById("loading");
-      error.innerHTML = error;
+      error.innerHTML = "Villa kom upp!";
     }
   });
 }
