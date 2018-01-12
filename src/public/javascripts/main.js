@@ -626,7 +626,7 @@ function handleError(){
       a.setAttribute('href', 'https://weatherwherever.herokuapp.com');
       var errorMsg = document.createElement('H1');
       errorMsg.textContent = 'Try again!';
-      a.appendChild(h1);
+      a.appendChild(errorMsg);
       errorMsg.setAttribute('class', 'loading-header');
       errorMsg.setAttribute('id', 'loading');
       
