@@ -28,7 +28,7 @@ router.get('/data', (req, res) => {
   });
 });
 
-`${env}/adress`
+`${env}/adress`;
 router.get('/address', (req, res) => {
   address = ({ address });
   res.json(address);
@@ -58,20 +58,22 @@ router.post('/', (req, res) => {
   long = xss(req.body.long);
   address = xss(req.body.address);
 
-  let errorlocation = "";
+  let errorlocation = '';
 
 
   if (!latt) {
     errorlocation = 'Choose a valid location!';
-  }
-
-  db.none('INSERT INTO location (name, latt, long) VALUES ($1, $2, $3)', [address, latt, long])
+  } else {
+    db.none('INSERT INTO location (name, latt, long) VALUES ($1, $2, $3)', [address, latt, long])
     .then((data) => {
       console.log(data);
     })
     .catch((error) => {
       res.send(`<p>Gat ekki bætt gögnum við: ${error}</p>`);
     });
+
+  }
+
 
   const list = [];
   const num = [];
@@ -95,7 +97,7 @@ router.post('/', (req, res) => {
       counter = 1;
 
 
-      res.render('index', { list1, list2, list3, list4, list5, num1, num2, num3, num4, num5, counter , errorlocation});
+      res.render('index', { list1, list2, list3, list4, list5, num1, num2, num3, num4, num5, counter, errorlocation });
     })
       .catch((error) => {
         res.render('error', { title: error, error });
