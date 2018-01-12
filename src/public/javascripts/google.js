@@ -55,7 +55,7 @@ function initAutocomplete() {
     console.log(input);
   }
 
-  console.log(input);
+  console.log(input.textContent);
   const searchBox = new google.maps.places.SearchBox(input);
 
   searchBox.addListener('places_changed', () => {
