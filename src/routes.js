@@ -58,6 +58,10 @@ router.post('/', (req, res) => {
   long = xss(req.body.long);
   address = xss(req.body.address);
 
+  console.log(latt);
+  console.log(long);
+  console.log(address);
+
   if (!latt) {
     return;
   }
