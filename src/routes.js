@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
 
 
   if (!latt) {
-    errorlocation = 'Choose a valid location!';
+    
   } else {
     db.none('INSERT INTO location (name, latt, long) VALUES ($1, $2, $3)', [address, latt, long])
     .then((data) => {
@@ -97,7 +97,7 @@ router.post('/', (req, res) => {
       counter = 1;
 
 
-      res.render('index', { list1, list2, list3, list4, list5, num1, num2, num3, num4, num5, counter, errorlocation });
+      res.render('index', { list1, list2, list3, list4, list5, num1, num2, num3, num4, num5, counter });
     })
       .catch((error) => {
         res.render('error', { title: error, error });
