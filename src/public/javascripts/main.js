@@ -613,6 +613,7 @@ function getWeather() {
       setAddress();
     },
     error() {
+      var container = querySelector('.container-loading')
       const error = document.getElementById("loading");
       error.innerHTML = "Please enter a valid location!";
       var a = document.createElement('a');
@@ -622,6 +623,8 @@ function getWeather() {
       a.appendChild(h1);
       errorMsg.setAttribute('class', 'loading-header');
       errorMsg.setAttribute('id', 'loading');
+      
+      container.appendChild(a)
     
     }
   });
