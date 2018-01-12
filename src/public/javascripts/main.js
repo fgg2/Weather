@@ -588,7 +588,8 @@ function setAddress() {
       weekheader.innerHTML = `${data.address}`;
     },
     error() {
-      handleError();
+      const error = document.getElementById("loading");
+      error.innerHTML = "Please enter a valid location!";
     }
   });
 }
@@ -623,7 +624,7 @@ function handleError(){
       error.innerHTML = "Please enter a valid location!";
       var a = document.createElement('a');
       a.setAttribute('href', 'https://weatherwherever.herokuapp.com');
-      var errorMsg = document.createElement('h1');
+      var errorMsg = document.createElement('H1');
       errorMsg.textContent = 'Try again!';
       a.appendChild(h1);
       errorMsg.setAttribute('class', 'loading-header');
