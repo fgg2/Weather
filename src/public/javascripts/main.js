@@ -1,79 +1,81 @@
-function appendIconChilds(data) {
-  const iconListElement = document.createElement('li');
-  iconListElement.setAttribute('class', 'list-item icon degrees');
-  const firstDiv = document.createElement('div');
-  const secondDiv = document.createElement('div');
-  const thirdDiv = document.createElement('div');
-  const fourthDiv = document.createElement('div');
-  const fifthDiv = document.createElement('div');
+const env = "https://weatherwherever.herokuapp.com";
 
-  if (data === 'clear-day') {
-    firstDiv.setAttribute('class', 'sun');
-    secondDiv.setAttribute('class', 'rays');
+function appendIconChilds(data) {
+  const iconListElement = document.createElement("li");
+  iconListElement.setAttribute("class", "list-item icon degrees");
+  const firstDiv = document.createElement("div");
+  const secondDiv = document.createElement("div");
+  const thirdDiv = document.createElement("div");
+  const fourthDiv = document.createElement("div");
+  const fifthDiv = document.createElement("div");
+
+  if (data === "clear-day") {
+    firstDiv.setAttribute("class", "sun");
+    secondDiv.setAttribute("class", "rays");
     firstDiv.appendChild(secondDiv);
     iconListElement.appendChild(firstDiv);
   }
-  if (data === 'clear-night') {
-    firstDiv.setAttribute('class', 'moon');
+  if (data === "clear-night") {
+    firstDiv.setAttribute("class", "moon");
     iconListElement.appendChild(firstDiv);
   }
-  if (data === 'cloudy') {
-    firstDiv.setAttribute('class', 'cloud');
-    secondDiv.setAttribute('class', 'cloud');
-    iconListElement.appendChild(firstDiv);
-    iconListElement.appendChild(secondDiv);
-  }
-  if (data === 'fog') {
-    firstDiv.setAttribute('class', 'fog');
-    secondDiv.setAttribute('class', 'fog');
+  if (data === "cloudy") {
+    firstDiv.setAttribute("class", "cloud");
+    secondDiv.setAttribute("class", "cloud");
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
-  if (data === 'partly-cloudy-day') {
-    firstDiv.setAttribute('class', 'partly-cloud');
-    secondDiv.setAttribute('class', 'sun');
-    thirdDiv.setAttribute('class', 'rays');
+  if (data === "fog") {
+    firstDiv.setAttribute("class", "fog");
+    secondDiv.setAttribute("class", "fog");
+    iconListElement.appendChild(firstDiv);
+    iconListElement.appendChild(secondDiv);
+  }
+  if (data === "partly-cloudy-day") {
+    firstDiv.setAttribute("class", "partly-cloud");
+    secondDiv.setAttribute("class", "sun");
+    thirdDiv.setAttribute("class", "rays");
     secondDiv.appendChild(thirdDiv);
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
-  if (data === 'partly-cloudy-night') {
-    firstDiv.setAttribute('class', 'cloud');
-    secondDiv.setAttribute('class', 'cloud');
-    thirdDiv.setAttribute('class', 'partly-cloudy-moon');
+  if (data === "partly-cloudy-night") {
+    firstDiv.setAttribute("class", "cloud");
+    secondDiv.setAttribute("class", "cloud");
+    thirdDiv.setAttribute("class", "partly-cloudy-moon");
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
     iconListElement.appendChild(thirdDiv);
   }
-  if (data === 'rain') {
-    firstDiv.setAttribute('class', 'cloud');
-    secondDiv.setAttribute('class', 'rain');
+  if (data === "rain") {
+    firstDiv.setAttribute("class", "cloud");
+    secondDiv.setAttribute("class", "rain");
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
-  if (data === 'sleet') {
-    firstDiv.setAttribute('class', 'cloud');
-    secondDiv.setAttribute('class', 'snow');
-    thirdDiv.setAttribute('class', 'sleet-rain');
-    fourthDiv.setAttribute('class', 'flake');
-    fifthDiv.setAttribute('class', 'flake');
+  if (data === "sleet") {
+    firstDiv.setAttribute("class", "cloud");
+    secondDiv.setAttribute("class", "snow");
+    thirdDiv.setAttribute("class", "sleet-rain");
+    fourthDiv.setAttribute("class", "flake");
+    fifthDiv.setAttribute("class", "flake");
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
     iconListElement.appendChild(thirdDiv);
     iconListElement.appendChild(fourthDiv);
     iconListElement.appendChild(fifthDiv);
   }
-  if (data === 'wind') {
-    firstDiv.setAttribute('class', 'sky-wind');
-    secondDiv.setAttribute('class', 'sky-wind');
+  if (data === "wind") {
+    firstDiv.setAttribute("class", "sky-wind");
+    secondDiv.setAttribute("class", "sky-wind");
     iconListElement.appendChild(firstDiv);
     iconListElement.appendChild(secondDiv);
   }
-  if (data === 'snow') {
-    firstDiv.setAttribute('class', 'snow-cloud');
-    secondDiv.setAttribute('class', 'snow');
-    thirdDiv.setAttribute('class', 'flake');
-    fourthDiv.setAttribute('class', 'flake');
+  if (data === "snow") {
+    firstDiv.setAttribute("class", "snow-cloud");
+    secondDiv.setAttribute("class", "snow");
+    thirdDiv.setAttribute("class", "flake");
+    fourthDiv.setAttribute("class", "flake");
     secondDiv.appendChild(thirdDiv);
     secondDiv.appendChild(fourthDiv);
     iconListElement.appendChild(firstDiv);
@@ -82,101 +84,139 @@ function appendIconChilds(data) {
   return iconListElement;
 }
 function checkWindDirection(degrees, id) {
-  const val = Math.floor((degrees / 22.5) + 0.5);
-  const arr = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
-  const isFirefox = typeof InstallTrigger !== 'undefined';
+  const val = Math.floor(degrees / 22.5 + 0.5);
+  const arr = [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW"
+  ];
+  const isFirefox = typeof InstallTrigger !== "undefined";
   if (isFirefox) {
     $(`#${id}`)
-          .css('-webkit-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('-moz-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('-ms-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('-o-transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('transform', `translateY(-50%) translateX(-50%) rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('left', '85vw');
+      .css(
+        "-webkit-transform",
+        `translateY(-50%) translateX(-50%) rotate(${degrees +
+          225}deg) scale(0.9,0.9) `
+      )
+      .css(
+        "-moz-transform",
+        `translateY(-50%) translateX(-50%) rotate(${degrees +
+          225}deg) scale(0.9,0.9) `
+      )
+      .css(
+        "-ms-transform",
+        `translateY(-50%) translateX(-50%) rotate(${degrees +
+          225}deg) scale(0.9,0.9) `
+      )
+      .css(
+        "-o-transform",
+        `translateY(-50%) translateX(-50%) rotate(${degrees +
+          225}deg) scale(0.9,0.9) `
+      )
+      .css(
+        "transform",
+        `translateY(-50%) translateX(-50%) rotate(${degrees +
+          225}deg) scale(0.9,0.9) `
+      )
+      .css("left", "85vw");
   } else {
     $(`#${id}`)
-          .css('-webkit-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('-moz-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('-ms-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('-o-transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
-          .css('transform', `rotate(${degrees + 225}deg) scale(0.9,0.9) `);
+      .css("-webkit-transform", `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+      .css("-moz-transform", `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+      .css("-ms-transform", `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+      .css("-o-transform", `rotate(${degrees + 225}deg) scale(0.9,0.9) `)
+      .css("transform", `rotate(${degrees + 225}deg) scale(0.9,0.9) `);
   }
-  return arr[(val % 16)];
+  return arr[val % 16];
 }
 function setWindmillSpeed(speed, wind) {
   if (speed < 0.5) {
-    wind.setAttribute('class', 'sec1');
+    wind.setAttribute("class", "sec1");
   } else if (speed < 1.0) {
-    wind.setAttribute('class', 'sec1');
+    wind.setAttribute("class", "sec1");
   } else if (speed < 2.0) {
-    wind.setAttribute('class', 'sec2');
+    wind.setAttribute("class", "sec2");
   } else if (speed < 3.0) {
-    wind.setAttribute('class', 'sec3');
+    wind.setAttribute("class", "sec3");
   } else if (speed < 4.0) {
-    wind.setAttribute('class', 'sec4');
+    wind.setAttribute("class", "sec4");
   } else if (speed < 5.0) {
-    wind.setAttribute('class', 'sec5');
+    wind.setAttribute("class", "sec5");
   } else if (speed < 6.0) {
-    wind.setAttribute('class', 'sec6');
+    wind.setAttribute("class", "sec6");
   } else if (speed < 8.0) {
-    wind.setAttribute('class', 'sec8');
+    wind.setAttribute("class", "sec8");
   } else if (speed < 10.0) {
-    wind.setAttribute('class', 'sec10');
+    wind.setAttribute("class", "sec10");
   } else if (speed < 12.0) {
-    wind.setAttribute('class', 'sec12');
+    wind.setAttribute("class", "sec12");
   } else if (speed < 14.0) {
-    wind.setAttribute('class', 'sec14');
+    wind.setAttribute("class", "sec14");
   } else if (speed < 16.0) {
-    wind.setAttribute('class', 'sec16');
+    wind.setAttribute("class", "sec16");
   } else if (speed < 20.0) {
-    wind.setAttribute('class', 'sec20');
+    wind.setAttribute("class", "sec20");
   } else if (speed < 25.0) {
-    wind.setAttribute('class', 'sec25');
+    wind.setAttribute("class", "sec25");
   } else if (speed < 30.0) {
-    wind.setAttribute('class', 'sec30');
+    wind.setAttribute("class", "sec30");
   }
 }
 function tempColor(data) {
-  let color = 'blue';
+  let color = "blue";
   if (data < 0) {
-    color = 'royalblue';
+    color = "royalblue";
   } else if (data >= 0) {
-    color = 'tomato';
+    color = "tomato";
   }
   return color;
 }
 function createHourlyTempIcon(data, apparentOrNot) {
-  const thermoLi = document.createElement('div');
-  thermoLi.setAttribute('class', 'temp-flex');
-  const thermoContainer = document.createElement('div');
+  const thermoLi = document.createElement("div");
+  thermoLi.setAttribute("class", "temp-flex");
+  const thermoContainer = document.createElement("div");
 
-  thermoContainer.setAttribute('class', 'hour-temp-container');
-  const thermoTop = document.createElement('div');
-  thermoTop.setAttribute('class', 'thermometer-top');
-  const thermoFill = document.createElement('div');
-  thermoFill.setAttribute('class', 'thermometer-fill');
+  thermoContainer.setAttribute("class", "hour-temp-container");
+  const thermoTop = document.createElement("div");
+  thermoTop.setAttribute("class", "thermometer-top");
+  const thermoFill = document.createElement("div");
+  thermoFill.setAttribute("class", "thermometer-fill");
   const fillPercentage = Math.abs(data / 100);
   const fillHeight = fillPercentage * 1000;
-  const thermoBottom = document.createElement('div');
-  thermoBottom.setAttribute('class', 'thermometer-bottom');
+  const thermoBottom = document.createElement("div");
+  thermoBottom.setAttribute("class", "thermometer-bottom");
   const thermoColor = tempColor(Math.round(data));
   thermoFill.style.height = `${fillHeight}px`;
   thermoFill.style.background = `${thermoColor}`;
   thermoBottom.style.background = `${thermoColor}`;
 
-  $('.thermometer-bottom').css('background', thermoColor);
+  $(".thermometer-bottom").css("background", thermoColor);
 
-  $('.thermometer-fill').css('height', '100px');
+  $(".thermometer-fill").css("height", "100px");
 
+  const span = document.createElement("span");
+  span.setAttribute("class", "bottom-text");
 
-  const span = document.createElement('span');
-  span.setAttribute('class', 'bottom-text');
+  const tempText = document.createElement("p");
+  tempText.setAttribute("class", "card-header");
+  apparentOrNot
+    ? (tempText.innerHTML = "Feels Like")
+    : (tempText.innerHTML = "Temperature");
 
-  const tempText = document.createElement('p');
-  tempText.setAttribute('class', 'card-header');
-  apparentOrNot ? tempText.innerHTML = 'Feels Like' : tempText.innerHTML = 'Temperature';
-
-  span.innerHTML = (`${Math.round(data)}°`);
+  span.innerHTML = `${Math.round(data)}°`;
 
   thermoTop.appendChild(thermoFill);
   thermoBottom.appendChild(span);
@@ -187,12 +227,12 @@ function createHourlyTempIcon(data, apparentOrNot) {
   return thermoLi;
 }
 function createPercip(data) {
-  const percContainer = document.createElement('li');
-  const percTopText = document.createElement('div');
-  percTopText.innerHTML = 'Precipitation probability';
-  const percPercent = document.createElement('div');
-  percTopText.setAttribute('class', 'card-header');
-  percPercent.setAttribute('class', 'hourly-percentage');
+  const percContainer = document.createElement("li");
+  const percTopText = document.createElement("div");
+  percTopText.innerHTML = "Precipitation probability";
+  const percPercent = document.createElement("div");
+  percTopText.setAttribute("class", "card-header");
+  percPercent.setAttribute("class", "hourly-percentage");
   percPercent.innerHTML = `${Math.round(data * 100)}%`;
   percContainer.appendChild(percTopText);
   percContainer.appendChild(percPercent);
@@ -207,31 +247,35 @@ function createDay(data) {
     // var hourListItem = document.getElementById(`hour${i}`);
     // hourListItem.innerHTML = hour + ':00';
     // console.log(hourListItem.innerHTML)
-    document.getElementById('hour-list').options[i].text = `${hour}:00`;
+    document.getElementById("hour-list").options[i].text = `${hour}:00`;
   }
-  $('select').niceSelect();
+  $("select").niceSelect();
 }
 function createWindmill(data, hourWindOrNot) {
-  const windContainer = document.createElement('li');
-  const windAmountIcon = document.createElement('li');
-  hourWindOrNot ? windAmountIcon.setAttribute('class', 'hourly-windmill') : windAmountIcon.setAttribute('class', 'windmill');
-  const stick = document.createElement('div');
-  const wind = document.createElement('div');
-  const wind1 = document.createElement('div');
-  const wind2 = document.createElement('div');
-  const wind3 = document.createElement('div');
-  const wind4 = document.createElement('div');
-  const windText = document.createElement('p');
-  hourWindOrNot ? windText.setAttribute('class', 'hourly-wind-text') : windText.setAttribute('class', 'wind-mill-text');
+  const windContainer = document.createElement("li");
+  const windAmountIcon = document.createElement("li");
+  hourWindOrNot
+    ? windAmountIcon.setAttribute("class", "hourly-windmill")
+    : windAmountIcon.setAttribute("class", "windmill");
+  const stick = document.createElement("div");
+  const wind = document.createElement("div");
+  const wind1 = document.createElement("div");
+  const wind2 = document.createElement("div");
+  const wind3 = document.createElement("div");
+  const wind4 = document.createElement("div");
+  const windText = document.createElement("p");
+  hourWindOrNot
+    ? windText.setAttribute("class", "hourly-wind-text")
+    : windText.setAttribute("class", "wind-mill-text");
 
   windText.innerHTML = `${data}m/s`;
-  windContainer.setAttribute('class', 'list-item degrees wind-container');
-  stick.setAttribute('class', 'stick');
-  wind.setAttribute('class', 'wind');
-  wind1.setAttribute('class', 'wind1');
-  wind2.setAttribute('class', 'wind2');
-  wind3.setAttribute('class', 'wind3');
-  wind4.setAttribute('class', 'wind4');
+  windContainer.setAttribute("class", "list-item degrees wind-container");
+  stick.setAttribute("class", "stick");
+  wind.setAttribute("class", "wind");
+  wind1.setAttribute("class", "wind1");
+  wind2.setAttribute("class", "wind2");
+  wind3.setAttribute("class", "wind3");
+  wind4.setAttribute("class", "wind4");
   windAmountIcon.appendChild(stick);
   wind.appendChild(wind1);
   wind.appendChild(wind2);
@@ -248,74 +292,95 @@ function createWeek(data) {
   const daily = data.daily;
   const timedays = [];
 
-  const months = ['Januar', 'Februar', 'Mars', 'April', 'May', 'Juni', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = [
+    "Januar",
+    "Februar",
+    "Mars",
+    "April",
+    "May",
+    "Juni",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
 
-  const wholeListContainer = document.getElementById('whole-list');
+  const wholeListContainer = document.getElementById("whole-list");
 
   for (let i = 0; i < 8; i += 1) {
-    const container = document.createElement('ul');
+    const container = document.createElement("ul");
     if (i % 2 === 0) {
-      container.setAttribute('class', 'list-container mod2-color');
+      container.setAttribute("class", "list-container mod2-color");
     } else {
-      container.setAttribute('class', 'list-container');
+      container.setAttribute("class", "list-container");
     }
 
     const date = new Date(daily.data[i].time * 1000);
-    timedays[i] = `${days[date.getDay()]}.${date.getDate()}.${months[date.getMonth()]}`;
+    timedays[i] = `${days[date.getDay()]}.${date.getDate()}.${
+      months[date.getMonth()]
+    }`;
 
-    const day = document.createElement('li');
+    const day = document.createElement("li");
     day.innerHTML = timedays[i];
-    day.setAttribute('class', 'day list-item');
+    day.setAttribute("class", "day list-item");
 
-    const tempMax = document.createElement('li');
+    const tempMax = document.createElement("li");
     tempMax.innerHTML = `maxtemp = ${daily.data[i].temperatureMax}°C`;
-    tempMax.setAttribute('class', 'degrees list-item');
+    tempMax.setAttribute("class", "degrees list-item");
 
-    const tempMin = document.createElement('li');
+    const tempMin = document.createElement("li");
     tempMin.innerHTML = `mintemp = ${daily.data[i].temperatureMin}°C`;
-    tempMin.setAttribute('class', 'degrees list-item');
+    tempMin.setAttribute("class", "degrees list-item");
 
-    const windBearing = document.createElement('li');
+    const windBearing = document.createElement("li");
     windbear = daily.data[i].windBearing;
     winddir = checkWindDirection(windbear);
-    const windText = document.createElement('div');
+    const windText = document.createElement("div");
     windBearing.innerHTML = `winddirection = ${winddir}`;
-    windBearing.setAttribute('class', 'degrees list-item');
+    windBearing.setAttribute("class", "degrees list-item");
 
-
-    const summary = document.createElement('li');
+    const summary = document.createElement("li");
     summary.innerHTML = daily.data[i].summary;
-    summary.setAttribute('class', 'list-item summary');
+    summary.setAttribute("class", "list-item summary");
     day.appendChild(summary);
-
 
     const windContainer = createWindmill(Math.round(daily.data[i].windSpeed));
     const iconListElement = appendIconChilds(daily.data[i].icon);
 
-    const thermoLi = document.createElement('li');
-    thermoLi.setAttribute('class', 'list-item temp-flex');
+    const thermoLi = document.createElement("li");
+    thermoLi.setAttribute("class", "list-item temp-flex");
     // create min thermoLi
-    const thermoLiMin = document.createElement('li');
-    thermoLiMin.setAttribute('class', 'list-item temp-flex');
-    const createFillName = (`thermometer-fill${i}`);
-    const createFillNameMin = (`thermometer-fill-min${i}`);
+    const thermoLiMin = document.createElement("li");
+    thermoLiMin.setAttribute("class", "list-item temp-flex");
+    const createFillName = `thermometer-fill${i}`;
+    const createFillNameMin = `thermometer-fill-min${i}`;
 
-    const createBottomName = (`thermometer-bottom${i}`);
-    const thermoContainer = document.createElement('div');
-    const createBottomNameMin = (`thermometer-bottom-min${i}`);
-    thermoContainer.setAttribute('class', 'thermo-container');
-    const thermoTop = document.createElement('div');
-    thermoTop.setAttribute('class', 'thermometer-top');
-    const thermoTopMin = document.createElement('div');
-    thermoTopMin.setAttribute('class', 'thermometer-top');
-    const thermoFill = document.createElement('div');
-    thermoFill.setAttribute('class', createFillName);
-    thermoFill.setAttribute('id', 'thermoFillId');
+    const createBottomName = `thermometer-bottom${i}`;
+    const thermoContainer = document.createElement("div");
+    const createBottomNameMin = `thermometer-bottom-min${i}`;
+    thermoContainer.setAttribute("class", "thermo-container");
+    const thermoTop = document.createElement("div");
+    thermoTop.setAttribute("class", "thermometer-top");
+    const thermoTopMin = document.createElement("div");
+    thermoTopMin.setAttribute("class", "thermometer-top");
+    const thermoFill = document.createElement("div");
+    thermoFill.setAttribute("class", createFillName);
+    thermoFill.setAttribute("id", "thermoFillId");
 
-    const thermoFillMin = document.createElement('div');
-    thermoFillMin.setAttribute('class', createFillNameMin);
-    thermoFillMin.setAttribute('id', 'thermoFillMinId');
+    const thermoFillMin = document.createElement("div");
+    thermoFillMin.setAttribute("class", createFillNameMin);
+    thermoFillMin.setAttribute("id", "thermoFillMinId");
 
     const fillPercentage = Math.abs(daily.data[i].temperatureMax) / 100;
     const fillHeight = fillPercentage * 1000;
@@ -323,56 +388,58 @@ function createWeek(data) {
     // create min values
     const fillPercentageMin = Math.abs(daily.data[i].temperatureMin) / 100;
     const fillHeightMin = fillPercentageMin * 1000;
-    const thermoBottom = document.createElement('div');
-    const thermoBottomMin = document.createElement('div');
-    thermoBottom.setAttribute('class', createBottomName);
-    thermoBottom.setAttribute('id', createBottomName);
-    thermoBottomMin.setAttribute('class', createBottomNameMin);
-    thermoBottomMin.setAttribute('id', createBottomNameMin);
-    const span = document.createElement('span');
-    const spanMin = document.createElement('span');
-    span.setAttribute('class', 'bottom-text-week');
-    spanMin.setAttribute('class', 'bottom-text-week');
+    const thermoBottom = document.createElement("div");
+    const thermoBottomMin = document.createElement("div");
+    thermoBottom.setAttribute("class", createBottomName);
+    thermoBottom.setAttribute("id", createBottomName);
+    thermoBottomMin.setAttribute("class", createBottomNameMin);
+    thermoBottomMin.setAttribute("id", createBottomNameMin);
+    const span = document.createElement("span");
+    const spanMin = document.createElement("span");
+    span.setAttribute("class", "bottom-text-week");
+    spanMin.setAttribute("class", "bottom-text-week");
     const thermoColorMax = tempColor(Math.round(daily.data[i].temperatureMax));
     const thermoColorMin = tempColor(Math.round(daily.data[i].temperatureMin));
-    const thermoContainerMin = document.createElement('div');
-    thermoContainerMin.setAttribute('class', 'thermo-container');
+    const thermoContainerMin = document.createElement("div");
+    thermoContainerMin.setAttribute("class", "thermo-container");
 
+    const tempText = document.createElement("p");
+    tempText.setAttribute("class", "temp-text");
+    tempText.innerHTML = "Max temperature";
+    const tempTextMin = document.createElement("p");
+    tempTextMin.setAttribute("class", "temp-text");
+    tempTextMin.innerHTML = "Min temperature";
+    thermoContainer.type = "text/css";
 
-    const tempText = document.createElement('p');
-    tempText.setAttribute('class', 'temp-text');
-    tempText.innerHTML = 'Max temperature';
-    const tempTextMin = document.createElement('p');
-    tempTextMin.setAttribute('class', 'temp-text');
-    tempTextMin.innerHTML = 'Min temperature';
-    thermoContainer.type = 'text/css';
-
-    thermoContainer.innerHTML = `<style> .${createBottomName}{color: white;  width: 63px;\
+    thermoContainer.innerHTML =
+      `<style> .${createBottomName}{color: white;  width: 63px;\
     height: 50px; border-radius: 100%; border: 5px solid #d1d1d1; z-index: -1; margin: -7px auto ;text-align: center; display: block; background: ${thermoColorMax};\
-    padding-top: 15px; font-size: 24px;}` + `.${createFillName}{ height: ${fillHeight
-    }px;width: 30px; min-height: 12px; background: ${thermoColorMax}; !important;\
+    padding-top: 15px; font-size: 24px;}` +
+      `.${createFillName}{ height: ${fillHeight}px;width: 30px; min-height: 12px; background: ${thermoColorMax}; !important;\
     position: absolute; bottom: -5px; left: -5px;\
     border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }${createBottomName} createBottomName{background: ${thermoColorMax};}</style>`;
-    document.getElementsByTagName('div')[0].appendChild(thermoBottom);
-    document.getElementsByTagName('div')[0].appendChild(thermoFill);
+    document.getElementsByTagName("div")[0].appendChild(thermoBottom);
+    document.getElementsByTagName("div")[0].appendChild(thermoFill);
     document.getElementById(createBottomName).className = createBottomName;
 
     // create min container
 
-
-    thermoContainerMin.type = 'text/css';
-    thermoContainerMin.innerHTML = `<style> .${createBottomNameMin}{color: white;  width: 63px;\
+    thermoContainerMin.type = "text/css";
+    thermoContainerMin.innerHTML =
+      `<style> .${createBottomNameMin}{color: white;  width: 63px;\
     height: 50px; border-radius: 100%; border: 5px solid #d1d1d1; z-index: -1; margin: -7px auto; text-align: center; display: block; background: ${thermoColorMin};\
-    padding-top: 15px; font-size: 24px;}` + `.${createFillNameMin}{ height: ${fillHeightMin
-    }px;width: 30px; min-height: 12px; background: ${thermoColorMin} !important;\
+    padding-top: 15px; font-size: 24px;}` +
+      `.${createFillNameMin}{ height: ${fillHeightMin}px;width: 30px; min-height: 12px; background: ${thermoColorMin} !important;\
     position: absolute; bottom: -5px; left: -5px;\
     border-top-left-radius: 25px; border-top-right-radius: 25px; transition: all .2s; }${createBottomNameMin}{background: ${thermoColorMin};}</style>`;
-    document.getElementsByTagName('div')[0].appendChild(thermoBottomMin);
+    document.getElementsByTagName("div")[0].appendChild(thermoBottomMin);
     // document.getElementsByTagName('div')[0].appendChild(thermoFillMin);
-    document.getElementById(createBottomNameMin).className = createBottomNameMin;
+    document.getElementById(
+      createBottomNameMin
+    ).className = createBottomNameMin;
 
-    span.innerHTML = (`${Math.round(daily.data[i].temperatureMax)}°`);
-    spanMin.innerHTML = (`${Math.round(daily.data[i].temperatureMin)}°`);
+    span.innerHTML = `${Math.round(daily.data[i].temperatureMax)}°`;
+    spanMin.innerHTML = `${Math.round(daily.data[i].temperatureMin)}°`;
 
     thermoTop.appendChild(thermoFill);
     thermoTopMin.appendChild(thermoFillMin);
@@ -387,18 +454,18 @@ function createWeek(data) {
     thermoLi.appendChild(thermoContainer);
     thermoLiMin.appendChild(thermoContainerMin);
 
-    const compassContainer = document.createElement('li');
-    compassContainer.setAttribute('class', 'degrees list-item');
-    const compass = document.createElement('div');
-    compass.setAttribute('class', 'compass');
-    const compassMsg = document.createElement('div');
-    compassMsg.setAttribute('class', 'compass-msg');
-    windText.innerHTML = 'Wind direction';
-    windText.setAttribute('class', 'wind-direction-text');
+    const compassContainer = document.createElement("li");
+    compassContainer.setAttribute("class", "degrees list-item");
+    const compass = document.createElement("div");
+    compass.setAttribute("class", "compass");
+    const compassMsg = document.createElement("div");
+    compassMsg.setAttribute("class", "compass-msg");
+    windText.innerHTML = "Wind direction";
+    windText.setAttribute("class", "wind-direction-text");
     compassContainer.appendChild(windText);
 
-    const compassId = (`compass${i}`);
-    compass.setAttribute('id', compassId);
+    const compassId = `compass${i}`;
+    compass.setAttribute("id", compassId);
 
     compassContainer.appendChild(compass);
     compassContainer.appendChild(compassMsg);
@@ -417,59 +484,76 @@ function createWeek(data) {
 
     // weekSection.appendChild(wholeListContainer);
 
-    compassMsg.innerHTML = checkWindDirection(daily.data[i].windBearing, compassId);
+    compassMsg.innerHTML = checkWindDirection(
+      daily.data[i].windBearing,
+      compassId
+    );
   }
 }
 
 function createDayIcons(hour, data) {
   const hourly = data.hourly;
-  const iconContainer = document.getElementById('icon-container');
+  const iconContainer = document.getElementById("icon-container");
   const iconListElement = appendIconChilds(hourly.data[hour].icon);
-  iconListElement.setAttribute('class', 'hourly-weather-icon');
-  const weatherIconContainer = document.createElement('li');
+  iconListElement.setAttribute("class", "hourly-weather-icon");
+  const weatherIconContainer = document.createElement("li");
   weatherIconContainer.appendChild(iconListElement);
-  weatherIconContainer.setAttribute('class', 'grid-item');
-  const tmpContainer = createHourlyTempIcon(hourly.data[hour].apparentTemperature, false);
-  tmpContainer.setAttribute('class', 'grid-item');
-  const apparentTempContainer = createHourlyTempIcon(hourly.data[hour].apparentTemperature, true);
-  apparentTempContainer.setAttribute('class', 'grid-item');
-  const windContainer = createWindmill(Math.round(hourly.data[hour].windSpeed), true);
-  const windHeader = document.createElement('div');
-  windHeader.setAttribute('class', 'card-header');
-  windHeader.innerHTML = 'Wind speed';
+  weatherIconContainer.setAttribute("class", "grid-item");
+  const tmpContainer = createHourlyTempIcon(
+    hourly.data[hour].apparentTemperature,
+    false
+  );
+  tmpContainer.setAttribute("class", "grid-item");
+  const apparentTempContainer = createHourlyTempIcon(
+    hourly.data[hour].apparentTemperature,
+    true
+  );
+  apparentTempContainer.setAttribute("class", "grid-item");
+  const windContainer = createWindmill(
+    Math.round(hourly.data[hour].windSpeed),
+    true
+  );
+  const windHeader = document.createElement("div");
+  windHeader.setAttribute("class", "card-header");
+  windHeader.innerHTML = "Wind speed";
   windContainer.prepend(windHeader);
-  windContainer.setAttribute('class', 'grid-item hourly-wind-container');
+  windContainer.setAttribute("class", "grid-item hourly-wind-container");
   const percContainer = createPercip(hourly.data[hour].precipProbability);
-  percContainer.setAttribute('class', 'grid-item');
+  percContainer.setAttribute("class", "grid-item");
 
-  const windBearing = document.createElement('li');
+  const windBearing = document.createElement("li");
 
   const winddir = checkWindDirection(hourly.data[hour].windBearing);
-  const windText = document.createElement('div');
+  const windText = document.createElement("div");
   windBearing.innerHTML = `winddirection = ${winddir}`;
-  windBearing.setAttribute('class', 'degrees list-item');
+  windBearing.setAttribute("class", "degrees list-item");
 
-  const compassContainer = document.createElement('li');
-  compassContainer.setAttribute('class', 'degrees list-item');
-  const compass = document.createElement('div');
-  compass.setAttribute('class', 'hourly-compass');
-  const compassMsg = document.createElement('div');
-  compassMsg.setAttribute('class', 'hourly-compass-msg');
-  windText.innerHTML = 'Wind direction';
-  windText.setAttribute('class', 'card-header');
+  const compassContainer = document.createElement("li");
+  compassContainer.setAttribute("class", "degrees list-item");
+  const compass = document.createElement("div");
+  compass.setAttribute("class", "hourly-compass");
+  const compassMsg = document.createElement("div");
+  compassMsg.setAttribute("class", "hourly-compass-msg");
+  windText.innerHTML = "Wind direction";
+  windText.setAttribute("class", "card-header");
   compassContainer.appendChild(windText);
 
-  compass.setAttribute('id', 'compasshourly');
+  compass.setAttribute("id", "compasshourly");
 
-  compassContainer.setAttribute('class', 'grid-item');
-  compassMsg.innerHTML = checkWindDirection(hourly.data[hour].windBearing, 'compasshourly');
+  compassContainer.setAttribute("class", "grid-item");
+  compassMsg.innerHTML = checkWindDirection(
+    hourly.data[hour].windBearing,
+    "compasshourly"
+  );
   compassContainer.appendChild(compass);
   compassContainer.appendChild(compassMsg);
-  const isFirefox = typeof InstallTrigger !== 'undefined';
+  const isFirefox = typeof InstallTrigger !== "undefined";
   if (isFirefox) {
-    compass.style.transform = `translateY(-50%) translateX(-50%) rotate(${hourly.data[hour].windBearing + 225}deg)`;
+    compass.style.transform = `translateY(-50%) translateX(-50%) rotate(${hourly
+      .data[hour].windBearing + 225}deg)`;
   } else {
-    compass.style.transform = `rotate(${hourly.data[hour].windBearing + 225}deg)`;
+    compass.style.transform = `rotate(${hourly.data[hour].windBearing +
+      225}deg)`;
   }
   while (iconContainer.firstChild) {
     iconContainer.removeChild(iconContainer.firstChild);
@@ -483,101 +567,114 @@ function createDayIcons(hour, data) {
 }
 function waitForHourPress(data) {
   createDayIcons(0, data);
-  $('#hour-list').change(function a() {
-    const id = $(this).children(':selected').attr('id');
+  $("#hour-list").change(function a() {
+    const id = $(this)
+      .children(":selected")
+      .attr("id");
     const selectedHour = id.match(/\d+/)[0];
     createDayIcons(selectedHour, data);
   });
 }
 function setAddress() {
   $.ajax({
-    url: 'http://localhost:3000/address',
-    type: 'GET',
-    dataType: 'json',
+    url: `${env}/address`,
+    type: "GET",
+    dataType: "json",
     cache: true,
     success(data) {
-      const hourheader = document.getElementById('hour-head');
+      const hourheader = document.getElementById("hour-head");
       hourheader.innerHTML = `${data.address}`;
-      const weekheader = document.getElementById('week-header');
+      const weekheader = document.getElementById("week-header");
       weekheader.innerHTML = `${data.address}`;
     },
     error() {
-      const error = document.getElementById('loading');
-      error.innerHTML = error;
-    },
+      const error = document.getElementById("loading");
+      error.innerHTML = "Villa kom upp!";
+    }
   });
 }
 
 function getWeather() {
   $.ajax({
-    url: 'http://localhost:3000/data',
-    type: 'GET',
-    dataType: 'json',
+    url: `${env}/data`,
+    type: "GET",
+    dataType: "json",
     cache: true,
     success(data) {
-      $('#container-loading')
-            .delay(0).queue(function b(next) {
-              $(this).fadeOut(200);
-              next();
-            });
+      $("#container-loading")
+        .delay(0)
+        .queue(function b(next) {
+          $(this).fadeOut(200);
+          next();
+        });
       createWeek(data);
       createDay(data);
       waitForHourPress(data);
       setAddress();
     },
     error() {
-      const error = document.getElementById('loading');
-      error.innerHTML = error;
-    },
+      const error = document.getElementById("loading");
+      error.innerHTML = "Villa kom upp!";
+    }
   });
 }
 
 function init() {
   getWeather();
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Changing the defaults
     window.sr = ScrollReveal({ reset: true });
 
     // Customizing a reveal set
-    sr.reveal('.icon-container', { distance: '40vw', origin: 'right', duration: 1000, delay: 200, easing: 'ease', reset: false });
+    sr.reveal(".icon-container", {
+      distance: "40vw",
+      origin: "right",
+      duration: 1000,
+      delay: 200,
+      easing: "ease",
+      reset: false
+    });
     /* $("#top5-list").click(function() {
       $('#top5-list').toggleClass('top5-display')
     });*/
     let displayCounter = 1;
-    $('#top5-container').click(() => {
+    $("#top5-container").click(() => {
       displayCounter += 1;
       if (displayCounter % 2) {
-        $('#top5-list').removeClass('top5-display');
-        $('#top5-list').addClass('top5-no-display');
+        $("#top5-list").removeClass("top5-display");
+        $("#top5-list").addClass("top5-no-display");
       } else {
-        $('#top5-list').removeClass('top5-no-display');
-        $('#top5-list').addClass('top5-display');
+        $("#top5-list").removeClass("top5-no-display");
+        $("#top5-list").addClass("top5-display");
       }
     });
-    $('#current-container').click(() => {
-      const thisInput = document.getElementById('inner-current-loc');
-      $('#pac-input').val(thisInput.innerHTML);
-      $('#address').val(thisInput.innerHTML);
-      document.getElementById('submit').click();
+    $("#current-container").click(() => {
+      const thisInput = document.getElementById("inner-current-loc");
+      $("#pac-input").val(thisInput.innerHTML);
+      $("#address").val(thisInput.innerHTML);
+      document.getElementById("submit").click();
     });
-    $('.top5-element').click(function c() {
+    $(".top5-element").click(function c() {
       const thisInput = this.innerHTML;
-      $('#pac-input').val(thisInput.substring(2));
-      $('#address').val(thisInput.substring(2));
+      $("#pac-input").val(thisInput.substring(2));
+      $("#address").val(thisInput.substring(2));
       getgps(thisInput.substring(2));
       // document.getElementById('submit').click();
     });
 
-    if (document.getElementById('show').innerHTML != 0) {
-      $('#weekSection').removeClass('section-display');
-      $('#daySection').removeClass('section-display');
-      $('#footSection').removeClass('section-display');
-      $('#scroll-button').css('visibility', 'visible');
+    if (document.getElementById("show").innerHTML != 0) {
+      $("#weekSection").removeClass("section-display");
+      $("#daySection").removeClass("section-display");
+      $("#footSection").removeClass("section-display");
+      $("#scroll-button").css("visibility", "visible");
     }
-    $('#scroll-button').click(() => {
-      $('html, body').animate({
-        scrollTop: $('#daySection').offset().top,
-      }, 700);
+    $("#scroll-button").click(() => {
+      $("html, body").animate(
+        {
+          scrollTop: $("#daySection").offset().top
+        },
+        700
+      );
     });
   });
 }
