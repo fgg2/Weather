@@ -615,6 +615,14 @@ function getWeather() {
     error() {
       const error = document.getElementById("loading");
       error.innerHTML = "Please enter a valid location!";
+      var a = document.createElement('a');
+      a.setAttribute('href', 'https://weatherwherever.herokuapp.com');
+      var errorMsg = document.createElement('h1');
+      errorMsg.textContent = 'Try again!';
+      a.appendChild(h1);
+      errorMsg.setAttribute('class', 'loading-header');
+      errorMsg.setAttribute('id', 'loading');
+    
     }
   });
 }
